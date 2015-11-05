@@ -1,0 +1,32 @@
+#!/bin/sh
+set -ex
+cd "`dirname \"$0\"`/.."
+
+LIB_PATH="client"
+SRC_PATH="client/src"
+MINIMAL_DOCRAPTOR_LIB="$LIB_PATH/docraptor-minimal.dll"
+EVERYTHING_DOCRAPTOR_LIB="$LIB_PATH/docraptor-all.dll"
+
+TEST_PATH="test"
+
+./script/generate_language csharp
+
+mcs -lib:$LIB_PATH/bin -reference:Newtonsoft.Json.dll,RestSharp.dll,System.Runtime.Serialization.dll -target:library -out:$MINIMAL_DOCRAPTOR_LIB -recurse:$SRC_PATH/*.cs
+
+mono test/ILRepack.exe /internalize /out:$EVERYTHING_DOCRAPTOR_LIB $MINIMAL_DOCRAPTOR_LIB $LIB_PATH/bin/*.dll
+
+cp $EVERYTHING_DOCRAPTOR_LIB $TEST_PATH
+
+compile_and_run() {
+  base_name=`basename -s .cs $1`
+  mcs -lib:$LIB_PATH -reference:docraptor-all.dll $TEST_PATH/$base_name.cs -out:$TEST_PATH/$base_name.exe
+  mono $TEST_PATH/$base_name.exe
+}
+
+if [ "$1" == "" ]; then
+  for test in $(ls $TEST_PATH/*.cs); do
+    compile_and_run $test
+  done
+else
+  compile_and_run $1.cs
+fi
