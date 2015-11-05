@@ -29,6 +29,5 @@ class AsyncTest {
 
     Console.WriteLine(docraptor.DownloadIdGet(status_response.DownloadId));
 
-    Console.WriteLine("SHITS DONE!");
   }
 }
