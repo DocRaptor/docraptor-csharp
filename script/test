@@ -4,8 +4,8 @@ cd "`dirname \"$0\"`/.."
 
 LIB_PATH="."
 SRC_PATH="src"
-MINIMAL_DOCRAPTOR_LIB="$LIB_PATH/docraptor-minimal.dll"
-EVERYTHING_DOCRAPTOR_LIB="$LIB_PATH/docraptor-all.dll"
+MINIMAL_DOCRAPTOR_LIB="build/docraptor-minimal.dll"
+EVERYTHING_DOCRAPTOR_LIB="build/docraptor-all.dll"
 
 TEST_PATH="test"
 
@@ -17,7 +17,7 @@ cp $EVERYTHING_DOCRAPTOR_LIB $TEST_PATH
 
 compile_and_run() {
   base_name=`basename -s .cs $1`
-  mcs -lib:$LIB_PATH -reference:docraptor-all.dll $TEST_PATH/$base_name.cs -out:$TEST_PATH/$base_name.exe
+  mcs -lib:build/ -reference:docraptor-all.dll $TEST_PATH/$base_name.cs -out:$TEST_PATH/$base_name.exe
   mono $TEST_PATH/$base_name.exe
 }
 
