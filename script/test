@@ -2,27 +2,23 @@
 set -ex
 cd "`dirname \"$0\"`/.."
 
-LIB_PATH="."
-SRC_PATH="src"
 MINIMAL_DOCRAPTOR_LIB="build/docraptor-minimal.dll"
 EVERYTHING_DOCRAPTOR_LIB="build/docraptor-all.dll"
 
-TEST_PATH="test"
+mcs -lib:bin -reference:Newtonsoft.Json.dll,RestSharp.dll,System.Runtime.Serialization.dll -target:library -out:$MINIMAL_DOCRAPTOR_LIB -recurse:src/*.cs
 
-mcs -lib:$LIB_PATH/bin -reference:Newtonsoft.Json.dll,RestSharp.dll,System.Runtime.Serialization.dll -target:library -out:$MINIMAL_DOCRAPTOR_LIB -recurse:$SRC_PATH/*.cs
+mono test/ILRepack.exe /internalize /out:$EVERYTHING_DOCRAPTOR_LIB $MINIMAL_DOCRAPTOR_LIB bin/*.dll
 
-mono test/ILRepack.exe /internalize /out:$EVERYTHING_DOCRAPTOR_LIB $MINIMAL_DOCRAPTOR_LIB $LIB_PATH/bin/*.dll
-
-cp $EVERYTHING_DOCRAPTOR_LIB $TEST_PATH
+cp $EVERYTHING_DOCRAPTOR_LIB test
 
 compile_and_run() {
   base_name=`basename -s .cs $1`
-  mcs -lib:build/ -reference:docraptor-all.dll $TEST_PATH/$base_name.cs -out:$TEST_PATH/$base_name.exe
-  mono $TEST_PATH/$base_name.exe
+  mcs -lib:build/ -reference:docraptor-all.dll test/$base_name.cs -out:test/$base_name.exe
+  mono test/$base_name.exe
 }
 
 if [ "$1" == "" ]; then
-  for test in $(ls $TEST_PATH/*.cs); do
+  for test in $(ls test/*.cs); do
     compile_and_run $test
   done
 else
