@@ -9,8 +9,6 @@ EVERYTHING_DOCRAPTOR_LIB="$LIB_PATH/docraptor-all.dll"
 
 TEST_PATH="test"
 
-./script/generate_language csharp
-
 mcs -lib:$LIB_PATH/bin -reference:Newtonsoft.Json.dll,RestSharp.dll,System.Runtime.Serialization.dll -target:library -out:$MINIMAL_DOCRAPTOR_LIB -recurse:$SRC_PATH/*.cs
 
 mono test/ILRepack.exe /internalize /out:$EVERYTHING_DOCRAPTOR_LIB $MINIMAL_DOCRAPTOR_LIB $LIB_PATH/bin/*.dll
