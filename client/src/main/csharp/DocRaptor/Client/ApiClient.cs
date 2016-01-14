@@ -25,7 +25,7 @@ namespace DocRaptor.Client
         /// Initializes a new instance of the <see cref="ApiClient" /> class.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath="http://localhost:3000/")
+        public ApiClient(String basePath="https://docraptor.com/")
         {
             BasePath = basePath;
             RestClient = new RestClient(BasePath);

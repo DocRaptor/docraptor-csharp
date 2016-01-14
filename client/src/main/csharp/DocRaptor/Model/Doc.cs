@@ -62,6 +62,14 @@ namespace DocRaptor.Model {
 
     
     /// <summary>
+    /// Failed loading of images/javascripts/stylesheets/etc. will not cause the rendering to stop.
+    /// </summary>
+    /// <value>Failed loading of images/javascripts/stylesheets/etc. will not cause the rendering to stop.</value>
+    [DataMember(Name="ignore_resource_errors", EmitDefaultValue=false)]
+    public bool? IgnoreResourceErrors { get; set; }
+
+    
+    /// <summary>
     /// A field for storing a small amount of metadata with this document.
     /// </summary>
     /// <value>A field for storing a small amount of metadata with this document.</value>
@@ -128,6 +136,8 @@ namespace DocRaptor.Model {
       sb.Append("  Test: ").Append(Test).Append("\n");
       
       sb.Append("  Strict: ").Append(Strict).Append("\n");
+      
+      sb.Append("  IgnoreResourceErrors: ").Append(IgnoreResourceErrors).Append("\n");
       
       sb.Append("  Tag: ").Append(Tag).Append("\n");
       
