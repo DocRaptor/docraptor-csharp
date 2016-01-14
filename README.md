@@ -22,15 +22,15 @@ class Example {
     ClientApi docraptor = new ClientApi();
 
     Doc doc = new Doc();
-    doc.Test = true;                                                    /// test documents are free but watermarked
-    doc.DocumentContent = "<html><body>Swagger C#</body></html>";       /// supply content directly
-    doc.DocumentUrl     = "http://docraptor.com/examples/invoice.html"; /// or use a url
-    doc.Name = "swagger-csharp.pdf";                                    /// help you find a document later
-    doc.DocumentType = "pdf";                                           /// pdf or xls or xlsx
-    /// doc.Javascript = true;                                          /// enable JavaScript processing
+    doc.Test = true;                                                        /// test documents are free but watermarked
+    doc.DocumentContent = "<html><body>Swagger C#</body></html>";           /// supply content directly
+    /// doc.DocumentUrl     = "http://docraptor.com/examples/invoice.html"; /// or use a url
+    doc.Name = "swagger-csharp.pdf";                                        /// help you find a document later
+    doc.DocumentType = "pdf";                                               /// pdf or xls or xlsx
+    /// doc.Javascript = true;                                              /// enable JavaScript processing
     /// doc.PrinceOptions = new PrinceOptions();
-    /// doc.PrinceOptions.Media = "screen";                             /// use screen styles instead of print styles
-    /// doc.PrinceOptions.Baseurl = "http://hello.com";                 /// pretend URL when using document_content
+    /// doc.PrinceOptions.Media = "screen";                                 /// use screen styles instead of print styles
+    /// doc.PrinceOptions.Baseurl = "http://hello.com";                     /// pretend URL when using document_content
 
     Stream response = docraptor.DocsPost(doc);
   }
