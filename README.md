@@ -63,7 +63,8 @@ The majority of the code in this repo is generated using swagger-codegen on [doc
 3. Increment version in code
 4. Update [CHANGELOG.md](CHANGELOG.md)
 5. Push to GitHub
-6. Relase TODO
+6. Build DLLs using `script/build`
+7. Relase TODO
 
 ## Version Policy
 

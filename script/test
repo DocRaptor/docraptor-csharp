@@ -2,14 +2,9 @@
 set -ex
 cd "`dirname \"$0\"`/.."
 
-MINIMAL_DOCRAPTOR_LIB="build/docraptor-minimal.dll"
-EVERYTHING_DOCRAPTOR_LIB="build/docraptor-all.dll"
+./script/build
 
-mcs -lib:bin -reference:Newtonsoft.Json.dll,RestSharp.dll,System.Runtime.Serialization.dll -target:library -out:$MINIMAL_DOCRAPTOR_LIB -recurse:src/*.cs
-
-mono test/ILRepack.exe /internalize /out:$EVERYTHING_DOCRAPTOR_LIB $MINIMAL_DOCRAPTOR_LIB bin/*.dll
-
-cp $EVERYTHING_DOCRAPTOR_LIB test
+cp build/*.dll test/
 
 compile_and_run() {
   base_name=`basename -s .cs $1`
