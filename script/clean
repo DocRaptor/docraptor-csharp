@@ -2,4 +2,4 @@
 set -e
 cd "`dirname \"$0\"`/.."
 
-rm -rf bin/ src/
+rm -rf bin/ src/ docraptor-*.dll
