@@ -1,5 +1,5 @@
 #!/bin/sh
-set -ex
+set -e
 cd "`dirname \"$0\"`/.."
 
 MINIMAL_DOCRAPTOR_LIB="build/docraptor-minimal.dll"

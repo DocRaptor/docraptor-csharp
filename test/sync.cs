@@ -12,11 +12,11 @@ class SyncTest {
     ClientApi docraptor = new ClientApi();
 
     Doc doc = new Doc();
-    doc.Name = "swagger-csharp.pdf";
+    doc.Name = "csharp-sync.pdf";
     doc.Test = true;
-    doc.DocumentContent = "<html><body>Swagger C#</body></html>";
+    doc.DocumentContent = "<html><body>Hello from C#</body></html>";
     doc.DocumentType = "pdf";
 
-    Stream response = docraptor.CreateDoc(doc);
+    docraptor.CreateDoc(doc);
   }
 }

@@ -12,11 +12,11 @@ class XlsxTest {
     ClientApi docraptor = new ClientApi();
 
     Doc doc = new Doc();
-    doc.Name = "swagger-csharp.xlsx";
+    doc.Name = "csharp-xlsx.xlsx";
     doc.Test = true;
-    doc.DocumentContent = "<html><body><table><tr><td>Swagger C#</td></tr></table></body></html>";
+    doc.DocumentContent = "<html><body><table><tr><td>Hello from C#</td></tr></table></body></html>";
     doc.DocumentType = "xlsx";
 
-    Stream response = docraptor.CreateDoc(doc);
+    docraptor.CreateDoc(doc);
   }
 }

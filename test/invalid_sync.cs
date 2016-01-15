@@ -12,14 +12,14 @@ class InvalidSyncTest {
     ClientApi docraptor = new ClientApi();
 
     Doc doc = new Doc();
-    doc.Name = new String('s', 201);
+    doc.Name = new String('s', 201); // limit is 200 characters
     doc.Test = true;
-    doc.DocumentContent = "<html><body>Swagger C#</body></html>";
+    doc.DocumentContent = "<html><body>Hello from C#</body></html>";
     doc.DocumentType = "pdf";
 
     try {
-      Stream response = docraptor.CreateDoc(doc);
-    } catch (DocRaptor.Client.ApiException error) {
+      docraptor.CreateDoc(doc);
+    } catch (DocRaptor.Client.ApiException) {
       Environment.Exit(0);
     }
     Console.WriteLine("Exception expected, but not raised");

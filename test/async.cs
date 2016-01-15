@@ -11,9 +11,9 @@ class AsyncTest {
     ClientApi docraptor = new ClientApi();
 
     Doc doc = new Doc();
-    doc.Name = "swagger-csharp.pdf";
+    doc.Name = "csharp-async.pdf";
     doc.Test = true;
-    doc.DocumentContent = "<html><body>Swagger C#</body></html>";
+    doc.DocumentContent = "<html><body>Hello from C#</body></html>";
     doc.DocumentType = "pdf";
 
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
@@ -27,7 +27,6 @@ class AsyncTest {
       Thread.Sleep(1000);
     }
 
-    Console.WriteLine(docraptor.GetAsyncDoc(status_response.DownloadId));
-
+    docraptor.GetAsyncDoc(status_response.DownloadId);
   }
 }

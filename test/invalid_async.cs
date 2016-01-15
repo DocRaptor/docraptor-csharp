@@ -11,9 +11,9 @@ class InvalidAsyncTest {
     ClientApi docraptor = new ClientApi();
 
     Doc doc = new Doc();
-    doc.Name = new String('s', 201);
+    doc.Name = new String('s', 201); // limit is 200 characters
     doc.Test = true;
-    doc.DocumentContent = "<html><body>Swagger C#</body></html>";
+    doc.DocumentContent = "<html><body>Hello from C#</body></html>";
     doc.DocumentType = "pdf";
 
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
@@ -21,7 +21,6 @@ class InvalidAsyncTest {
     AsyncDocStatus status_response;
     for(int i=0; i<30; i++) {
       status_response = docraptor.GetAsyncDocStatus(response.StatusId);
-      Console.WriteLine(status_response);
       if (status_response.Status == "failed") {
         Environment.Exit(0);
       }
