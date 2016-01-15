@@ -18,7 +18,7 @@ class InvalidSyncTest {
     doc.DocumentType = "pdf";
 
     try {
-      Stream response = docraptor.DocsPost(doc);
+      Stream response = docraptor.CreateDoc(doc);
     } catch (DocRaptor.Client.ApiException error) {
       Environment.Exit(0);
     }

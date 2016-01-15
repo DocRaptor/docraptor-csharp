@@ -16,18 +16,18 @@ class AsyncTest {
     doc.DocumentContent = "<html><body>Swagger C#</body></html>";
     doc.DocumentType = "pdf";
 
-    AsyncDoc response = docraptor.AsyncDocsPost(doc);
+    AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
     AsyncDocStatus status_response;
     while(true) {
-      status_response = docraptor.StatusIdGet(response.StatusId);
+      status_response = docraptor.GetAsyncDocStatus(response.StatusId);
       if (status_response.Status == "completed") {
         break;
       }
       Thread.Sleep(1000);
     }
 
-    Console.WriteLine(docraptor.DownloadIdGet(status_response.DownloadId));
+    Console.WriteLine(docraptor.GetAsyncDoc(status_response.DownloadId));
 
   }
 }

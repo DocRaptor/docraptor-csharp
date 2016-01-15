@@ -16,11 +16,11 @@ class InvalidAsyncTest {
     doc.DocumentContent = "<html><body>Swagger C#</body></html>";
     doc.DocumentType = "pdf";
 
-    AsyncDoc response = docraptor.AsyncDocsPost(doc);
+    AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
     AsyncDocStatus status_response;
     for(int i=0; i<30; i++) {
-      status_response = docraptor.StatusIdGet(response.StatusId);
+      status_response = docraptor.GetAsyncDocStatus(response.StatusId);
       Console.WriteLine(status_response);
       if (status_response.Status == "failed") {
         Environment.Exit(0);

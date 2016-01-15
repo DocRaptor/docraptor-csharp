@@ -17,6 +17,6 @@ class XlsxTest {
     doc.DocumentContent = "<html><body><table><tr><td>Swagger C#</td></tr></table></body></html>";
     doc.DocumentType = "xlsx";
 
-    Stream response = docraptor.DocsPost(doc);
+    Stream response = docraptor.CreateDoc(doc);
   }
 }

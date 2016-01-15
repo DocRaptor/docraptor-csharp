@@ -17,6 +17,6 @@ class SyncTest {
     doc.DocumentContent = "<html><body>Swagger C#</body></html>";
     doc.DocumentType = "pdf";
 
-    Stream response = docraptor.DocsPost(doc);
+    Stream response = docraptor.CreateDoc(doc);
   }
 }

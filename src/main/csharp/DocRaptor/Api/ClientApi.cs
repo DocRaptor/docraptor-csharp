@@ -22,7 +22,7 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
         /// <returns>AsyncDoc</returns>
-        AsyncDoc AsyncDocsPost (Doc doc);
+        AsyncDoc CreateAsyncDoc (Doc doc);
   
         /// <summary>
         /// 
@@ -32,7 +32,7 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
         /// <returns>AsyncDoc</returns>
-        System.Threading.Tasks.Task<AsyncDoc> AsyncDocsPostAsync (Doc doc);
+        System.Threading.Tasks.Task<AsyncDoc> CreateAsyncDocAsync (Doc doc);
         
         /// <summary>
         /// 
@@ -42,7 +42,7 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
         /// <returns>Stream</returns>
-        Stream DocsPost (Doc doc);
+        Stream CreateDoc (Doc doc);
   
         /// <summary>
         /// 
@@ -52,7 +52,7 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
         /// <returns>Stream</returns>
-        System.Threading.Tasks.Task<Stream> DocsPostAsync (Doc doc);
+        System.Threading.Tasks.Task<Stream> CreateDocAsync (Doc doc);
         
         /// <summary>
         /// 
@@ -62,7 +62,7 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <param name="id">The download_id returned from status request or a callback.</param>
         /// <returns>Stream</returns>
-        Stream DownloadIdGet (string id);
+        Stream GetAsyncDoc (string id);
   
         /// <summary>
         /// 
@@ -72,7 +72,7 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <param name="id">The download_id returned from status request or a callback.</param>
         /// <returns>Stream</returns>
-        System.Threading.Tasks.Task<Stream> DownloadIdGetAsync (string id);
+        System.Threading.Tasks.Task<Stream> GetAsyncDocAsync (string id);
         
         /// <summary>
         /// 
@@ -82,7 +82,7 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
         /// <returns>AsyncDocStatus</returns>
-        AsyncDocStatus StatusIdGet (string id);
+        AsyncDocStatus GetAsyncDocStatus (string id);
   
         /// <summary>
         /// 
@@ -92,7 +92,7 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
         /// <returns>AsyncDocStatus</returns>
-        System.Threading.Tasks.Task<AsyncDocStatus> StatusIdGetAsync (string id);
+        System.Threading.Tasks.Task<AsyncDocStatus> GetAsyncDocStatusAsync (string id);
         
     }
   
@@ -154,11 +154,11 @@ namespace DocRaptor.Api
         /// </summary>
         /// <param name="doc">The document to be created.</param> 
         /// <returns>AsyncDoc</returns>            
-        public AsyncDoc AsyncDocsPost (Doc doc)
+        public AsyncDoc CreateAsyncDoc (Doc doc)
         {
             
             // verify the required parameter 'doc' is set
-            if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling AsyncDocsPost");
+            if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling CreateAsyncDoc");
             
     
             var path = "/async_docs";
@@ -195,9 +195,9 @@ namespace DocRaptor.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling AsyncDocsPost: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling CreateAsyncDoc: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling AsyncDocsPost: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling CreateAsyncDoc: " + response.ErrorMessage, response.ErrorMessage);
     
             return (AsyncDoc) ApiClient.Deserialize(response.Content, typeof(AsyncDoc), response.Headers);
         }
@@ -207,10 +207,10 @@ namespace DocRaptor.Api
         /// </summary>
         /// <param name="doc">The document to be created.</param>
         /// <returns>AsyncDoc</returns>
-        public async System.Threading.Tasks.Task<AsyncDoc> AsyncDocsPostAsync (Doc doc)
+        public async System.Threading.Tasks.Task<AsyncDoc> CreateAsyncDocAsync (Doc doc)
         {
             // verify the required parameter 'doc' is set
-            if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling AsyncDocsPost");
+            if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling CreateAsyncDoc");
             
     
             var path = "/async_docs";
@@ -246,7 +246,7 @@ namespace DocRaptor.Api
             // make the HTTP request
             IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling AsyncDocsPost: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling CreateAsyncDoc: " + response.Content, response.Content);
 
             return (AsyncDoc) ApiClient.Deserialize(response.Content, typeof(AsyncDoc), response.Headers);
         }
@@ -256,11 +256,11 @@ namespace DocRaptor.Api
         /// </summary>
         /// <param name="doc">The document to be created.</param> 
         /// <returns>Stream</returns>            
-        public Stream DocsPost (Doc doc)
+        public Stream CreateDoc (Doc doc)
         {
             
             // verify the required parameter 'doc' is set
-            if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling DocsPost");
+            if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling CreateDoc");
             
     
             var path = "/docs";
@@ -297,9 +297,9 @@ namespace DocRaptor.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling DocsPost: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling CreateDoc: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling DocsPost: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling CreateDoc: " + response.ErrorMessage, response.ErrorMessage);
     
             return (Stream) ApiClient.Deserialize(response.Content, typeof(Stream), response.Headers);
         }
@@ -309,10 +309,10 @@ namespace DocRaptor.Api
         /// </summary>
         /// <param name="doc">The document to be created.</param>
         /// <returns>Stream</returns>
-        public async System.Threading.Tasks.Task<Stream> DocsPostAsync (Doc doc)
+        public async System.Threading.Tasks.Task<Stream> CreateDocAsync (Doc doc)
         {
             // verify the required parameter 'doc' is set
-            if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling DocsPost");
+            if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling CreateDoc");
             
     
             var path = "/docs";
@@ -348,7 +348,7 @@ namespace DocRaptor.Api
             // make the HTTP request
             IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling DocsPost: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling CreateDoc: " + response.Content, response.Content);
 
             return (Stream) ApiClient.Deserialize(response.Content, typeof(Stream), response.Headers);
         }
@@ -358,11 +358,11 @@ namespace DocRaptor.Api
         /// </summary>
         /// <param name="id">The download_id returned from status request or a callback.</param> 
         /// <returns>Stream</returns>            
-        public Stream DownloadIdGet (string id)
+        public Stream GetAsyncDoc (string id)
         {
             
             // verify the required parameter 'id' is set
-            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling DownloadIdGet");
+            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetAsyncDoc");
             
     
             var path = "/download/{id}";
@@ -399,9 +399,9 @@ namespace DocRaptor.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling DownloadIdGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAsyncDoc: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling DownloadIdGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAsyncDoc: " + response.ErrorMessage, response.ErrorMessage);
     
             return (Stream) ApiClient.Deserialize(response.Content, typeof(Stream), response.Headers);
         }
@@ -411,10 +411,10 @@ namespace DocRaptor.Api
         /// </summary>
         /// <param name="id">The download_id returned from status request or a callback.</param>
         /// <returns>Stream</returns>
-        public async System.Threading.Tasks.Task<Stream> DownloadIdGetAsync (string id)
+        public async System.Threading.Tasks.Task<Stream> GetAsyncDocAsync (string id)
         {
             // verify the required parameter 'id' is set
-            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling DownloadIdGet");
+            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetAsyncDoc");
             
     
             var path = "/download/{id}";
@@ -450,7 +450,7 @@ namespace DocRaptor.Api
             // make the HTTP request
             IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling DownloadIdGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAsyncDoc: " + response.Content, response.Content);
 
             return (Stream) ApiClient.Deserialize(response.Content, typeof(Stream), response.Headers);
         }
@@ -460,11 +460,11 @@ namespace DocRaptor.Api
         /// </summary>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param> 
         /// <returns>AsyncDocStatus</returns>            
-        public AsyncDocStatus StatusIdGet (string id)
+        public AsyncDocStatus GetAsyncDocStatus (string id)
         {
             
             // verify the required parameter 'id' is set
-            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling StatusIdGet");
+            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetAsyncDocStatus");
             
     
             var path = "/status/{id}";
@@ -501,9 +501,9 @@ namespace DocRaptor.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling StatusIdGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAsyncDocStatus: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling StatusIdGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAsyncDocStatus: " + response.ErrorMessage, response.ErrorMessage);
     
             return (AsyncDocStatus) ApiClient.Deserialize(response.Content, typeof(AsyncDocStatus), response.Headers);
         }
@@ -513,10 +513,10 @@ namespace DocRaptor.Api
         /// </summary>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
         /// <returns>AsyncDocStatus</returns>
-        public async System.Threading.Tasks.Task<AsyncDocStatus> StatusIdGetAsync (string id)
+        public async System.Threading.Tasks.Task<AsyncDocStatus> GetAsyncDocStatusAsync (string id)
         {
             // verify the required parameter 'id' is set
-            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling StatusIdGet");
+            if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetAsyncDocStatus");
             
     
             var path = "/status/{id}";
@@ -552,7 +552,7 @@ namespace DocRaptor.Api
             // make the HTTP request
             IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling StatusIdGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAsyncDocStatus: " + response.Content, response.Content);
 
             return (AsyncDocStatus) ApiClient.Deserialize(response.Content, typeof(AsyncDocStatus), response.Headers);
         }

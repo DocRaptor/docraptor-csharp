@@ -32,7 +32,7 @@ class Example {
     /// doc.PrinceOptions.Media = "screen";                                 /// use screen styles instead of print styles
     /// doc.PrinceOptions.Baseurl = "http://hello.com";                     /// pretend URL when using document_content
 
-    Stream response = docraptor.DocsPost(doc);
+    Stream response = docraptor.CreateDoc(doc);
   }
 }
 ```
