@@ -10,6 +10,8 @@ TODO
 
 ## Usage
 
+See [examples](examples/) for runnable examples with file output, error handling, etc.
+
 ```csharp
 using DocRaptor.Client;
 using DocRaptor.Model;
@@ -18,27 +20,26 @@ using System.IO;
 
 class Example {
   static void Main(string[] args) {
-    Configuration.Username = "YOUR_API_KEY_HERE"; /// this key works for test documents
+    Configuration.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
     ClientApi docraptor = new ClientApi();
 
     Doc doc = new Doc();
-    doc.Test = true;                                                        /// test documents are free but watermarked
-    doc.DocumentContent = "<html><body>Swagger C#</body></html>";           /// supply content directly
-    /// doc.DocumentUrl     = "http://docraptor.com/examples/invoice.html"; /// or use a url
-    doc.Name = "swagger-csharp.pdf";                                        /// help you find a document later
-    doc.DocumentType = "pdf";                                               /// pdf or xls or xlsx
-    /// doc.Javascript = true;                                              /// enable JavaScript processing
-    /// doc.PrinceOptions = new PrinceOptions();
-    /// doc.PrinceOptions.Media = "screen";                                 /// use screen styles instead of print styles
-    /// doc.PrinceOptions.Baseurl = "http://hello.com";                     /// pretend URL when using document_content
+    doc.Test = true;                                                        // test documents are free but watermarked
+    doc.DocumentContent = "<html><body>Hello World</body></html>";          // supply content directly
+    // doc.DocumentUrl     = "http://docraptor.com/examples/invoice.html";  // or use a url
+    doc.Name = "docraptor-csharp.pdf";                                      // help you find a document later
+    doc.DocumentType = "pdf";                                               // pdf or xls or xlsx
+    // doc.Javascript = true;                                               // enable JavaScript processing
+    // doc.PrinceOptions = new PrinceOptions();
+    // doc.PrinceOptions.Media = "screen";                                  // use screen styles instead of print styles
+    // doc.PrinceOptions.Baseurl = "http://hello.com";                      // pretend URL when using document_content
 
     Stream response = docraptor.CreateDoc(doc);
   }
 }
 ```
 
-If your document will take longer than 60 seconds to render to PDF you will need to use our async api which allows up to 10 minutes, check out the [example](example/async.cs).
-
+Docs created like this are limited to 60 seconds to render, check out the [async example](examples/Async.cs) which allows 10 minutes.
 
 We have guides for doing some of the common things:
 * [Headers and Footers](https://docraptor.com/documentation/style#pdf-headers-footers) including page skipping

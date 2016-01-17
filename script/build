@@ -1,6 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 cd "`dirname \"$0\"`/.."
+
+if [[ `ls build/docraptor*.nupkg` ]] && [ "$1" == "lazy" ]; then
+  exit
+fi
 
 MINIMAL_DOCRAPTOR_LIB="build/docraptor-minimal.dll"
 EVERYTHING_DOCRAPTOR_LIB="build/docraptor-all.dll"
