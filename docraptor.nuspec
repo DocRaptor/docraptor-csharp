@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>docraptor</id>
+    <version>0.0.1</version>
+    <authors>Elijah Miller</authors>
+    <owners>Elijah Miller</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/docraptor/docraptor-csharp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A wrapper for the DocRaptor HTML to PDF/XLS service.</description>
+    <releaseNotes>Initial Release.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>DocRaptor, API, HTML, PDF, XLS, XLSX </tags>
+    <dependencies>
+      <dependency id="SampleDependency" version="1.0" />
+    </dependencies>
+  </metadata>
+</package>

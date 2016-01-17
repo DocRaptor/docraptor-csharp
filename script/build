@@ -10,4 +10,6 @@ mkdir build
 
 mcs -lib:bin -reference:Newtonsoft.Json.dll,RestSharp.dll,System.Runtime.Serialization.dll -target:library -out:$MINIMAL_DOCRAPTOR_LIB -recurse:src/*.cs
 
-mono ILRepack.exe /internalize /out:$EVERYTHING_DOCRAPTOR_LIB $MINIMAL_DOCRAPTOR_LIB bin/*.dll
+mono vendor/ILRepack.exe /internalize /out:$EVERYTHING_DOCRAPTOR_LIB $MINIMAL_DOCRAPTOR_LIB bin/*.dll
+
+mono vendor/nuget.exe pack -OutputDirectory build/

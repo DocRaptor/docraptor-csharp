@@ -58,12 +58,14 @@ The majority of the code in this repo is generated using swagger-codegen on [doc
 
 ## Release Process
 
-1. Merge code
-2. `script/test`
-3. Increment version in code
-4. Update [CHANGELOG.md](CHANGELOG.md)
+1. `script/test`
+2. Increment version in code
+  - `swagger-config.json`
+  - `docraptor.nuspec`
+3. Update [CHANGELOG.md](CHANGELOG.md)
+4. Tag version: `git tag 'v0.0.x' && git push --tags`
 5. Push to GitHub
-6. Build DLLs using `script/build`
+6. Build package using `script/build`
 7. Relase TODO
 
 ## Version Policy
