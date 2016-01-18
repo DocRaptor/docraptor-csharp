@@ -6,6 +6,7 @@ if [[ `ls build/docraptor*.nupkg` ]] && [ "$1" == "lazy" ]; then
   exit
 fi
 
+# check dependencies
 which mono > /dev/null || (echo "mono must be installed"; exit 1)
 which mcs > /dev/null  || (echo "mcs must be installed"; exit 1)
 
