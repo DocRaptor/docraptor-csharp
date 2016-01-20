@@ -118,6 +118,7 @@ namespace DocRaptor.Client
 
                 ApiClient = apiClient;
             }
+            ApiClient.Configuration = this;
         }
 
         private Dictionary<String, String> _defaultHeaderMap = new Dictionary<String, String>();
