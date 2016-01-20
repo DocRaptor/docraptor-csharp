@@ -72,7 +72,7 @@ The generated client needed a few fixes
 4. Tag version: `git tag 'v0.0.x' && git push --tags`
 5. Push to GitHub
 6. Build package using `script/build`
-7. Relase TODO
+7. `mono vendor/nuget.exe push bin/DocRaptor.*.nupkg`
 
 ## Version Policy
 
