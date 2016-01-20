@@ -14,5 +14,5 @@ export MONO_PATH=$PWD/build
 
 base_name=`basename -s .cs $1`
 dir_name=`dirname $1`
-mcs -reference:$all_dll $dir_name/$base_name.cs -out:$dir_name/$base_name.exe
-mono $dir_name/$base_name.exe
+mcs -debug -reference:$all_dll $dir_name/$base_name.cs -out:$dir_name/$base_name.exe
+mono --debug $dir_name/$base_name.exe
