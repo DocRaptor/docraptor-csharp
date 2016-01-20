@@ -6,17 +6,17 @@ This is a NuGet package for using [DocRaptor API](http://docraptor.com/documenta
 
 ## Installation
 
-Command line:
+**Command line**:
 ```sh
 nuget.exe install DocRaptor
 ```
 
-[Package Manager Console](http://docs.nuget.org/consume/package-manager-console):
+**[Package Manager Console](http://docs.nuget.org/consume/package-manager-console)**:
 ```
 Install-Package EntityFramework
 ```
 
-Download the latest DocRaptor.dll from [GitHub](https://github.com/DocRaptor/docraptor-csharp/releases)
+**Download DLLs**: get `DocRaptor.dll` from [GitHub](https://github.com/DocRaptor/docraptor-csharp/releases)
 
 
 ## Usage
