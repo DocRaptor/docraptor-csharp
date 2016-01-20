@@ -2,11 +2,22 @@
 
 **WARNING: This code is not production ready, you should use [this](http://docraptor.com/documentation/dotnet).**
 
-This is a DLL for using [DocRaptor API](http://docraptor.com/documentation) to convert HTML to PDF and XLSX.
+This is a NuGet package for using [DocRaptor API](http://docraptor.com/documentation) to convert HTML to PDF and XLSX.
 
 ## Installation
 
-TODO
+Command line:
+```sh
+nuget.exe install DocRaptor
+```
+
+[Package Manager Console](http://docs.nuget.org/consume/package-manager-console):
+```
+Install-Package EntityFramework
+```
+
+Download the latest DocRaptor.dll from [GitHub](https://github.com/DocRaptor/docraptor-csharp/releases)
+
 
 ## Usage
 
@@ -73,6 +84,7 @@ The generated client needed a few fixes
 5. Push to GitHub
 6. Build package using `script/build`
 7. `mono vendor/nuget.exe push bin/DocRaptor.*.nupkg`
+8. Use the git tag and make a new release with `bin/*.dll` attached, https://github.com/DocRaptor/docraptor-csharp/releases/new
 
 ## Version Policy
 
