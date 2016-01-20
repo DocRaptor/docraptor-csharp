@@ -26,6 +26,7 @@ namespace DocRaptor.Client
         {
             Configuration = Configuration.Default;
             RestClient = new RestClient("https://docraptor.com/");
+            RestClient.UserAgent = "csharp-swagger-" + Configuration.Version;
         }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace DocRaptor.Client
                 Configuration = config;
 
             RestClient = new RestClient("https://docraptor.com/");
+            RestClient.UserAgent = "csharp-swagger-" + Configuration.Version;
         }
 
         /// <summary>
@@ -53,8 +55,9 @@ namespace DocRaptor.Client
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
 
-            RestClient = new RestClient(basePath);
             Configuration = Configuration.Default;
+            RestClient = new RestClient(basePath);
+            RestClient.UserAgent = "csharp-swagger-" + Configuration.Version;
         }
 
         /// <summary>
