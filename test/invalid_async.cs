@@ -6,8 +6,8 @@ using System.Threading;
 
 class InvalidAsyncTest {
   static void Main(string[] args) {
-    Configuration.Username = "YOUR_API_KEY_HERE";
-    // Configuration.Debug = true; // Not supported in Csharp
+    Configuration.Default.Username = "YOUR_API_KEY_HERE";
+    // Configuration.Default.Debug = true; // Not supported in Csharp
     ClientApi docraptor = new ClientApi();
 
     Doc doc = new Doc();
