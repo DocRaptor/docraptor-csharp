@@ -2,7 +2,7 @@
 set -e
 cd "`dirname \"$0\"`/.."
 
-if [[ `ls build/docraptor*.nupkg` ]] && [ "$1" == "lazy" ]; then
+if [[ `ls bin/docraptor*.nupkg` ]] && [ "$1" == "lazy" ]; then
   exit
 fi
 
@@ -10,14 +10,17 @@ fi
 which mono > /dev/null || (echo "mono must be installed"; exit 1)
 which mcs > /dev/null  || (echo "mcs must be installed"; exit 1)
 
-MINIMAL_DOCRAPTOR_LIB="build/docraptor-minimal.dll"
-EVERYTHING_DOCRAPTOR_LIB="build/docraptor-all.dll"
+mono vendor/nuget.exe install vendor/packages.config -o vendor
+mkdir -p bin
 
-rm -rf build/
-mkdir build
+mcs -sdk:45 \
+  -r:vendor/Newtonsoft.Json.8.0.2/lib/net45/Newtonsoft.Json.dll,vendor/RestSharp.105.2.3/lib/net45/RestSharp.dll,System.Runtime.Serialization.dll \
+  -target:library \
+  -out:bin/DocRaptor.dll \
+  -recurse:'src/*.cs' \
+  -doc:bin/DocRaptor.xml \
+  -platform:anycpu
 
-mcs -lib:bin -reference:Newtonsoft.Json.dll,RestSharp.dll,System.Runtime.Serialization.dll -target:library -out:$MINIMAL_DOCRAPTOR_LIB -recurse:src/*.cs
+mono vendor/nuget.exe pack -OutputDirectory bin/
 
-mono vendor/ILRepack.exe /internalize /out:$EVERYTHING_DOCRAPTOR_LIB $MINIMAL_DOCRAPTOR_LIB bin/*.dll
-
-mono vendor/nuget.exe pack -OutputDirectory build/
+# mono vendor/ILRepack.exe /internalize /out:bin/DocRaptorWithDependencies.dll bin/DocRaptor.dll bin/*.dll
