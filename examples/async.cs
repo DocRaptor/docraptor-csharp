@@ -8,7 +8,7 @@
 // DocRaptor supports many options for output customization, the full list is
 // https://docraptor.com/documentation/api#api_general
 //
-// You can run this example with: ./script/run_csharp_file examples/sync.cs
+// You can run this example with: ./script/run_csharp_file examples/async.cs
 
 using DocRaptor.Client;
 using DocRaptor.Model;
@@ -19,35 +19,51 @@ using System.Threading;
 
 class AsyncTest {
   static void Main(string[] args) {
-    Configuration.Default.Username = "YOUR_API_KEY_HERE";
-    // Configuration.Default.Debug = true; // Not supported in Csharp
-    ClientApi docraptor = new ClientApi();
+    try {
+      Configuration.Default.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
+      ClientApi docraptor = new ClientApi();
 
-    Doc doc = new Doc();
-    doc.Name = "csharp-async.pdf";
-    doc.Test = true;
-    doc.DocumentContent = "<html><body>Hello from C#</body></html>";
-    doc.DocumentType = "pdf";
+      Doc doc = new Doc();
+      doc.Test = true;                                                        // test documents are free but watermarked
+      doc.DocumentContent = "<html><body>Hello World</body></html>";          // supply content directly
+      // doc.DocumentUrl     = "http://docraptor.com/examples/invoice.html";  // or use a url
+      doc.Name = "docraptor-csharp.pdf";                                      // help you find a document later
+      doc.DocumentType = "pdf";                                               // pdf or xls or xlsx
+      // doc.Javascript = true;                                               // enable JavaScript processing
+      // doc.PrinceOptions = new PrinceOptions();
+      // doc.PrinceOptions.Media = "screen";                                  // use screen styles instead of print styles
+      // doc.PrinceOptions.Baseurl = "http://hello.com";                      // pretend URL when using document_content
 
-    AsyncDoc response = docraptor.CreateAsyncDoc(doc);
+      AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
-    AsyncDocStatus status_response;
-    while(true) {
-      status_response = docraptor.GetAsyncDocStatus(response.StatusId);
-      if (status_response.Status == "completed") {
-        break;
+      AsyncDocStatus status_response;
+      Boolean done = false;
+      while(!done) {
+        status_response = docraptor.GetAsyncDocStatus(response.StatusId);
+        Console.WriteLine("doc status: " + status_response.Status);
+        switch(status_response.Status) {
+          case "completed":
+            done = true;
+            FileStream doc_response = (FileStream) docraptor.GetAsyncDoc(status_response.DownloadId);
+            doc_response.Close();
+            if (File.Exists("/tmp/docraptor-csharp.pdf")) {
+              File.Delete("/tmp/docraptor-csharp.pdf");
+            }
+            File.Move(doc_response.Name, "/tmp/docraptor-csharp.pdf");
+            Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
+            break;
+          case "failed":
+            done = true;
+            Console.WriteLine("FAILED");
+            Console.WriteLine(status_response);
+            break;
+          default:
+            Thread.Sleep(1000);
+            break;
+        }
       }
-      Thread.Sleep(1000);
+    } catch (DocRaptor.Client.ApiException error) {
+      Console.WriteLine(error);
     }
-
-    FileStream doc_response = (FileStream) docraptor.GetAsyncDoc(status_response.DownloadId);
-    doc_response.Close();
-    if (File.Exists("/tmp/docraptor-csharp.pdf")) {
-      File.Delete("/tmp/docraptor-csharp.pdf");
-    }
-    File.Move(doc_response.Name, "/tmp/docraptor-csharp.pdf");
-    Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
-
-    // TODO try/catch
   }
 }

@@ -20,27 +20,30 @@ using System.Threading;
 
 class SyncTest {
   static void Main(string[] args) {
-    Configuration.Default.Username = "YOUR_API_KEY_HERE";
-    ClientApi docraptor = new ClientApi();
+    try {
+      Configuration.Default.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
+      ClientApi docraptor = new ClientApi();
 
-    Doc doc = new Doc();
-    doc.Test = true;                                                        // test documents are free but watermarked
-    doc.DocumentContent = "<html><body>Hello World</body></html>";          // supply content directly
-    // doc.DocumentUrl     = "http://docraptor.com/examples/invoice.html";  // or use a url
-    doc.Name = "docraptor-csharp.pdf";                                      // help you find a document later
-    doc.DocumentType = "pdf";                                               // pdf or xls or xlsx
-    // doc.Javascript = true;                                               // enable JavaScript processing
-    // doc.PrinceOptions = new PrinceOptions();
-    // doc.PrinceOptions.Media = "screen";                                  // use screen styles instead of print styles
-    // doc.PrinceOptions.Baseurl = "http://hello.com";                      // pretend URL when using document_content
+      Doc doc = new Doc();
+      doc.Test = true;                                                        // test documents are free but watermarked
+      doc.DocumentContent = "<html><body>Hello World</body></html>";          // supply content directly
+      // doc.DocumentUrl     = "http://docraptor.com/examples/invoice.html";  // or use a url
+      doc.Name = "docraptor-csharp.pdf";                                      // help you find a document later
+      doc.DocumentType = "pdf";                                               // pdf or xls or xlsx
+      // doc.Javascript = true;                                               // enable JavaScript processing
+      // doc.PrinceOptions = new PrinceOptions();
+      // doc.PrinceOptions.Media = "screen";                                  // use screen styles instead of print styles
+      // doc.PrinceOptions.Baseurl = "http://hello.com";                      // pretend URL when using document_content
 
-    FileStream create_response = (FileStream) docraptor.CreateDoc(doc);
-    create_response.Close();
-    if (File.Exists("/tmp/docraptor-csharp.pdf")) {
-      File.Delete("/tmp/docraptor-csharp.pdf");
+      FileStream create_response = (FileStream) docraptor.CreateDoc(doc);
+      create_response.Close();
+      if (File.Exists("/tmp/docraptor-csharp.pdf")) {
+        File.Delete("/tmp/docraptor-csharp.pdf");
+      }
+      File.Move(create_response.Name, "/tmp/docraptor-csharp.pdf");
+      Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
+    } catch (DocRaptor.Client.ApiException error) {
+      Console.WriteLine(error);
     }
-    File.Move(create_response.Name, "/tmp/docraptor-csharp.pdf");
-    Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
-    // TODO try/catch
   }
 }
