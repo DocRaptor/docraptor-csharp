@@ -9,8 +9,8 @@ fi
 
 ./script/build lazy
 
-all_dll=$PWD/build/docraptor-all.dll
-export MONO_PATH=$PWD/build
+all_dll=$PWD/bin/DocRaptorWithDependencies.dll
+export MONO_PATH=$PWD/bin
 
 base_name=`basename -s .cs $1`
 dir_name=`dirname $1`
