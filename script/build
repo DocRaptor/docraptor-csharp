@@ -2,7 +2,7 @@
 set -e
 cd "`dirname \"$0\"`/.."
 
-if [[ `ls bin/docraptor*.nupkg` ]] && [ "$1" == "lazy" ]; then
+if [[ `ls bin/DocRaptor*.nupkg` ]] && [ "$1" == "lazy" ]; then
   exit
 fi
 
