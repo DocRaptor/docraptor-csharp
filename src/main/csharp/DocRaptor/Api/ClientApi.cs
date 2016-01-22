@@ -62,8 +62,8 @@ namespace DocRaptor.Api
         /// Creates a document synchronously.
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
-        /// <returns>Stream</returns>
-        Stream CreateDoc (Doc doc);
+        /// <returns>byte[]</returns>
+        byte[] CreateDoc (Doc doc);
   
         /// <summary>
         /// 
@@ -72,8 +72,8 @@ namespace DocRaptor.Api
         /// Creates a document synchronously.
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
-        /// <returns>ApiResponse of Stream</returns>
-        ApiResponse<Stream> CreateDocWithHttpInfo (Doc doc);
+        /// <returns>ApiResponse of byte[]</returns>
+        ApiResponse<byte[]> CreateDocWithHttpInfo (Doc doc);
 
         /// <summary>
         /// 
@@ -82,8 +82,8 @@ namespace DocRaptor.Api
         /// Creates a document synchronously.
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
-        /// <returns>Task of Stream</returns>
-        System.Threading.Tasks.Task<Stream> CreateDocAsync (Doc doc);
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> CreateDocAsync (Doc doc);
 
         /// <summary>
         /// 
@@ -92,8 +92,8 @@ namespace DocRaptor.Api
         /// Creates a document synchronously.
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
-        /// <returns>Task of ApiResponse (Stream)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Stream>> CreateDocAsyncWithHttpInfo (Doc doc);
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> CreateDocAsyncWithHttpInfo (Doc doc);
         
         /// <summary>
         /// 
@@ -102,8 +102,8 @@ namespace DocRaptor.Api
         /// Downloads a document.
         /// </remarks>
         /// <param name="id">The download_id returned from status request or a callback.</param>
-        /// <returns>Stream</returns>
-        Stream GetAsyncDoc (string id);
+        /// <returns>byte[]</returns>
+        byte[] GetAsyncDoc (string id);
   
         /// <summary>
         /// 
@@ -112,8 +112,8 @@ namespace DocRaptor.Api
         /// Downloads a document.
         /// </remarks>
         /// <param name="id">The download_id returned from status request or a callback.</param>
-        /// <returns>ApiResponse of Stream</returns>
-        ApiResponse<Stream> GetAsyncDocWithHttpInfo (string id);
+        /// <returns>ApiResponse of byte[]</returns>
+        ApiResponse<byte[]> GetAsyncDocWithHttpInfo (string id);
 
         /// <summary>
         /// 
@@ -122,8 +122,8 @@ namespace DocRaptor.Api
         /// Downloads a document.
         /// </remarks>
         /// <param name="id">The download_id returned from status request or a callback.</param>
-        /// <returns>Task of Stream</returns>
-        System.Threading.Tasks.Task<Stream> GetAsyncDocAsync (string id);
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> GetAsyncDocAsync (string id);
 
         /// <summary>
         /// 
@@ -132,8 +132,8 @@ namespace DocRaptor.Api
         /// Downloads a document.
         /// </remarks>
         /// <param name="id">The download_id returned from status request or a callback.</param>
-        /// <returns>Task of ApiResponse (Stream)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Stream>> GetAsyncDocAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetAsyncDocAsyncWithHttpInfo (string id);
         
         /// <summary>
         /// 
@@ -431,10 +431,10 @@ namespace DocRaptor.Api
         ///  Creates a document synchronously.
         /// </summary>
         /// <param name="doc">The document to be created.</param> 
-        /// <returns>Stream</returns>
-        public Stream CreateDoc (Doc doc)
+        /// <returns>byte[]</returns>
+        public byte[] CreateDoc (Doc doc)
         {
-             ApiResponse<Stream> response = CreateDocWithHttpInfo(doc);
+             ApiResponse<byte[]> response = CreateDocWithHttpInfo(doc);
              return response.Data;
         }
 
@@ -442,8 +442,8 @@ namespace DocRaptor.Api
         ///  Creates a document synchronously.
         /// </summary>
         /// <param name="doc">The document to be created.</param> 
-        /// <returns>ApiResponse of Stream</returns>
-        public ApiResponse< Stream > CreateDocWithHttpInfo (Doc doc)
+        /// <returns>ApiResponse of byte[]</returns>
+        public ApiResponse< byte[] > CreateDocWithHttpInfo (Doc doc)
         {
             
             // verify the required parameter 'doc' is set
@@ -511,9 +511,9 @@ namespace DocRaptor.Api
             else if (statusCode == 0)
                 throw new ApiException (statusCode, "Error calling CreateDoc: " + response.ErrorMessage, response.ErrorMessage);
     
-            return new ApiResponse<Stream>(statusCode,
+            return new ApiResponse<byte[]>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Stream) Configuration.ApiClient.Deserialize(response, typeof(Stream)));
+                (byte[]) Configuration.ApiClient.Deserialize(response, typeof(byte[])));
             
         }
     
@@ -521,10 +521,10 @@ namespace DocRaptor.Api
         ///  Creates a document synchronously.
         /// </summary>
         /// <param name="doc">The document to be created.</param>
-        /// <returns>Task of Stream</returns>
-        public async System.Threading.Tasks.Task<Stream> CreateDocAsync (Doc doc)
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> CreateDocAsync (Doc doc)
         {
-             ApiResponse<Stream> response = await CreateDocAsyncWithHttpInfo(doc);
+             ApiResponse<byte[]> response = await CreateDocAsyncWithHttpInfo(doc);
              return response.Data;
 
         }
@@ -533,8 +533,8 @@ namespace DocRaptor.Api
         ///  Creates a document synchronously.
         /// </summary>
         /// <param name="doc">The document to be created.</param>
-        /// <returns>Task of ApiResponse (Stream)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Stream>> CreateDocAsyncWithHttpInfo (Doc doc)
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> CreateDocAsyncWithHttpInfo (Doc doc)
         {
             // verify the required parameter 'doc' is set
             if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling CreateDoc");
@@ -595,9 +595,9 @@ namespace DocRaptor.Api
             else if (statusCode == 0)
                 throw new ApiException (statusCode, "Error calling CreateDoc: " + response.ErrorMessage, response.ErrorMessage);
 
-            return new ApiResponse<Stream>(statusCode,
+            return new ApiResponse<byte[]>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Stream) Configuration.ApiClient.Deserialize(response, typeof(Stream)));
+                (byte[]) Configuration.ApiClient.Deserialize(response, typeof(byte[])));
             
         }
         
@@ -605,10 +605,10 @@ namespace DocRaptor.Api
         ///  Downloads a document.
         /// </summary>
         /// <param name="id">The download_id returned from status request or a callback.</param> 
-        /// <returns>Stream</returns>
-        public Stream GetAsyncDoc (string id)
+        /// <returns>byte[]</returns>
+        public byte[] GetAsyncDoc (string id)
         {
-             ApiResponse<Stream> response = GetAsyncDocWithHttpInfo(id);
+             ApiResponse<byte[]> response = GetAsyncDocWithHttpInfo(id);
              return response.Data;
         }
 
@@ -616,8 +616,8 @@ namespace DocRaptor.Api
         ///  Downloads a document.
         /// </summary>
         /// <param name="id">The download_id returned from status request or a callback.</param> 
-        /// <returns>ApiResponse of Stream</returns>
-        public ApiResponse< Stream > GetAsyncDocWithHttpInfo (string id)
+        /// <returns>ApiResponse of byte[]</returns>
+        public ApiResponse< byte[] > GetAsyncDocWithHttpInfo (string id)
         {
             
             // verify the required parameter 'id' is set
@@ -679,9 +679,9 @@ namespace DocRaptor.Api
             else if (statusCode == 0)
                 throw new ApiException (statusCode, "Error calling GetAsyncDoc: " + response.ErrorMessage, response.ErrorMessage);
     
-            return new ApiResponse<Stream>(statusCode,
+            return new ApiResponse<byte[]>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Stream) Configuration.ApiClient.Deserialize(response, typeof(Stream)));
+                (byte[]) Configuration.ApiClient.Deserialize(response, typeof(byte[])));
             
         }
     
@@ -689,10 +689,10 @@ namespace DocRaptor.Api
         ///  Downloads a document.
         /// </summary>
         /// <param name="id">The download_id returned from status request or a callback.</param>
-        /// <returns>Task of Stream</returns>
-        public async System.Threading.Tasks.Task<Stream> GetAsyncDocAsync (string id)
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> GetAsyncDocAsync (string id)
         {
-             ApiResponse<Stream> response = await GetAsyncDocAsyncWithHttpInfo(id);
+             ApiResponse<byte[]> response = await GetAsyncDocAsyncWithHttpInfo(id);
              return response.Data;
 
         }
@@ -701,8 +701,8 @@ namespace DocRaptor.Api
         ///  Downloads a document.
         /// </summary>
         /// <param name="id">The download_id returned from status request or a callback.</param>
-        /// <returns>Task of ApiResponse (Stream)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Stream>> GetAsyncDocAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> GetAsyncDocAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetAsyncDoc");
@@ -763,9 +763,9 @@ namespace DocRaptor.Api
             else if (statusCode == 0)
                 throw new ApiException (statusCode, "Error calling GetAsyncDoc: " + response.ErrorMessage, response.ErrorMessage);
 
-            return new ApiResponse<Stream>(statusCode,
+            return new ApiResponse<byte[]>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Stream) Configuration.ApiClient.Deserialize(response, typeof(Stream)));
+                (byte[]) Configuration.ApiClient.Deserialize(response, typeof(byte[])));
             
         }
         

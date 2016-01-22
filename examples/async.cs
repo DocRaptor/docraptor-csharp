@@ -44,12 +44,8 @@ class AsyncTest {
         switch(status_response.Status) {
           case "completed":
             done = true;
-            FileStream doc_response = (FileStream) docraptor.GetAsyncDoc(status_response.DownloadId);
-            doc_response.Close();
-            if (File.Exists("/tmp/docraptor-csharp.pdf")) {
-              File.Delete("/tmp/docraptor-csharp.pdf");
-            }
-            File.Move(doc_response.Name, "/tmp/docraptor-csharp.pdf");
+            byte[] doc_response = docraptor.GetAsyncDoc(status_response.DownloadId);
+            File.WriteAllBytes("/tmp/docraptor-csharp.pdf", doc_response);
             Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
             break;
           case "failed":

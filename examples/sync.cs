@@ -35,12 +35,8 @@ class SyncTest {
       // doc.PrinceOptions.Media = "screen";                                  // use screen styles instead of print styles
       // doc.PrinceOptions.Baseurl = "http://hello.com";                      // pretend URL when using document_content
 
-      FileStream create_response = (FileStream) docraptor.CreateDoc(doc);
-      create_response.Close();
-      if (File.Exists("/tmp/docraptor-csharp.pdf")) {
-        File.Delete("/tmp/docraptor-csharp.pdf");
-      }
-      File.Move(create_response.Name, "/tmp/docraptor-csharp.pdf");
+      byte[] create_response = docraptor.CreateDoc(doc);
+      File.WriteAllBytes("/tmp/docraptor-csharp.pdf", create_response);
       Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
     } catch (DocRaptor.Client.ApiException error) {
       Console.WriteLine(error);
