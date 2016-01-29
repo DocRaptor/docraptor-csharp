@@ -78,7 +78,9 @@ The generated client needed a few fixes
 1. `script/test`
 2. Increment version in code
   - `swagger-config.json`
-  - `docraptor.nuspec`
+  - `DocRaptor.nuspec`
+  - `src/properties/AssemblyInfo.cs`
+  - `src/main/csharp/DocRaptor/Client/Configuration.cs` (2 places)
 3. Update [CHANGELOG.md](CHANGELOG.md)
 4. Tag version: `git tag 'v0.0.x' && git push --tags`
 5. Push to GitHub
