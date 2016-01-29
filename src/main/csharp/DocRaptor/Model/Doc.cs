@@ -47,17 +47,17 @@ namespace DocRaptor.Model
   
         
         /// <summary>
-        /// The HTML data to be transformed into a document.\nYou must supply content using document_content or document_url.
+        /// The HTML data to be transformed into a document. You must supply content using document_content or document_url.
         /// </summary>
-        /// <value>The HTML data to be transformed into a document.\nYou must supply content using document_content or document_url.</value>
+        /// <value>The HTML data to be transformed into a document. You must supply content using document_content or document_url.</value>
         [DataMember(Name="document_content", EmitDefaultValue=false)]
         public string DocumentContent { get; set; }
   
         
         /// <summary>
-        /// The URL to fetch the HTML data to be transformed into a document.\nYou must supply content using document_content or document_url.
+        /// The URL to fetch the HTML data to be transformed into a document. You must supply content using document_content or document_url.
         /// </summary>
-        /// <value>The URL to fetch the HTML data to be transformed into a document.\nYou must supply content using document_content or document_url.</value>
+        /// <value>The URL to fetch the HTML data to be transformed into a document. You must supply content using document_content or document_url.</value>
         [DataMember(Name="document_url", EmitDefaultValue=false)]
         public string DocumentUrl { get; set; }
   
@@ -119,9 +119,9 @@ namespace DocRaptor.Model
   
         
         /// <summary>
-        /// A URL that will receive a POST request after successfully completing an asynchronous document.\nThe POST data will include download_url and download_id similar to status api responses.\nWARNING: this only works on asynchronous documents.
+        /// A URL that will receive a POST request after successfully completing an asynchronous document. The POST data will include download_url and download_id similar to status api responses. WARNING: this only works on asynchronous documents.
         /// </summary>
-        /// <value>A URL that will receive a POST request after successfully completing an asynchronous document.\nThe POST data will include download_url and download_id similar to status api responses.\nWARNING: this only works on asynchronous documents.</value>
+        /// <value>A URL that will receive a POST request after successfully completing an asynchronous document. The POST data will include download_url and download_id similar to status api responses. WARNING: this only works on asynchronous documents.</value>
         [DataMember(Name="callback_url", EmitDefaultValue=false)]
         public string CallbackUrl { get; set; }
   

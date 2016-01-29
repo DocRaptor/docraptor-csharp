@@ -19,7 +19,7 @@ namespace DocRaptor.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Creates a document asynchronously.\nYou must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
+        /// Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
         /// <returns>AsyncDoc</returns>
@@ -29,7 +29,7 @@ namespace DocRaptor.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Creates a document asynchronously.\nYou must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
+        /// Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
         /// <returns>ApiResponse of AsyncDoc</returns>
@@ -39,7 +39,7 @@ namespace DocRaptor.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Creates a document asynchronously.\nYou must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
+        /// Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
         /// <returns>Task of AsyncDoc</returns>
@@ -49,7 +49,7 @@ namespace DocRaptor.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Creates a document asynchronously.\nYou must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
+        /// Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </remarks>
         /// <param name="doc">The document to be created.</param>
         /// <returns>Task of ApiResponse (AsyncDoc)</returns>
@@ -254,7 +254,7 @@ namespace DocRaptor.Api
    
         
         /// <summary>
-        ///  Creates a document asynchronously.\nYou must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
+        ///  Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </summary>
         /// <param name="doc">The document to be created.</param> 
         /// <returns>AsyncDoc</returns>
@@ -265,7 +265,7 @@ namespace DocRaptor.Api
         }
 
         /// <summary>
-        ///  Creates a document asynchronously.\nYou must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
+        ///  Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </summary>
         /// <param name="doc">The document to be created.</param> 
         /// <returns>ApiResponse of AsyncDoc</returns>
@@ -344,7 +344,7 @@ namespace DocRaptor.Api
         }
     
         /// <summary>
-        ///  Creates a document asynchronously.\nYou must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
+        ///  Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </summary>
         /// <param name="doc">The document to be created.</param>
         /// <returns>Task of AsyncDoc</returns>
@@ -356,7 +356,7 @@ namespace DocRaptor.Api
         }
 
         /// <summary>
-        ///  Creates a document asynchronously.\nYou must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
+        ///  Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </summary>
         /// <param name="doc">The document to be created.</param>
         /// <returns>Task of ApiResponse (AsyncDoc)</returns>
