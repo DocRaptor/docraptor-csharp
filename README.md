@@ -1,18 +1,19 @@
 # DocRaptor C# Native Client Library
 
-**WARNING: This code is not production ready, you should use [this](http://docraptor.com/documentation/dotnet).**
+This is a DLL and NuGet package for using [DocRaptor API](http://docraptor.com/documentation) to convert HTML to PDF and XLSX.
 
-This is a NuGet package for using [DocRaptor API](http://docraptor.com/documentation) to convert HTML to PDF and XLSX.
 
 ## Installation
 
 **Command line**:
-```sh
+
+```powershell
 nuget.exe install DocRaptor
 ```
 
 **[Package Manager Console](http://docs.nuget.org/consume/package-manager-console)**:
-```
+
+```powershell
 Install-Package EntityFramework
 ```
 
@@ -53,9 +54,11 @@ class Example {
 Docs created like this are limited to 60 seconds to render, check out the [async example](examples/Async.cs) which allows 10 minutes.
 
 We have guides for doing some of the common things:
+
 * [Headers and Footers](https://docraptor.com/documentation/style#pdf-headers-footers) including page skipping
 * [CSS Media Selector](https://docraptor.com/documentation/api#api_basic_pdf) to make the page look exactly as it does in your browser
 * [Protected Content](https://docraptor.com/documentation/api#api_advanced_pdf) to secure your URLs so only DocRaptor can access them
+
 
 ## More Help
 
@@ -73,6 +76,7 @@ The generated client needed a few fixes
 - `Configuration` had to be set on `ApiClient`
 - User agent had to be set
 
+
 ## Release Process
 
 1. `script/test`
@@ -87,6 +91,8 @@ The generated client needed a few fixes
 6. Build package using `script/build`
 7. `mono vendor/nuget.exe push bin/DocRaptor.x.x.x.nupkg`
 8. Use the git tag and make a new release with `bin/*.dll` attached, https://github.com/DocRaptor/docraptor-csharp/releases/new
+9. Update documentation on docraptor.com
+
 
 ## Version Policy
 
