@@ -68,7 +68,7 @@ namespace DocRaptor.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "0.0.1";
+        public const string Version = "0.2.0";
 
         /// <summary>
         /// Gets or sets the default Configuration.
@@ -268,7 +268,7 @@ namespace DocRaptor.Client
                      .GetReferencedAssemblies()
                      .Where(x => x.Name == "System.Core").First().Version.ToString()  + "\n";
             report += "    Version of the API: 0.0.1\n";
-            report += "    SDK Package Version: 0.0.1\n";
+            report += "    SDK Package Version: 0.2.0\n";
 
             return report;
         }
