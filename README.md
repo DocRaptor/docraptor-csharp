@@ -90,7 +90,7 @@ The generated client needed a few fixes
 5. Push to GitHub
 6. Build package using `script/build`
 7. `mono vendor/nuget.exe push bin/DocRaptor.x.x.x.nupkg`
-8. Use the git tag and make a new release with `bin/*.dll` attached, https://github.com/DocRaptor/docraptor-csharp/releases/new
+8. Use the git tag and make a new release with `bin/*.dll` attached, https://github.com/DocRaptor/docraptor-csharp/tags
 9. Update documentation on docraptor.com
 
 
