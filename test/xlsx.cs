@@ -9,7 +9,7 @@ class XlsxTest {
   static void Main(string[] args) {
     Configuration.Default.Username = "YOUR_API_KEY_HERE";
     // Configuration.Default.Debug = true; // Not supported in Csharp
-    ClientApi docraptor = new ClientApi();
+    DocApi docraptor = new DocApi();
 
     Doc doc = new Doc();
     doc.Name = "csharp-xlsx.xlsx";

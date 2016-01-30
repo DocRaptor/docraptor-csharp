@@ -12,7 +12,7 @@ namespace DocRaptor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IClientApi
+    public interface IDocApi
     {
         
         /// <summary>
@@ -180,24 +180,24 @@ namespace DocRaptor.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class ClientApi : IClientApi
+    public class DocApi : IDocApi
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClientApi"/> class.
+        /// Initializes a new instance of the <see cref="DocApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public ClientApi(String basePath)
+        public DocApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
         }
     
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClientApi"/> class
+        /// Initializes a new instance of the <see cref="DocApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public ClientApi(Configuration configuration = null)
+        public DocApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default; 
@@ -274,7 +274,7 @@ namespace DocRaptor.Api
             
             // verify the required parameter 'doc' is set
             if (doc == null)
-                throw new ApiException(400, "Missing required parameter 'doc' when calling ClientApi->CreateAsyncDoc");
+                throw new ApiException(400, "Missing required parameter 'doc' when calling DocApi->CreateAsyncDoc");
             
     
             var path_ = "/async_docs";
@@ -448,7 +448,7 @@ namespace DocRaptor.Api
             
             // verify the required parameter 'doc' is set
             if (doc == null)
-                throw new ApiException(400, "Missing required parameter 'doc' when calling ClientApi->CreateDoc");
+                throw new ApiException(400, "Missing required parameter 'doc' when calling DocApi->CreateDoc");
             
     
             var path_ = "/docs";
@@ -622,7 +622,7 @@ namespace DocRaptor.Api
             
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling ClientApi->GetAsyncDoc");
+                throw new ApiException(400, "Missing required parameter 'id' when calling DocApi->GetAsyncDoc");
             
     
             var path_ = "/download/{id}";
@@ -790,7 +790,7 @@ namespace DocRaptor.Api
             
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling ClientApi->GetAsyncDocStatus");
+                throw new ApiException(400, "Missing required parameter 'id' when calling DocApi->GetAsyncDocStatus");
             
     
             var path_ = "/status/{id}";

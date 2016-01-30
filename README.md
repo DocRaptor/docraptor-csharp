@@ -33,7 +33,7 @@ using System.IO;
 class Example {
   static void Main(string[] args) {
     Configuration.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
-    ClientApi docraptor = new ClientApi();
+    DocApi docraptor = new DocApi();
 
     Doc doc = new Doc();
     doc.Test = true;                                                        // test documents are free but watermarked
