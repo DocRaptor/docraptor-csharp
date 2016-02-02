@@ -14,7 +14,7 @@ nuget.exe install DocRaptor
 **[Package Manager Console](http://docs.nuget.org/consume/package-manager-console)**:
 
 ```powershell
-Install-Package EntityFramework
+Install-Package DocRaptor
 ```
 
 **Download DLLs**: get `DocRaptor.dll` from [GitHub](https://github.com/DocRaptor/docraptor-csharp/releases)
