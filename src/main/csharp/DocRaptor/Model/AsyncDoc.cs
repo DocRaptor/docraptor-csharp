@@ -11,7 +11,7 @@ namespace DocRaptor.Model
 {
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [DataContract]
     public class AsyncDoc :  IEquatable<AsyncDoc>
@@ -21,19 +21,19 @@ namespace DocRaptor.Model
         /// </summary>
         public AsyncDoc()
         {
-            
+
         }
 
-        
+
         /// <summary>
         /// The identifier used to get the status of the document using the status api.
         /// </summary>
         /// <value>The identifier used to get the status of the document using the status api.</value>
         [DataMember(Name="status_id", EmitDefaultValue=false)]
         public string StatusId { get; set; }
-  
-        
-  
+
+
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -43,11 +43,11 @@ namespace DocRaptor.Model
             var sb = new StringBuilder();
             sb.Append("class AsyncDoc {\n");
             sb.Append("  StatusId: ").Append(StatusId).Append("\n");
-            
+
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace DocRaptor.Model
             if (other == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StatusId == other.StatusId ||
                     this.StatusId != null &&
@@ -98,10 +98,10 @@ namespace DocRaptor.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                
+
                 if (this.StatusId != null)
                     hash = hash * 59 + this.StatusId.GetHashCode();
-                
+
                 return hash;
             }
         }

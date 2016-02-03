@@ -11,7 +11,7 @@ namespace DocRaptor.Model
 {
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [DataContract]
     public class PrinceOptions :  IEquatable<PrinceOptions>
@@ -23,227 +23,227 @@ namespace DocRaptor.Model
         {
             this.Media = "print";
             this.Input = "html";
-            
+
         }
 
-        
+
         /// <summary>
         /// Set the baseurl for assets.
         /// </summary>
         /// <value>Set the baseurl for assets.</value>
         [DataMember(Name="baseurl", EmitDefaultValue=false)]
         public string Baseurl { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disable XML inclusion.
         /// </summary>
         /// <value>Disable XML inclusion.</value>
         [DataMember(Name="no_xinclude", EmitDefaultValue=false)]
         public bool? NoXinclude { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disable network access.
         /// </summary>
         /// <value>Disable network access.</value>
         [DataMember(Name="no_network", EmitDefaultValue=false)]
         public bool? NoNetwork { get; set; }
-  
-        
+
+
         /// <summary>
         /// Set the user for HTTP authentication.
         /// </summary>
         /// <value>Set the user for HTTP authentication.</value>
         [DataMember(Name="http_user", EmitDefaultValue=false)]
         public string HttpUser { get; set; }
-  
-        
+
+
         /// <summary>
         /// Set the password for HTTP authentication.
         /// </summary>
         /// <value>Set the password for HTTP authentication.</value>
         [DataMember(Name="http_password", EmitDefaultValue=false)]
         public string HttpPassword { get; set; }
-  
-        
+
+
         /// <summary>
         /// Set the HTTP proxy server.
         /// </summary>
         /// <value>Set the HTTP proxy server.</value>
         [DataMember(Name="http_proxy", EmitDefaultValue=false)]
         public string HttpProxy { get; set; }
-  
-        
+
+
         /// <summary>
         /// Set the HTTP request timeout.
         /// </summary>
         /// <value>Set the HTTP request timeout.</value>
         [DataMember(Name="http_timeout", EmitDefaultValue=false)]
         public int? HttpTimeout { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disable SSL verification.
         /// </summary>
         /// <value>Disable SSL verification.</value>
         [DataMember(Name="insecure", EmitDefaultValue=false)]
         public bool? Insecure { get; set; }
-  
-        
+
+
         /// <summary>
         /// Specify the CSS media type. Defaults to \"print\" but you may want to use \"screen\" for web styles.
         /// </summary>
         /// <value>Specify the CSS media type. Defaults to \"print\" but you may want to use \"screen\" for web styles.</value>
         [DataMember(Name="media", EmitDefaultValue=false)]
         public string Media { get; set; }
-  
-        
+
+
         /// <summary>
         /// Ignore author stylesheets.
         /// </summary>
         /// <value>Ignore author stylesheets.</value>
         [DataMember(Name="no_author_style", EmitDefaultValue=false)]
         public bool? NoAuthorStyle { get; set; }
-  
-        
+
+
         /// <summary>
         /// Ignore default stylesheets.
         /// </summary>
         /// <value>Ignore default stylesheets.</value>
         [DataMember(Name="no_default_style", EmitDefaultValue=false)]
         public bool? NoDefaultStyle { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disable font embedding in PDFs.
         /// </summary>
         /// <value>Disable font embedding in PDFs.</value>
         [DataMember(Name="no_embed_fonts", EmitDefaultValue=false)]
         public bool? NoEmbedFonts { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disable font subsetting in PDFs.
         /// </summary>
         /// <value>Disable font subsetting in PDFs.</value>
         [DataMember(Name="no_subset_fonts", EmitDefaultValue=false)]
         public bool? NoSubsetFonts { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disable PDF compression.
         /// </summary>
         /// <value>Disable PDF compression.</value>
         [DataMember(Name="no_compress", EmitDefaultValue=false)]
         public bool? NoCompress { get; set; }
-  
-        
+
+
         /// <summary>
         /// Encrypt PDF output.
         /// </summary>
         /// <value>Encrypt PDF output.</value>
         [DataMember(Name="encrypt", EmitDefaultValue=false)]
         public bool? Encrypt { get; set; }
-  
-        
+
+
         /// <summary>
         /// Set encryption key size.
         /// </summary>
         /// <value>Set encryption key size.</value>
         [DataMember(Name="key_bits", EmitDefaultValue=false)]
         public int? KeyBits { get; set; }
-  
-        
+
+
         /// <summary>
         /// Set the PDF user password.
         /// </summary>
         /// <value>Set the PDF user password.</value>
         [DataMember(Name="user_password", EmitDefaultValue=false)]
         public string UserPassword { get; set; }
-  
-        
+
+
         /// <summary>
         /// Set the PDF owner password.
         /// </summary>
         /// <value>Set the PDF owner password.</value>
         [DataMember(Name="owner_password", EmitDefaultValue=false)]
         public string OwnerPassword { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disallow printing of this PDF.
         /// </summary>
         /// <value>Disallow printing of this PDF.</value>
         [DataMember(Name="disallow_print", EmitDefaultValue=false)]
         public bool? DisallowPrint { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disallow copying of this PDF.
         /// </summary>
         /// <value>Disallow copying of this PDF.</value>
         [DataMember(Name="disallow_copy", EmitDefaultValue=false)]
         public bool? DisallowCopy { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disallow annotation of this PDF.
         /// </summary>
         /// <value>Disallow annotation of this PDF.</value>
         [DataMember(Name="disallow_annotate", EmitDefaultValue=false)]
         public bool? DisallowAnnotate { get; set; }
-  
-        
+
+
         /// <summary>
         /// Disallow modification of this PDF.
         /// </summary>
         /// <value>Disallow modification of this PDF.</value>
         [DataMember(Name="disallow_modify", EmitDefaultValue=false)]
         public bool? DisallowModify { get; set; }
-  
-        
+
+
         /// <summary>
         /// Specify the input format.
         /// </summary>
         /// <value>Specify the input format.</value>
         [DataMember(Name="input", EmitDefaultValue=false)]
         public string Input { get; set; }
-  
-        
+
+
         /// <summary>
         /// Specify a specific verison of PrinceXML to use.
         /// </summary>
         /// <value>Specify a specific verison of PrinceXML to use.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
         public string Version { get; set; }
-  
-        
+
+
         /// <summary>
         /// Enable PrinceXML JavaScript. DocRaptor JavaScript parsing is also available elsewhere.
         /// </summary>
         /// <value>Enable PrinceXML JavaScript. DocRaptor JavaScript parsing is also available elsewhere.</value>
         [DataMember(Name="javascript", EmitDefaultValue=false)]
         public bool? Javascript { get; set; }
-  
-        
+
+
         /// <summary>
         /// Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up.
         /// </summary>
         /// <value>Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up.</value>
         [DataMember(Name="css_dpi", EmitDefaultValue=false)]
         public int? CssDpi { get; set; }
-  
-        
+
+
         /// <summary>
         /// In Prince 9.0 and up you can set the PDF profile.
         /// </summary>
         /// <value>In Prince 9.0 and up you can set the PDF profile.</value>
         [DataMember(Name="profile", EmitDefaultValue=false)]
         public string Profile { get; set; }
-  
-        
-  
+
+
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -279,11 +279,11 @@ namespace DocRaptor.Model
             sb.Append("  Javascript: ").Append(Javascript).Append("\n");
             sb.Append("  CssDpi: ").Append(CssDpi).Append("\n");
             sb.Append("  Profile: ").Append(Profile).Append("\n");
-            
+
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -315,137 +315,137 @@ namespace DocRaptor.Model
             if (other == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Baseurl == other.Baseurl ||
                     this.Baseurl != null &&
                     this.Baseurl.Equals(other.Baseurl)
-                ) && 
+                ) &&
                 (
                     this.NoXinclude == other.NoXinclude ||
                     this.NoXinclude != null &&
                     this.NoXinclude.Equals(other.NoXinclude)
-                ) && 
+                ) &&
                 (
                     this.NoNetwork == other.NoNetwork ||
                     this.NoNetwork != null &&
                     this.NoNetwork.Equals(other.NoNetwork)
-                ) && 
+                ) &&
                 (
                     this.HttpUser == other.HttpUser ||
                     this.HttpUser != null &&
                     this.HttpUser.Equals(other.HttpUser)
-                ) && 
+                ) &&
                 (
                     this.HttpPassword == other.HttpPassword ||
                     this.HttpPassword != null &&
                     this.HttpPassword.Equals(other.HttpPassword)
-                ) && 
+                ) &&
                 (
                     this.HttpProxy == other.HttpProxy ||
                     this.HttpProxy != null &&
                     this.HttpProxy.Equals(other.HttpProxy)
-                ) && 
+                ) &&
                 (
                     this.HttpTimeout == other.HttpTimeout ||
                     this.HttpTimeout != null &&
                     this.HttpTimeout.Equals(other.HttpTimeout)
-                ) && 
+                ) &&
                 (
                     this.Insecure == other.Insecure ||
                     this.Insecure != null &&
                     this.Insecure.Equals(other.Insecure)
-                ) && 
+                ) &&
                 (
                     this.Media == other.Media ||
                     this.Media != null &&
                     this.Media.Equals(other.Media)
-                ) && 
+                ) &&
                 (
                     this.NoAuthorStyle == other.NoAuthorStyle ||
                     this.NoAuthorStyle != null &&
                     this.NoAuthorStyle.Equals(other.NoAuthorStyle)
-                ) && 
+                ) &&
                 (
                     this.NoDefaultStyle == other.NoDefaultStyle ||
                     this.NoDefaultStyle != null &&
                     this.NoDefaultStyle.Equals(other.NoDefaultStyle)
-                ) && 
+                ) &&
                 (
                     this.NoEmbedFonts == other.NoEmbedFonts ||
                     this.NoEmbedFonts != null &&
                     this.NoEmbedFonts.Equals(other.NoEmbedFonts)
-                ) && 
+                ) &&
                 (
                     this.NoSubsetFonts == other.NoSubsetFonts ||
                     this.NoSubsetFonts != null &&
                     this.NoSubsetFonts.Equals(other.NoSubsetFonts)
-                ) && 
+                ) &&
                 (
                     this.NoCompress == other.NoCompress ||
                     this.NoCompress != null &&
                     this.NoCompress.Equals(other.NoCompress)
-                ) && 
+                ) &&
                 (
                     this.Encrypt == other.Encrypt ||
                     this.Encrypt != null &&
                     this.Encrypt.Equals(other.Encrypt)
-                ) && 
+                ) &&
                 (
                     this.KeyBits == other.KeyBits ||
                     this.KeyBits != null &&
                     this.KeyBits.Equals(other.KeyBits)
-                ) && 
+                ) &&
                 (
                     this.UserPassword == other.UserPassword ||
                     this.UserPassword != null &&
                     this.UserPassword.Equals(other.UserPassword)
-                ) && 
+                ) &&
                 (
                     this.OwnerPassword == other.OwnerPassword ||
                     this.OwnerPassword != null &&
                     this.OwnerPassword.Equals(other.OwnerPassword)
-                ) && 
+                ) &&
                 (
                     this.DisallowPrint == other.DisallowPrint ||
                     this.DisallowPrint != null &&
                     this.DisallowPrint.Equals(other.DisallowPrint)
-                ) && 
+                ) &&
                 (
                     this.DisallowCopy == other.DisallowCopy ||
                     this.DisallowCopy != null &&
                     this.DisallowCopy.Equals(other.DisallowCopy)
-                ) && 
+                ) &&
                 (
                     this.DisallowAnnotate == other.DisallowAnnotate ||
                     this.DisallowAnnotate != null &&
                     this.DisallowAnnotate.Equals(other.DisallowAnnotate)
-                ) && 
+                ) &&
                 (
                     this.DisallowModify == other.DisallowModify ||
                     this.DisallowModify != null &&
                     this.DisallowModify.Equals(other.DisallowModify)
-                ) && 
+                ) &&
                 (
                     this.Input == other.Input ||
                     this.Input != null &&
                     this.Input.Equals(other.Input)
-                ) && 
+                ) &&
                 (
                     this.Version == other.Version ||
                     this.Version != null &&
                     this.Version.Equals(other.Version)
-                ) && 
+                ) &&
                 (
                     this.Javascript == other.Javascript ||
                     this.Javascript != null &&
                     this.Javascript.Equals(other.Javascript)
-                ) && 
+                ) &&
                 (
                     this.CssDpi == other.CssDpi ||
                     this.CssDpi != null &&
                     this.CssDpi.Equals(other.CssDpi)
-                ) && 
+                ) &&
                 (
                     this.Profile == other.Profile ||
                     this.Profile != null &&
@@ -464,88 +464,88 @@ namespace DocRaptor.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                
+
                 if (this.Baseurl != null)
                     hash = hash * 59 + this.Baseurl.GetHashCode();
-                
+
                 if (this.NoXinclude != null)
                     hash = hash * 59 + this.NoXinclude.GetHashCode();
-                
+
                 if (this.NoNetwork != null)
                     hash = hash * 59 + this.NoNetwork.GetHashCode();
-                
+
                 if (this.HttpUser != null)
                     hash = hash * 59 + this.HttpUser.GetHashCode();
-                
+
                 if (this.HttpPassword != null)
                     hash = hash * 59 + this.HttpPassword.GetHashCode();
-                
+
                 if (this.HttpProxy != null)
                     hash = hash * 59 + this.HttpProxy.GetHashCode();
-                
+
                 if (this.HttpTimeout != null)
                     hash = hash * 59 + this.HttpTimeout.GetHashCode();
-                
+
                 if (this.Insecure != null)
                     hash = hash * 59 + this.Insecure.GetHashCode();
-                
+
                 if (this.Media != null)
                     hash = hash * 59 + this.Media.GetHashCode();
-                
+
                 if (this.NoAuthorStyle != null)
                     hash = hash * 59 + this.NoAuthorStyle.GetHashCode();
-                
+
                 if (this.NoDefaultStyle != null)
                     hash = hash * 59 + this.NoDefaultStyle.GetHashCode();
-                
+
                 if (this.NoEmbedFonts != null)
                     hash = hash * 59 + this.NoEmbedFonts.GetHashCode();
-                
+
                 if (this.NoSubsetFonts != null)
                     hash = hash * 59 + this.NoSubsetFonts.GetHashCode();
-                
+
                 if (this.NoCompress != null)
                     hash = hash * 59 + this.NoCompress.GetHashCode();
-                
+
                 if (this.Encrypt != null)
                     hash = hash * 59 + this.Encrypt.GetHashCode();
-                
+
                 if (this.KeyBits != null)
                     hash = hash * 59 + this.KeyBits.GetHashCode();
-                
+
                 if (this.UserPassword != null)
                     hash = hash * 59 + this.UserPassword.GetHashCode();
-                
+
                 if (this.OwnerPassword != null)
                     hash = hash * 59 + this.OwnerPassword.GetHashCode();
-                
+
                 if (this.DisallowPrint != null)
                     hash = hash * 59 + this.DisallowPrint.GetHashCode();
-                
+
                 if (this.DisallowCopy != null)
                     hash = hash * 59 + this.DisallowCopy.GetHashCode();
-                
+
                 if (this.DisallowAnnotate != null)
                     hash = hash * 59 + this.DisallowAnnotate.GetHashCode();
-                
+
                 if (this.DisallowModify != null)
                     hash = hash * 59 + this.DisallowModify.GetHashCode();
-                
+
                 if (this.Input != null)
                     hash = hash * 59 + this.Input.GetHashCode();
-                
+
                 if (this.Version != null)
                     hash = hash * 59 + this.Version.GetHashCode();
-                
+
                 if (this.Javascript != null)
                     hash = hash * 59 + this.Javascript.GetHashCode();
-                
+
                 if (this.CssDpi != null)
                     hash = hash * 59 + this.CssDpi.GetHashCode();
-                
+
                 if (this.Profile != null)
                     hash = hash * 59 + this.Profile.GetHashCode();
-                
+
                 return hash;
             }
         }

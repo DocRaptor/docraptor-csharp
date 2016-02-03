@@ -84,7 +84,7 @@ namespace DocRaptor.Client
         {
             get { return ApiClient.RestClient.Timeout; }
 
-            set 
+            set
             {
                 if (ApiClient != null)
                     ApiClient.RestClient.Timeout = value;
@@ -212,7 +212,7 @@ namespace DocRaptor.Client
                 }
 
                 // create the directory if it does not exist
-                if (!Directory.Exists(value)) 
+                if (!Directory.Exists(value))
                     Directory.CreateDirectory(value);
 
                 // check if the path contains directory separator at the end

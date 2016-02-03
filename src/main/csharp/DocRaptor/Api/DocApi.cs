@@ -8,15 +8,15 @@ using DocRaptor.Model;
 
 namespace DocRaptor.Api
 {
-    
+
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
     public interface IDocApi
     {
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
@@ -24,9 +24,9 @@ namespace DocRaptor.Api
         /// <param name="doc">The document to be created.</param>
         /// <returns>AsyncDoc</returns>
         AsyncDoc CreateAsyncDoc (Doc doc);
-  
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
@@ -36,7 +36,7 @@ namespace DocRaptor.Api
         ApiResponse<AsyncDoc> CreateAsyncDocWithHttpInfo (Doc doc);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
@@ -46,7 +46,7 @@ namespace DocRaptor.Api
         System.Threading.Tasks.Task<AsyncDoc> CreateAsyncDocAsync (Doc doc);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
@@ -54,9 +54,9 @@ namespace DocRaptor.Api
         /// <param name="doc">The document to be created.</param>
         /// <returns>Task of ApiResponse (AsyncDoc)</returns>
         System.Threading.Tasks.Task<ApiResponse<AsyncDoc>> CreateAsyncDocAsyncWithHttpInfo (Doc doc);
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Creates a document synchronously.
@@ -64,9 +64,9 @@ namespace DocRaptor.Api
         /// <param name="doc">The document to be created.</param>
         /// <returns>byte[]</returns>
         byte[] CreateDoc (Doc doc);
-  
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Creates a document synchronously.
@@ -76,7 +76,7 @@ namespace DocRaptor.Api
         ApiResponse<byte[]> CreateDocWithHttpInfo (Doc doc);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Creates a document synchronously.
@@ -86,7 +86,7 @@ namespace DocRaptor.Api
         System.Threading.Tasks.Task<byte[]> CreateDocAsync (Doc doc);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Creates a document synchronously.
@@ -94,9 +94,9 @@ namespace DocRaptor.Api
         /// <param name="doc">The document to be created.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
         System.Threading.Tasks.Task<ApiResponse<byte[]>> CreateDocAsyncWithHttpInfo (Doc doc);
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Downloads a document.
@@ -104,9 +104,9 @@ namespace DocRaptor.Api
         /// <param name="id">The download_id returned from status request or a callback.</param>
         /// <returns>byte[]</returns>
         byte[] GetAsyncDoc (string id);
-  
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Downloads a document.
@@ -116,7 +116,7 @@ namespace DocRaptor.Api
         ApiResponse<byte[]> GetAsyncDocWithHttpInfo (string id);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Downloads a document.
@@ -126,7 +126,7 @@ namespace DocRaptor.Api
         System.Threading.Tasks.Task<byte[]> GetAsyncDocAsync (string id);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Downloads a document.
@@ -134,9 +134,9 @@ namespace DocRaptor.Api
         /// <param name="id">The download_id returned from status request or a callback.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
         System.Threading.Tasks.Task<ApiResponse<byte[]>> GetAsyncDocAsyncWithHttpInfo (string id);
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Check on the status of an asynchronously created document.
@@ -144,9 +144,9 @@ namespace DocRaptor.Api
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
         /// <returns>AsyncDocStatus</returns>
         AsyncDocStatus GetAsyncDocStatus (string id);
-  
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Check on the status of an asynchronously created document.
@@ -156,7 +156,7 @@ namespace DocRaptor.Api
         ApiResponse<AsyncDocStatus> GetAsyncDocStatusWithHttpInfo (string id);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Check on the status of an asynchronously created document.
@@ -166,7 +166,7 @@ namespace DocRaptor.Api
         System.Threading.Tasks.Task<AsyncDocStatus> GetAsyncDocStatusAsync (string id);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Check on the status of an asynchronously created document.
@@ -174,9 +174,9 @@ namespace DocRaptor.Api
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
         /// <returns>Task of ApiResponse (AsyncDocStatus)</returns>
         System.Threading.Tasks.Task<ApiResponse<AsyncDocStatus>> GetAsyncDocStatusAsyncWithHttpInfo (string id);
-        
+
     }
-  
+
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
@@ -190,7 +190,7 @@ namespace DocRaptor.Api
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
         }
-    
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DocApi"/> class
         /// using Configuration object
@@ -200,7 +200,7 @@ namespace DocRaptor.Api
         public DocApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default; 
+                this.Configuration = Configuration.Default;
             else
                 this.Configuration = configuration;
         }
@@ -223,7 +223,7 @@ namespace DocRaptor.Api
         {
             // do nothing
         }
-    
+
         /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
@@ -251,12 +251,12 @@ namespace DocRaptor.Api
         {
             this.Configuration.AddDefaultHeader(key, value);
         }
-   
-        
+
+
         /// <summary>
         ///  Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </summary>
-        /// <param name="doc">The document to be created.</param> 
+        /// <param name="doc">The document to be created.</param>
         /// <returns>AsyncDoc</returns>
         public AsyncDoc CreateAsyncDoc (Doc doc)
         {
@@ -267,18 +267,18 @@ namespace DocRaptor.Api
         /// <summary>
         ///  Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </summary>
-        /// <param name="doc">The document to be created.</param> 
+        /// <param name="doc">The document to be created.</param>
         /// <returns>ApiResponse of AsyncDoc</returns>
         public ApiResponse< AsyncDoc > CreateAsyncDocWithHttpInfo (Doc doc)
         {
-            
+
             // verify the required parameter 'doc' is set
             if (doc == null)
                 throw new ApiException(400, "Missing required parameter 'doc' when calling DocApi->CreateAsyncDoc");
-            
-    
+
+
             var path_ = "/async_docs";
-    
+
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -288,7 +288,7 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] httpContentTypes = new String[] {
-                
+
             };
             String httpContentType = Configuration.ApiClient.SelectHeaderContentType(httpContentTypes);
 
@@ -303,10 +303,10 @@ namespace DocRaptor.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             pathParams.Add("format", "json");
-            
-            
-            
-            
+
+
+
+
             if (doc.GetType() != typeof(byte[]))
             {
                 postBody = Configuration.ApiClient.Serialize(doc); // http body (model) parameter
@@ -317,32 +317,32 @@ namespace DocRaptor.Api
             }
 
             // authentication (basicAuth) required
-            
+
             // http basic authentication required
             if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
             {
                 headerParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
             }
-            
-    
+
+
             // make the HTTP request
-            IRestResponse response = (IRestResponse) Configuration.ApiClient.CallApi(path_, 
+            IRestResponse response = (IRestResponse) Configuration.ApiClient.CallApi(path_,
                 Method.POST, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, httpContentType);
 
             int statusCode = (int) response.StatusCode;
-    
+
             if (statusCode >= 400)
                 throw new ApiException (statusCode, "Error calling CreateAsyncDoc: " + response.Content, response.Content);
             else if (statusCode == 0)
                 throw new ApiException (statusCode, "Error calling CreateAsyncDoc: " + response.ErrorMessage, response.ErrorMessage);
-    
+
             return new ApiResponse<AsyncDoc>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (AsyncDoc) Configuration.ApiClient.Deserialize(response, typeof(AsyncDoc)));
-            
+
         }
-    
+
         /// <summary>
         ///  Creates a document asynchronously. You must use a callback url or the the returned status id and the status api to find out when it completes. Then use the download api to get the document.
         /// </summary>
@@ -364,10 +364,10 @@ namespace DocRaptor.Api
         {
             // verify the required parameter 'doc' is set
             if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling CreateAsyncDoc");
-            
-    
+
+
             var path_ = "/async_docs";
-    
+
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -377,7 +377,7 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] httpContentTypes = new String[] {
-                
+
             };
             String httpContentType = Configuration.ApiClient.SelectHeaderContentType(httpContentTypes);
 
@@ -392,30 +392,30 @@ namespace DocRaptor.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             pathParams.Add("format", "json");
-            
-            
-            
-            
-            postBody = Configuration.ApiClient.Serialize(doc); // http body (model) parameter
-            
 
-            
+
+
+
+            postBody = Configuration.ApiClient.Serialize(doc); // http body (model) parameter
+
+
+
             // authentication (basicAuth) required
-            
+
             // http basic authentication required
             if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
             {
                 headerParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
             }
-            
+
 
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await Configuration.ApiClient.CallApiAsync(path_, 
-                Method.POST, queryParams, postBody, headerParams, formParams, fileParams, 
+            IRestResponse response = (IRestResponse) await Configuration.ApiClient.CallApiAsync(path_,
+                Method.POST, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, httpContentType);
 
             int statusCode = (int) response.StatusCode;
- 
+
             if (statusCode >= 400)
                 throw new ApiException (statusCode, "Error calling CreateAsyncDoc: " + response.Content, response.Content);
             else if (statusCode == 0)
@@ -424,13 +424,13 @@ namespace DocRaptor.Api
             return new ApiResponse<AsyncDoc>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (AsyncDoc) Configuration.ApiClient.Deserialize(response, typeof(AsyncDoc)));
-            
+
         }
-        
+
         /// <summary>
         ///  Creates a document synchronously.
         /// </summary>
-        /// <param name="doc">The document to be created.</param> 
+        /// <param name="doc">The document to be created.</param>
         /// <returns>byte[]</returns>
         public byte[] CreateDoc (Doc doc)
         {
@@ -441,18 +441,18 @@ namespace DocRaptor.Api
         /// <summary>
         ///  Creates a document synchronously.
         /// </summary>
-        /// <param name="doc">The document to be created.</param> 
+        /// <param name="doc">The document to be created.</param>
         /// <returns>ApiResponse of byte[]</returns>
         public ApiResponse< byte[] > CreateDocWithHttpInfo (Doc doc)
         {
-            
+
             // verify the required parameter 'doc' is set
             if (doc == null)
                 throw new ApiException(400, "Missing required parameter 'doc' when calling DocApi->CreateDoc");
-            
-    
+
+
             var path_ = "/docs";
-    
+
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -462,7 +462,7 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] httpContentTypes = new String[] {
-                
+
             };
             String httpContentType = Configuration.ApiClient.SelectHeaderContentType(httpContentTypes);
 
@@ -477,10 +477,10 @@ namespace DocRaptor.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             pathParams.Add("format", "json");
-            
-            
-            
-            
+
+
+
+
             if (doc.GetType() != typeof(byte[]))
             {
                 postBody = Configuration.ApiClient.Serialize(doc); // http body (model) parameter
@@ -491,32 +491,32 @@ namespace DocRaptor.Api
             }
 
             // authentication (basicAuth) required
-            
+
             // http basic authentication required
             if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
             {
                 headerParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
             }
-            
-    
+
+
             // make the HTTP request
-            IRestResponse response = (IRestResponse) Configuration.ApiClient.CallApi(path_, 
+            IRestResponse response = (IRestResponse) Configuration.ApiClient.CallApi(path_,
                 Method.POST, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, httpContentType);
 
             int statusCode = (int) response.StatusCode;
-    
+
             if (statusCode >= 400)
                 throw new ApiException (statusCode, "Error calling CreateDoc: " + response.Content, response.Content);
             else if (statusCode == 0)
                 throw new ApiException (statusCode, "Error calling CreateDoc: " + response.ErrorMessage, response.ErrorMessage);
-    
+
             return new ApiResponse<byte[]>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (byte[]) Configuration.ApiClient.Deserialize(response, typeof(byte[])));
-            
+
         }
-    
+
         /// <summary>
         ///  Creates a document synchronously.
         /// </summary>
@@ -538,10 +538,10 @@ namespace DocRaptor.Api
         {
             // verify the required parameter 'doc' is set
             if (doc == null) throw new ApiException(400, "Missing required parameter 'doc' when calling CreateDoc");
-            
-    
+
+
             var path_ = "/docs";
-    
+
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -551,7 +551,7 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] httpContentTypes = new String[] {
-                
+
             };
             String httpContentType = Configuration.ApiClient.SelectHeaderContentType(httpContentTypes);
 
@@ -566,30 +566,30 @@ namespace DocRaptor.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             pathParams.Add("format", "json");
-            
-            
-            
-            
-            postBody = Configuration.ApiClient.Serialize(doc); // http body (model) parameter
-            
 
-            
+
+
+
+            postBody = Configuration.ApiClient.Serialize(doc); // http body (model) parameter
+
+
+
             // authentication (basicAuth) required
-            
+
             // http basic authentication required
             if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
             {
                 headerParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
             }
-            
+
 
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await Configuration.ApiClient.CallApiAsync(path_, 
-                Method.POST, queryParams, postBody, headerParams, formParams, fileParams, 
+            IRestResponse response = (IRestResponse) await Configuration.ApiClient.CallApiAsync(path_,
+                Method.POST, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, httpContentType);
 
             int statusCode = (int) response.StatusCode;
- 
+
             if (statusCode >= 400)
                 throw new ApiException (statusCode, "Error calling CreateDoc: " + response.Content, response.Content);
             else if (statusCode == 0)
@@ -598,13 +598,13 @@ namespace DocRaptor.Api
             return new ApiResponse<byte[]>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (byte[]) Configuration.ApiClient.Deserialize(response, typeof(byte[])));
-            
+
         }
-        
+
         /// <summary>
         ///  Downloads a document.
         /// </summary>
-        /// <param name="id">The download_id returned from status request or a callback.</param> 
+        /// <param name="id">The download_id returned from status request or a callback.</param>
         /// <returns>byte[]</returns>
         public byte[] GetAsyncDoc (string id)
         {
@@ -615,18 +615,18 @@ namespace DocRaptor.Api
         /// <summary>
         ///  Downloads a document.
         /// </summary>
-        /// <param name="id">The download_id returned from status request or a callback.</param> 
+        /// <param name="id">The download_id returned from status request or a callback.</param>
         /// <returns>ApiResponse of byte[]</returns>
         public ApiResponse< byte[] > GetAsyncDocWithHttpInfo (string id)
         {
-            
+
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling DocApi->GetAsyncDoc");
-            
-    
+
+
             var path_ = "/download/{id}";
-    
+
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -636,7 +636,7 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] httpContentTypes = new String[] {
-                
+
             };
             String httpContentType = Configuration.ApiClient.SelectHeaderContentType(httpContentTypes);
 
@@ -652,39 +652,39 @@ namespace DocRaptor.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             pathParams.Add("format", "json");
             if (id != null) pathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
-            
-            
-            
-            
-            
+
+
+
+
+
 
             // authentication (basicAuth) required
-            
+
             // http basic authentication required
             if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
             {
                 headerParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
             }
-            
-    
+
+
             // make the HTTP request
-            IRestResponse response = (IRestResponse) Configuration.ApiClient.CallApi(path_, 
+            IRestResponse response = (IRestResponse) Configuration.ApiClient.CallApi(path_,
                 Method.GET, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, httpContentType);
 
             int statusCode = (int) response.StatusCode;
-    
+
             if (statusCode >= 400)
                 throw new ApiException (statusCode, "Error calling GetAsyncDoc: " + response.Content, response.Content);
             else if (statusCode == 0)
                 throw new ApiException (statusCode, "Error calling GetAsyncDoc: " + response.ErrorMessage, response.ErrorMessage);
-    
+
             return new ApiResponse<byte[]>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (byte[]) Configuration.ApiClient.Deserialize(response, typeof(byte[])));
-            
+
         }
-    
+
         /// <summary>
         ///  Downloads a document.
         /// </summary>
@@ -706,10 +706,10 @@ namespace DocRaptor.Api
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetAsyncDoc");
-            
-    
+
+
             var path_ = "/download/{id}";
-    
+
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -719,7 +719,7 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] httpContentTypes = new String[] {
-                
+
             };
             String httpContentType = Configuration.ApiClient.SelectHeaderContentType(httpContentTypes);
 
@@ -735,29 +735,29 @@ namespace DocRaptor.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             pathParams.Add("format", "json");
             if (id != null) pathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
-            
-            
-            
-            
-            
 
-            
+
+
+
+
+
+
             // authentication (basicAuth) required
-            
+
             // http basic authentication required
             if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
             {
                 headerParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
             }
-            
+
 
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await Configuration.ApiClient.CallApiAsync(path_, 
-                Method.GET, queryParams, postBody, headerParams, formParams, fileParams, 
+            IRestResponse response = (IRestResponse) await Configuration.ApiClient.CallApiAsync(path_,
+                Method.GET, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, httpContentType);
 
             int statusCode = (int) response.StatusCode;
- 
+
             if (statusCode >= 400)
                 throw new ApiException (statusCode, "Error calling GetAsyncDoc: " + response.Content, response.Content);
             else if (statusCode == 0)
@@ -766,13 +766,13 @@ namespace DocRaptor.Api
             return new ApiResponse<byte[]>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (byte[]) Configuration.ApiClient.Deserialize(response, typeof(byte[])));
-            
+
         }
-        
+
         /// <summary>
         ///  Check on the status of an asynchronously created document.
         /// </summary>
-        /// <param name="id">The status_id returned when creating an asynchronous document.</param> 
+        /// <param name="id">The status_id returned when creating an asynchronous document.</param>
         /// <returns>AsyncDocStatus</returns>
         public AsyncDocStatus GetAsyncDocStatus (string id)
         {
@@ -783,18 +783,18 @@ namespace DocRaptor.Api
         /// <summary>
         ///  Check on the status of an asynchronously created document.
         /// </summary>
-        /// <param name="id">The status_id returned when creating an asynchronous document.</param> 
+        /// <param name="id">The status_id returned when creating an asynchronous document.</param>
         /// <returns>ApiResponse of AsyncDocStatus</returns>
         public ApiResponse< AsyncDocStatus > GetAsyncDocStatusWithHttpInfo (string id)
         {
-            
+
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling DocApi->GetAsyncDocStatus");
-            
-    
+
+
             var path_ = "/status/{id}";
-    
+
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -804,7 +804,7 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] httpContentTypes = new String[] {
-                
+
             };
             String httpContentType = Configuration.ApiClient.SelectHeaderContentType(httpContentTypes);
 
@@ -820,39 +820,39 @@ namespace DocRaptor.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             pathParams.Add("format", "json");
             if (id != null) pathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
-            
-            
-            
-            
-            
+
+
+
+
+
 
             // authentication (basicAuth) required
-            
+
             // http basic authentication required
             if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
             {
                 headerParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
             }
-            
-    
+
+
             // make the HTTP request
-            IRestResponse response = (IRestResponse) Configuration.ApiClient.CallApi(path_, 
+            IRestResponse response = (IRestResponse) Configuration.ApiClient.CallApi(path_,
                 Method.GET, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, httpContentType);
 
             int statusCode = (int) response.StatusCode;
-    
+
             if (statusCode >= 400)
                 throw new ApiException (statusCode, "Error calling GetAsyncDocStatus: " + response.Content, response.Content);
             else if (statusCode == 0)
                 throw new ApiException (statusCode, "Error calling GetAsyncDocStatus: " + response.ErrorMessage, response.ErrorMessage);
-    
+
             return new ApiResponse<AsyncDocStatus>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (AsyncDocStatus) Configuration.ApiClient.Deserialize(response, typeof(AsyncDocStatus)));
-            
+
         }
-    
+
         /// <summary>
         ///  Check on the status of an asynchronously created document.
         /// </summary>
@@ -874,10 +874,10 @@ namespace DocRaptor.Api
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetAsyncDocStatus");
-            
-    
+
+
             var path_ = "/status/{id}";
-    
+
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -887,7 +887,7 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] httpContentTypes = new String[] {
-                
+
             };
             String httpContentType = Configuration.ApiClient.SelectHeaderContentType(httpContentTypes);
 
@@ -903,29 +903,29 @@ namespace DocRaptor.Api
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             pathParams.Add("format", "json");
             if (id != null) pathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
-            
-            
-            
-            
-            
 
-            
+
+
+
+
+
+
             // authentication (basicAuth) required
-            
+
             // http basic authentication required
             if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
             {
                 headerParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
             }
-            
+
 
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await Configuration.ApiClient.CallApiAsync(path_, 
-                Method.GET, queryParams, postBody, headerParams, formParams, fileParams, 
+            IRestResponse response = (IRestResponse) await Configuration.ApiClient.CallApiAsync(path_,
+                Method.GET, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, httpContentType);
 
             int statusCode = (int) response.StatusCode;
- 
+
             if (statusCode >= 400)
                 throw new ApiException (statusCode, "Error calling GetAsyncDocStatus: " + response.Content, response.Content);
             else if (statusCode == 0)
@@ -934,9 +934,9 @@ namespace DocRaptor.Api
             return new ApiResponse<AsyncDocStatus>(statusCode,
                 response.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (AsyncDocStatus) Configuration.ApiClient.Deserialize(response, typeof(AsyncDocStatus)));
-            
+
         }
-        
+
     }
-    
+
 }

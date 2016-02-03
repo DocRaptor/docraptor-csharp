@@ -11,7 +11,7 @@ namespace DocRaptor.Model
 {
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [DataContract]
     public class AsyncDocStatus :  IEquatable<AsyncDocStatus>
@@ -21,59 +21,59 @@ namespace DocRaptor.Model
         /// </summary>
         public AsyncDocStatus()
         {
-            
+
         }
 
-        
+
         /// <summary>
         /// The present status of the document. Can be queued, working, completed, and failed.
         /// </summary>
         /// <value>The present status of the document. Can be queued, working, completed, and failed.</value>
         [DataMember(Name="status", EmitDefaultValue=false)]
         public string Status { get; set; }
-  
-        
+
+
         /// <summary>
         /// The URL where the document can be retrieved. This URL may only be used a few times.
         /// </summary>
         /// <value>The URL where the document can be retrieved. This URL may only be used a few times.</value>
         [DataMember(Name="download_url", EmitDefaultValue=false)]
         public string DownloadUrl { get; set; }
-  
-        
+
+
         /// <summary>
         /// The identifier for downloading the document with the download api.
         /// </summary>
         /// <value>The identifier for downloading the document with the download api.</value>
         [DataMember(Name="download_id", EmitDefaultValue=false)]
         public string DownloadId { get; set; }
-  
-        
+
+
         /// <summary>
         /// Additional information.
         /// </summary>
         /// <value>Additional information.</value>
         [DataMember(Name="message", EmitDefaultValue=false)]
         public string Message { get; set; }
-  
-        
+
+
         /// <summary>
         /// Number of PDF pages in document.
         /// </summary>
         /// <value>Number of PDF pages in document.</value>
         [DataMember(Name="number_of_pages", EmitDefaultValue=false)]
         public int? NumberOfPages { get; set; }
-  
-        
+
+
         /// <summary>
         /// Error information.
         /// </summary>
         /// <value>Error information.</value>
         [DataMember(Name="validation_errors", EmitDefaultValue=false)]
         public string ValidationErrors { get; set; }
-  
-        
-  
+
+
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -88,11 +88,11 @@ namespace DocRaptor.Model
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  NumberOfPages: ").Append(NumberOfPages).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
-            
+
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -124,32 +124,32 @@ namespace DocRaptor.Model
             if (other == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Status == other.Status ||
                     this.Status != null &&
                     this.Status.Equals(other.Status)
-                ) && 
+                ) &&
                 (
                     this.DownloadUrl == other.DownloadUrl ||
                     this.DownloadUrl != null &&
                     this.DownloadUrl.Equals(other.DownloadUrl)
-                ) && 
+                ) &&
                 (
                     this.DownloadId == other.DownloadId ||
                     this.DownloadId != null &&
                     this.DownloadId.Equals(other.DownloadId)
-                ) && 
+                ) &&
                 (
                     this.Message == other.Message ||
                     this.Message != null &&
                     this.Message.Equals(other.Message)
-                ) && 
+                ) &&
                 (
                     this.NumberOfPages == other.NumberOfPages ||
                     this.NumberOfPages != null &&
                     this.NumberOfPages.Equals(other.NumberOfPages)
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == other.ValidationErrors ||
                     this.ValidationErrors != null &&
@@ -168,25 +168,25 @@ namespace DocRaptor.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                
+
                 if (this.Status != null)
                     hash = hash * 59 + this.Status.GetHashCode();
-                
+
                 if (this.DownloadUrl != null)
                     hash = hash * 59 + this.DownloadUrl.GetHashCode();
-                
+
                 if (this.DownloadId != null)
                     hash = hash * 59 + this.DownloadId.GetHashCode();
-                
+
                 if (this.Message != null)
                     hash = hash * 59 + this.Message.GetHashCode();
-                
+
                 if (this.NumberOfPages != null)
                     hash = hash * 59 + this.NumberOfPages.GetHashCode();
-                
+
                 if (this.ValidationErrors != null)
                     hash = hash * 59 + this.ValidationErrors.GetHashCode();
-                
+
                 return hash;
             }
         }
