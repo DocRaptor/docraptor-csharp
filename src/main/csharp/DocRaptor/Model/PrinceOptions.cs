@@ -64,13 +64,14 @@ namespace DocRaptor.Model
         /// <param name="DisallowCopy">Disallow copying of this PDF..</param>
         /// <param name="DisallowAnnotate">Disallow annotation of this PDF..</param>
         /// <param name="DisallowModify">Disallow modification of this PDF..</param>
+        /// <param name="Debug">Enable Prince debug mode..</param>
         /// <param name="Input">Specify the input format. (default to InputEnum.Html).</param>
         /// <param name="Version">Specify a specific verison of PrinceXML to use..</param>
         /// <param name="Javascript">Enable PrinceXML JavaScript. DocRaptor JavaScript parsing is also available elsewhere..</param>
         /// <param name="CssDpi">Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up..</param>
         /// <param name="Profile">In Prince 9.0 and up you can set the PDF profile..</param>
 
-        public PrinceOptions(string Baseurl = null, bool? NoXinclude = null, bool? NoNetwork = null, string HttpUser = null, string HttpPassword = null, string HttpProxy = null, int? HttpTimeout = null, bool? Insecure = null, string Media = null, bool? NoAuthorStyle = null, bool? NoDefaultStyle = null, bool? NoEmbedFonts = null, bool? NoSubsetFonts = null, bool? NoCompress = null, bool? Encrypt = null, int? KeyBits = null, string UserPassword = null, string OwnerPassword = null, bool? DisallowPrint = null, bool? DisallowCopy = null, bool? DisallowAnnotate = null, bool? DisallowModify = null, InputEnum? Input = null, string Version = null, bool? Javascript = null, int? CssDpi = null, string Profile = null)
+        public PrinceOptions(string Baseurl = null, bool? NoXinclude = null, bool? NoNetwork = null, string HttpUser = null, string HttpPassword = null, string HttpProxy = null, int? HttpTimeout = null, bool? Insecure = null, string Media = null, bool? NoAuthorStyle = null, bool? NoDefaultStyle = null, bool? NoEmbedFonts = null, bool? NoSubsetFonts = null, bool? NoCompress = null, bool? Encrypt = null, int? KeyBits = null, string UserPassword = null, string OwnerPassword = null, bool? DisallowPrint = null, bool? DisallowCopy = null, bool? DisallowAnnotate = null, bool? DisallowModify = null, bool? Debug = null, InputEnum? Input = null, string Version = null, bool? Javascript = null, int? CssDpi = null, string Profile = null)
         {
             this.Baseurl = Baseurl;
             this.NoXinclude = NoXinclude;
@@ -102,6 +103,7 @@ namespace DocRaptor.Model
             this.DisallowCopy = DisallowCopy;
             this.DisallowAnnotate = DisallowAnnotate;
             this.DisallowModify = DisallowModify;
+            this.Debug = Debug;
             // use default value if no "Input" provided
             if (Input == null)
             {
@@ -274,6 +276,13 @@ namespace DocRaptor.Model
         public bool? DisallowModify { get; set; }
 
         /// <summary>
+        /// Enable Prince debug mode.
+        /// </summary>
+        /// <value>Enable Prince debug mode.</value>
+        [DataMember(Name="debug", EmitDefaultValue=false)]
+        public bool? Debug { get; set; }
+
+        /// <summary>
         /// Specify a specific verison of PrinceXML to use.
         /// </summary>
         /// <value>Specify a specific verison of PrinceXML to use.</value>
@@ -331,6 +340,7 @@ namespace DocRaptor.Model
             sb.Append("  DisallowCopy: ").Append(DisallowCopy).Append("\n");
             sb.Append("  DisallowAnnotate: ").Append(DisallowAnnotate).Append("\n");
             sb.Append("  DisallowModify: ").Append(DisallowModify).Append("\n");
+            sb.Append("  Debug: ").Append(Debug).Append("\n");
             sb.Append("  Input: ").Append(Input).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("  Javascript: ").Append(Javascript).Append("\n");
@@ -484,6 +494,11 @@ namespace DocRaptor.Model
                     this.DisallowModify.Equals(other.DisallowModify)
                 ) &&
                 (
+                    this.Debug == other.Debug ||
+                    this.Debug != null &&
+                    this.Debug.Equals(other.Debug)
+                ) &&
+                (
                     this.Input == other.Input ||
                     this.Input != null &&
                     this.Input.Equals(other.Input)
@@ -587,6 +602,9 @@ namespace DocRaptor.Model
 
                 if (this.DisallowModify != null)
                     hash = hash * 59 + this.DisallowModify.GetHashCode();
+
+                if (this.Debug != null)
+                    hash = hash * 59 + this.Debug.GetHashCode();
 
                 if (this.Input != null)
                     hash = hash * 59 + this.Input.GetHashCode();
