@@ -4,23 +4,29 @@ using System.IO;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace DocRaptor.Model
 {
-
     /// <summary>
     ///
     /// </summary>
     [DataContract]
-    public class AsyncDoc :  IEquatable<AsyncDoc>
+    public partial class AsyncDoc :  IEquatable<AsyncDoc>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AsyncDoc" /> class.
+        /// Initializes a new instance of the <see cref="AsyncDoc" />class.
         /// </summary>
-        public AsyncDoc()
+        /// <param name="StatusId">The identifier used to get the status of the document using the status api..</param>
+
+        public AsyncDoc(string StatusId = null)
         {
+            this.StatusId = StatusId;
 
         }
 
@@ -31,8 +37,6 @@ namespace DocRaptor.Model
         /// <value>The identifier used to get the status of the document using the status api.</value>
         [DataMember(Name="status_id", EmitDefaultValue=false)]
         public string StatusId { get; set; }
-
-
 
         /// <summary>
         /// Returns the string presentation of the object

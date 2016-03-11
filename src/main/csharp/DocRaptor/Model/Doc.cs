@@ -4,28 +4,151 @@ using System.IO;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace DocRaptor.Model
 {
-
     /// <summary>
     ///
     /// </summary>
     [DataContract]
-    public class Doc :  IEquatable<Doc>
+    public partial class Doc :  IEquatable<Doc>
     {
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DocumentTypeEnum {
+
+            [EnumMember(Value = "pdf")]
+            Pdf,
+
+            [EnumMember(Value = "xls")]
+            Xls,
+
+            [EnumMember(Value = "xlsx")]
+            Xlsx
+        }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum StrictEnum {
+
+            [EnumMember(Value = "none")]
+            None
+        }
+
+        /// <summary>
+        /// The type of document being created.
+        /// </summary>
+        /// <value>The type of document being created.</value>
+        [DataMember(Name="document_type", EmitDefaultValue=false)]
+        public DocumentTypeEnum? DocumentType { get; set; }
+
+        /// <summary>
+        /// Force strict HTML validation.
+        /// </summary>
+        /// <value>Force strict HTML validation.</value>
+        [DataMember(Name="strict", EmitDefaultValue=false)]
+        public StrictEnum? Strict { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Doc" /> class.
+        /// Initializes a new instance of the <see cref="Doc" />class.
         /// </summary>
-        public Doc()
+        /// <param name="Name">A name for identifying your document. (required).</param>
+        /// <param name="DocumentType">The type of document being created. (required).</param>
+        /// <param name="DocumentContent">The HTML data to be transformed into a document. You must supply content using document_content or document_url. (required).</param>
+        /// <param name="DocumentUrl">The URL to fetch the HTML data to be transformed into a document. You must supply content using document_content or document_url..</param>
+        /// <param name="Test">Enable test mode for this document. Test documents are not charged for but include a watermark. (default to true).</param>
+        /// <param name="Strict">Force strict HTML validation. (default to StrictEnum.None).</param>
+        /// <param name="IgnoreResourceErrors">Failed loading of images/javascripts/stylesheets/etc. will not cause the rendering to stop. (default to true).</param>
+        /// <param name="Tag">A field for storing a small amount of metadata with this document..</param>
+        /// <param name="Help">Request support help with this request if it succeeds. (default to false).</param>
+        /// <param name="Javascript">Enable DocRaptor JavaScript parsing. PrinceXML JavaScript parsing is also available elsewhere. (default to false).</param>
+        /// <param name="Referrer">Set HTTP referrer when generating this document..</param>
+        /// <param name="CallbackUrl">A URL that will receive a POST request after successfully completing an asynchronous document. The POST data will include download_url and download_id similar to status api responses. WARNING: this only works on asynchronous documents..</param>
+        /// <param name="PrinceOptions">PrinceOptions.</param>
+
+        public Doc(string Name = null, DocumentTypeEnum? DocumentType = null, string DocumentContent = null, string DocumentUrl = null, bool? Test = null, StrictEnum? Strict = null, bool? IgnoreResourceErrors = null, string Tag = null, bool? Help = null, bool? Javascript = null, string Referrer = null, string CallbackUrl = null, PrinceOptions PrinceOptions = null)
         {
-            this.Test = true;
-            this.Strict = "none";
-            this.IgnoreResourceErrors = true;
-            this.Help = false;
-            this.Javascript = false;
+            // to ensure "Name" is required (not null)
+            if (Name == null)
+            {
+                throw new InvalidDataException("Name is a required property for Doc and cannot be null");
+            }
+            else
+            {
+                this.Name = Name;
+            }
+            // to ensure "DocumentType" is required (not null)
+            if (DocumentType == null)
+            {
+                throw new InvalidDataException("DocumentType is a required property for Doc and cannot be null");
+            }
+            else
+            {
+                this.DocumentType = DocumentType;
+            }
+            // to ensure "DocumentContent" is required (not null)
+            if (DocumentContent == null)
+            {
+                throw new InvalidDataException("DocumentContent is a required property for Doc and cannot be null");
+            }
+            else
+            {
+                this.DocumentContent = DocumentContent;
+            }
+            this.DocumentUrl = DocumentUrl;
+            // use default value if no "Test" provided
+            if (Test == null)
+            {
+                this.Test = true;
+            }
+            else
+            {
+                this.Test = Test;
+            }
+            // use default value if no "Strict" provided
+            if (Strict == null)
+            {
+                this.Strict = StrictEnum.None;
+            }
+            else
+            {
+                this.Strict = Strict;
+            }
+            // use default value if no "IgnoreResourceErrors" provided
+            if (IgnoreResourceErrors == null)
+            {
+                this.IgnoreResourceErrors = true;
+            }
+            else
+            {
+                this.IgnoreResourceErrors = IgnoreResourceErrors;
+            }
+            this.Tag = Tag;
+            // use default value if no "Help" provided
+            if (Help == null)
+            {
+                this.Help = false;
+            }
+            else
+            {
+                this.Help = Help;
+            }
+            // use default value if no "Javascript" provided
+            if (Javascript == null)
+            {
+                this.Javascript = false;
+            }
+            else
+            {
+                this.Javascript = Javascript;
+            }
+            this.Referrer = Referrer;
+            this.CallbackUrl = CallbackUrl;
+            this.PrinceOptions = PrinceOptions;
 
         }
 
@@ -37,22 +160,12 @@ namespace DocRaptor.Model
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
-
-        /// <summary>
-        /// The type of document being created.
-        /// </summary>
-        /// <value>The type of document being created.</value>
-        [DataMember(Name="document_type", EmitDefaultValue=false)]
-        public string DocumentType { get; set; }
-
-
         /// <summary>
         /// The HTML data to be transformed into a document. You must supply content using document_content or document_url.
         /// </summary>
         /// <value>The HTML data to be transformed into a document. You must supply content using document_content or document_url.</value>
         [DataMember(Name="document_content", EmitDefaultValue=false)]
         public string DocumentContent { get; set; }
-
 
         /// <summary>
         /// The URL to fetch the HTML data to be transformed into a document. You must supply content using document_content or document_url.
@@ -61,22 +174,12 @@ namespace DocRaptor.Model
         [DataMember(Name="document_url", EmitDefaultValue=false)]
         public string DocumentUrl { get; set; }
 
-
         /// <summary>
         /// Enable test mode for this document. Test documents are not charged for but include a watermark.
         /// </summary>
         /// <value>Enable test mode for this document. Test documents are not charged for but include a watermark.</value>
         [DataMember(Name="test", EmitDefaultValue=false)]
         public bool? Test { get; set; }
-
-
-        /// <summary>
-        /// Force strict HTML validation.
-        /// </summary>
-        /// <value>Force strict HTML validation.</value>
-        [DataMember(Name="strict", EmitDefaultValue=false)]
-        public string Strict { get; set; }
-
 
         /// <summary>
         /// Failed loading of images/javascripts/stylesheets/etc. will not cause the rendering to stop.
@@ -85,14 +188,12 @@ namespace DocRaptor.Model
         [DataMember(Name="ignore_resource_errors", EmitDefaultValue=false)]
         public bool? IgnoreResourceErrors { get; set; }
 
-
         /// <summary>
         /// A field for storing a small amount of metadata with this document.
         /// </summary>
         /// <value>A field for storing a small amount of metadata with this document.</value>
         [DataMember(Name="tag", EmitDefaultValue=false)]
         public string Tag { get; set; }
-
 
         /// <summary>
         /// Request support help with this request if it succeeds.
@@ -101,14 +202,12 @@ namespace DocRaptor.Model
         [DataMember(Name="help", EmitDefaultValue=false)]
         public bool? Help { get; set; }
 
-
         /// <summary>
         /// Enable DocRaptor JavaScript parsing. PrinceXML JavaScript parsing is also available elsewhere.
         /// </summary>
         /// <value>Enable DocRaptor JavaScript parsing. PrinceXML JavaScript parsing is also available elsewhere.</value>
         [DataMember(Name="javascript", EmitDefaultValue=false)]
         public bool? Javascript { get; set; }
-
 
         /// <summary>
         /// Set HTTP referrer when generating this document.
@@ -117,7 +216,6 @@ namespace DocRaptor.Model
         [DataMember(Name="referrer", EmitDefaultValue=false)]
         public string Referrer { get; set; }
 
-
         /// <summary>
         /// A URL that will receive a POST request after successfully completing an asynchronous document. The POST data will include download_url and download_id similar to status api responses. WARNING: this only works on asynchronous documents.
         /// </summary>
@@ -125,14 +223,11 @@ namespace DocRaptor.Model
         [DataMember(Name="callback_url", EmitDefaultValue=false)]
         public string CallbackUrl { get; set; }
 
-
         /// <summary>
         /// Gets or Sets PrinceOptions
         /// </summary>
         [DataMember(Name="prince_options", EmitDefaultValue=false)]
         public PrinceOptions PrinceOptions { get; set; }
-
-
 
         /// <summary>
         /// Returns the string presentation of the object

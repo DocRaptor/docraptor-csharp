@@ -10,11 +10,12 @@ class InvalidAsyncTest {
     // Configuration.Default.Debug = true; // Not supported in Csharp
     DocApi docraptor = new DocApi();
 
-    Doc doc = new Doc();
-    doc.Name = new String('s', 201); // limit is 200 characters
-    doc.Test = true;
-    doc.DocumentContent = "<html><body>Hello from C#</body></html>";
-    doc.DocumentType = "pdf";
+    Doc doc = new Doc(
+      Name: new String('s', 201), // limit is 200 characters
+      Test: true,
+      DocumentContent: "<html><body>Hello from C#</body></html>",
+      DocumentType: Doc.DocumentTypeEnum.Pdf
+    );
 
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 

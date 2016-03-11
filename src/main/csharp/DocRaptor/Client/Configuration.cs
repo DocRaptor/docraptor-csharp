@@ -98,9 +98,9 @@ namespace DocRaptor.Client
         public ApiClient ApiClient;
 
         /// <summary>
-        /// Set the ApiClient using Default or ApiClient instance
+        /// Set the ApiClient using Default or ApiClient instance.
         /// </summary>
-        /// <param name="apiClient">An instance of ApiClient
+        /// <param name="apiClient">An instance of ApiClient.</param>
         /// <returns></returns>
         public void setApiClientUsingDefault (ApiClient apiClient = null)
         {
@@ -118,7 +118,6 @@ namespace DocRaptor.Client
 
                 ApiClient = apiClient;
             }
-            ApiClient.Configuration = this;
         }
 
         private Dictionary<String, String> _defaultHeaderMap = new Dictionary<String, String>();

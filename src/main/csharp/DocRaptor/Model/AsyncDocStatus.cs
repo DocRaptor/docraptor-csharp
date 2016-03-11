@@ -4,23 +4,39 @@ using System.IO;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace DocRaptor.Model
 {
-
     /// <summary>
     ///
     /// </summary>
     [DataContract]
-    public class AsyncDocStatus :  IEquatable<AsyncDocStatus>
+    public partial class AsyncDocStatus :  IEquatable<AsyncDocStatus>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AsyncDocStatus" /> class.
+        /// Initializes a new instance of the <see cref="AsyncDocStatus" />class.
         /// </summary>
-        public AsyncDocStatus()
+        /// <param name="Status">The present status of the document. Can be queued, working, completed, and failed..</param>
+        /// <param name="DownloadUrl">The URL where the document can be retrieved. This URL may only be used a few times..</param>
+        /// <param name="DownloadId">The identifier for downloading the document with the download api..</param>
+        /// <param name="Message">Additional information..</param>
+        /// <param name="NumberOfPages">Number of PDF pages in document..</param>
+        /// <param name="ValidationErrors">Error information..</param>
+
+        public AsyncDocStatus(string Status = null, string DownloadUrl = null, string DownloadId = null, string Message = null, int? NumberOfPages = null, string ValidationErrors = null)
         {
+            this.Status = Status;
+            this.DownloadUrl = DownloadUrl;
+            this.DownloadId = DownloadId;
+            this.Message = Message;
+            this.NumberOfPages = NumberOfPages;
+            this.ValidationErrors = ValidationErrors;
 
         }
 
@@ -32,14 +48,12 @@ namespace DocRaptor.Model
         [DataMember(Name="status", EmitDefaultValue=false)]
         public string Status { get; set; }
 
-
         /// <summary>
         /// The URL where the document can be retrieved. This URL may only be used a few times.
         /// </summary>
         /// <value>The URL where the document can be retrieved. This URL may only be used a few times.</value>
         [DataMember(Name="download_url", EmitDefaultValue=false)]
         public string DownloadUrl { get; set; }
-
 
         /// <summary>
         /// The identifier for downloading the document with the download api.
@@ -48,14 +62,12 @@ namespace DocRaptor.Model
         [DataMember(Name="download_id", EmitDefaultValue=false)]
         public string DownloadId { get; set; }
 
-
         /// <summary>
         /// Additional information.
         /// </summary>
         /// <value>Additional information.</value>
         [DataMember(Name="message", EmitDefaultValue=false)]
         public string Message { get; set; }
-
 
         /// <summary>
         /// Number of PDF pages in document.
@@ -64,15 +76,12 @@ namespace DocRaptor.Model
         [DataMember(Name="number_of_pages", EmitDefaultValue=false)]
         public int? NumberOfPages { get; set; }
 
-
         /// <summary>
         /// Error information.
         /// </summary>
         /// <value>Error information.</value>
         [DataMember(Name="validation_errors", EmitDefaultValue=false)]
         public string ValidationErrors { get; set; }
-
-
 
         /// <summary>
         /// Returns the string presentation of the object

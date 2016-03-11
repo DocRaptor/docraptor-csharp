@@ -11,11 +11,12 @@ class SyncTest {
     // Configuration.Default.Debug = true; // Not supported in Csharp
     DocApi docraptor = new DocApi();
 
-    Doc doc = new Doc();
-    doc.Name = "csharp-sync.pdf";
-    doc.Test = true;
-    doc.DocumentContent = "<html><body>Hello from C#</body></html>";
-    doc.DocumentType = "pdf";
+    Doc doc = new Doc(
+      Name: "csharp-sync.pdf",
+      Test: true,
+      DocumentContent: "<html><body>Hello from C#</body></html>",
+      DocumentType: Doc.DocumentTypeEnum.Pdf
+    );
 
     docraptor.CreateDoc(doc);
   }

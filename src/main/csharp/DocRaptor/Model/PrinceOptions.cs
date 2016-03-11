@@ -4,25 +4,117 @@ using System.IO;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace DocRaptor.Model
 {
-
     /// <summary>
     ///
     /// </summary>
     [DataContract]
-    public class PrinceOptions :  IEquatable<PrinceOptions>
+    public partial class PrinceOptions :  IEquatable<PrinceOptions>
     {
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum InputEnum {
+
+            [EnumMember(Value = "html")]
+            Html,
+
+            [EnumMember(Value = "xml")]
+            Xml,
+
+            [EnumMember(Value = "auto")]
+            Auto
+        }
+
+        /// <summary>
+        /// Specify the input format.
+        /// </summary>
+        /// <value>Specify the input format.</value>
+        [DataMember(Name="input", EmitDefaultValue=false)]
+        public InputEnum? Input { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PrinceOptions" /> class.
+        /// Initializes a new instance of the <see cref="PrinceOptions" />class.
         /// </summary>
-        public PrinceOptions()
+        /// <param name="Baseurl">Set the baseurl for assets..</param>
+        /// <param name="NoXinclude">Disable XML inclusion..</param>
+        /// <param name="NoNetwork">Disable network access..</param>
+        /// <param name="HttpUser">Set the user for HTTP authentication..</param>
+        /// <param name="HttpPassword">Set the password for HTTP authentication..</param>
+        /// <param name="HttpProxy">Set the HTTP proxy server..</param>
+        /// <param name="HttpTimeout">Set the HTTP request timeout..</param>
+        /// <param name="Insecure">Disable SSL verification..</param>
+        /// <param name="Media">Specify the CSS media type. Defaults to \&quot;print\&quot; but you may want to use \&quot;screen\&quot; for web styles. (default to &quot;print&quot;).</param>
+        /// <param name="NoAuthorStyle">Ignore author stylesheets..</param>
+        /// <param name="NoDefaultStyle">Ignore default stylesheets..</param>
+        /// <param name="NoEmbedFonts">Disable font embedding in PDFs..</param>
+        /// <param name="NoSubsetFonts">Disable font subsetting in PDFs..</param>
+        /// <param name="NoCompress">Disable PDF compression..</param>
+        /// <param name="Encrypt">Encrypt PDF output..</param>
+        /// <param name="KeyBits">Set encryption key size..</param>
+        /// <param name="UserPassword">Set the PDF user password..</param>
+        /// <param name="OwnerPassword">Set the PDF owner password..</param>
+        /// <param name="DisallowPrint">Disallow printing of this PDF..</param>
+        /// <param name="DisallowCopy">Disallow copying of this PDF..</param>
+        /// <param name="DisallowAnnotate">Disallow annotation of this PDF..</param>
+        /// <param name="DisallowModify">Disallow modification of this PDF..</param>
+        /// <param name="Input">Specify the input format. (default to InputEnum.Html).</param>
+        /// <param name="Version">Specify a specific verison of PrinceXML to use..</param>
+        /// <param name="Javascript">Enable PrinceXML JavaScript. DocRaptor JavaScript parsing is also available elsewhere..</param>
+        /// <param name="CssDpi">Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up..</param>
+        /// <param name="Profile">In Prince 9.0 and up you can set the PDF profile..</param>
+
+        public PrinceOptions(string Baseurl = null, bool? NoXinclude = null, bool? NoNetwork = null, string HttpUser = null, string HttpPassword = null, string HttpProxy = null, int? HttpTimeout = null, bool? Insecure = null, string Media = null, bool? NoAuthorStyle = null, bool? NoDefaultStyle = null, bool? NoEmbedFonts = null, bool? NoSubsetFonts = null, bool? NoCompress = null, bool? Encrypt = null, int? KeyBits = null, string UserPassword = null, string OwnerPassword = null, bool? DisallowPrint = null, bool? DisallowCopy = null, bool? DisallowAnnotate = null, bool? DisallowModify = null, InputEnum? Input = null, string Version = null, bool? Javascript = null, int? CssDpi = null, string Profile = null)
         {
-            this.Media = "print";
-            this.Input = "html";
+            this.Baseurl = Baseurl;
+            this.NoXinclude = NoXinclude;
+            this.NoNetwork = NoNetwork;
+            this.HttpUser = HttpUser;
+            this.HttpPassword = HttpPassword;
+            this.HttpProxy = HttpProxy;
+            this.HttpTimeout = HttpTimeout;
+            this.Insecure = Insecure;
+            // use default value if no "Media" provided
+            if (Media == null)
+            {
+                this.Media = "print";
+            }
+            else
+            {
+                this.Media = Media;
+            }
+            this.NoAuthorStyle = NoAuthorStyle;
+            this.NoDefaultStyle = NoDefaultStyle;
+            this.NoEmbedFonts = NoEmbedFonts;
+            this.NoSubsetFonts = NoSubsetFonts;
+            this.NoCompress = NoCompress;
+            this.Encrypt = Encrypt;
+            this.KeyBits = KeyBits;
+            this.UserPassword = UserPassword;
+            this.OwnerPassword = OwnerPassword;
+            this.DisallowPrint = DisallowPrint;
+            this.DisallowCopy = DisallowCopy;
+            this.DisallowAnnotate = DisallowAnnotate;
+            this.DisallowModify = DisallowModify;
+            // use default value if no "Input" provided
+            if (Input == null)
+            {
+                this.Input = InputEnum.Html;
+            }
+            else
+            {
+                this.Input = Input;
+            }
+            this.Version = Version;
+            this.Javascript = Javascript;
+            this.CssDpi = CssDpi;
+            this.Profile = Profile;
 
         }
 
@@ -34,14 +126,12 @@ namespace DocRaptor.Model
         [DataMember(Name="baseurl", EmitDefaultValue=false)]
         public string Baseurl { get; set; }
 
-
         /// <summary>
         /// Disable XML inclusion.
         /// </summary>
         /// <value>Disable XML inclusion.</value>
         [DataMember(Name="no_xinclude", EmitDefaultValue=false)]
         public bool? NoXinclude { get; set; }
-
 
         /// <summary>
         /// Disable network access.
@@ -50,14 +140,12 @@ namespace DocRaptor.Model
         [DataMember(Name="no_network", EmitDefaultValue=false)]
         public bool? NoNetwork { get; set; }
 
-
         /// <summary>
         /// Set the user for HTTP authentication.
         /// </summary>
         /// <value>Set the user for HTTP authentication.</value>
         [DataMember(Name="http_user", EmitDefaultValue=false)]
         public string HttpUser { get; set; }
-
 
         /// <summary>
         /// Set the password for HTTP authentication.
@@ -66,14 +154,12 @@ namespace DocRaptor.Model
         [DataMember(Name="http_password", EmitDefaultValue=false)]
         public string HttpPassword { get; set; }
 
-
         /// <summary>
         /// Set the HTTP proxy server.
         /// </summary>
         /// <value>Set the HTTP proxy server.</value>
         [DataMember(Name="http_proxy", EmitDefaultValue=false)]
         public string HttpProxy { get; set; }
-
 
         /// <summary>
         /// Set the HTTP request timeout.
@@ -82,7 +168,6 @@ namespace DocRaptor.Model
         [DataMember(Name="http_timeout", EmitDefaultValue=false)]
         public int? HttpTimeout { get; set; }
 
-
         /// <summary>
         /// Disable SSL verification.
         /// </summary>
@@ -90,14 +175,12 @@ namespace DocRaptor.Model
         [DataMember(Name="insecure", EmitDefaultValue=false)]
         public bool? Insecure { get; set; }
 
-
         /// <summary>
-        /// Specify the CSS media type. Defaults to \"print\" but you may want to use \"screen\" for web styles.
+        /// Specify the CSS media type. Defaults to \&quot;print\&quot; but you may want to use \&quot;screen\&quot; for web styles.
         /// </summary>
-        /// <value>Specify the CSS media type. Defaults to \"print\" but you may want to use \"screen\" for web styles.</value>
+        /// <value>Specify the CSS media type. Defaults to \&quot;print\&quot; but you may want to use \&quot;screen\&quot; for web styles.</value>
         [DataMember(Name="media", EmitDefaultValue=false)]
         public string Media { get; set; }
-
 
         /// <summary>
         /// Ignore author stylesheets.
@@ -106,14 +189,12 @@ namespace DocRaptor.Model
         [DataMember(Name="no_author_style", EmitDefaultValue=false)]
         public bool? NoAuthorStyle { get; set; }
 
-
         /// <summary>
         /// Ignore default stylesheets.
         /// </summary>
         /// <value>Ignore default stylesheets.</value>
         [DataMember(Name="no_default_style", EmitDefaultValue=false)]
         public bool? NoDefaultStyle { get; set; }
-
 
         /// <summary>
         /// Disable font embedding in PDFs.
@@ -122,14 +203,12 @@ namespace DocRaptor.Model
         [DataMember(Name="no_embed_fonts", EmitDefaultValue=false)]
         public bool? NoEmbedFonts { get; set; }
 
-
         /// <summary>
         /// Disable font subsetting in PDFs.
         /// </summary>
         /// <value>Disable font subsetting in PDFs.</value>
         [DataMember(Name="no_subset_fonts", EmitDefaultValue=false)]
         public bool? NoSubsetFonts { get; set; }
-
 
         /// <summary>
         /// Disable PDF compression.
@@ -138,14 +217,12 @@ namespace DocRaptor.Model
         [DataMember(Name="no_compress", EmitDefaultValue=false)]
         public bool? NoCompress { get; set; }
 
-
         /// <summary>
         /// Encrypt PDF output.
         /// </summary>
         /// <value>Encrypt PDF output.</value>
         [DataMember(Name="encrypt", EmitDefaultValue=false)]
         public bool? Encrypt { get; set; }
-
 
         /// <summary>
         /// Set encryption key size.
@@ -154,14 +231,12 @@ namespace DocRaptor.Model
         [DataMember(Name="key_bits", EmitDefaultValue=false)]
         public int? KeyBits { get; set; }
 
-
         /// <summary>
         /// Set the PDF user password.
         /// </summary>
         /// <value>Set the PDF user password.</value>
         [DataMember(Name="user_password", EmitDefaultValue=false)]
         public string UserPassword { get; set; }
-
 
         /// <summary>
         /// Set the PDF owner password.
@@ -170,14 +245,12 @@ namespace DocRaptor.Model
         [DataMember(Name="owner_password", EmitDefaultValue=false)]
         public string OwnerPassword { get; set; }
 
-
         /// <summary>
         /// Disallow printing of this PDF.
         /// </summary>
         /// <value>Disallow printing of this PDF.</value>
         [DataMember(Name="disallow_print", EmitDefaultValue=false)]
         public bool? DisallowPrint { get; set; }
-
 
         /// <summary>
         /// Disallow copying of this PDF.
@@ -186,14 +259,12 @@ namespace DocRaptor.Model
         [DataMember(Name="disallow_copy", EmitDefaultValue=false)]
         public bool? DisallowCopy { get; set; }
 
-
         /// <summary>
         /// Disallow annotation of this PDF.
         /// </summary>
         /// <value>Disallow annotation of this PDF.</value>
         [DataMember(Name="disallow_annotate", EmitDefaultValue=false)]
         public bool? DisallowAnnotate { get; set; }
-
 
         /// <summary>
         /// Disallow modification of this PDF.
@@ -202,22 +273,12 @@ namespace DocRaptor.Model
         [DataMember(Name="disallow_modify", EmitDefaultValue=false)]
         public bool? DisallowModify { get; set; }
 
-
-        /// <summary>
-        /// Specify the input format.
-        /// </summary>
-        /// <value>Specify the input format.</value>
-        [DataMember(Name="input", EmitDefaultValue=false)]
-        public string Input { get; set; }
-
-
         /// <summary>
         /// Specify a specific verison of PrinceXML to use.
         /// </summary>
         /// <value>Specify a specific verison of PrinceXML to use.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
         public string Version { get; set; }
-
 
         /// <summary>
         /// Enable PrinceXML JavaScript. DocRaptor JavaScript parsing is also available elsewhere.
@@ -226,7 +287,6 @@ namespace DocRaptor.Model
         [DataMember(Name="javascript", EmitDefaultValue=false)]
         public bool? Javascript { get; set; }
 
-
         /// <summary>
         /// Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up.
         /// </summary>
@@ -234,15 +294,12 @@ namespace DocRaptor.Model
         [DataMember(Name="css_dpi", EmitDefaultValue=false)]
         public int? CssDpi { get; set; }
 
-
         /// <summary>
         /// In Prince 9.0 and up you can set the PDF profile.
         /// </summary>
         /// <value>In Prince 9.0 and up you can set the PDF profile.</value>
         [DataMember(Name="profile", EmitDefaultValue=false)]
         public string Profile { get; set; }
-
-
 
         /// <summary>
         /// Returns the string presentation of the object

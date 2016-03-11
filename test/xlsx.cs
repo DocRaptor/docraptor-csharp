@@ -11,11 +11,12 @@ class XlsxTest {
     // Configuration.Default.Debug = true; // Not supported in Csharp
     DocApi docraptor = new DocApi();
 
-    Doc doc = new Doc();
-    doc.Name = "csharp-xlsx.xlsx";
-    doc.Test = true;
-    doc.DocumentContent = "<html><body><table><tr><td>Hello from C#</td></tr></table></body></html>";
-    doc.DocumentType = "xlsx";
+    Doc doc = new Doc(
+      Name: "csharp-xlsx.xlsx",
+      Test: true,
+      DocumentContent: "<html><body><table><tr><td>Hello from C#</td></tr></table></body></html>",
+      DocumentType: Doc.DocumentTypeEnum.Xlsx
+    );
 
     docraptor.CreateDoc(doc);
   }
