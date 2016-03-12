@@ -1,5 +1,5 @@
 ### 0.3.0 [March 11, 2016]
-* **BREAKING CHANGE**: Update interface for Doc initialization
+* **BREAKING CHANGE**: Update interface for Doc initialization, see https://github.com/DocRaptor/docraptor-csharp/commit/a0d93186835efd8367d74bc8cc3b09d593a6d21f#diff-95b6812eec86fb339a01b84602935296 for how to update calls.
 * Added support for prince_options[debug]
 
 ### 0.2.0 [January 29, 2016]
