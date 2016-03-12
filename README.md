@@ -75,7 +75,6 @@ The majority of the code in this repo is generated using swagger-codegen on [doc
 
 The generated client needed a few fixes
 - `Base64Encoded` needed to be called on `ApiClient`
-- `Configuration` had to be set on `ApiClient`
 - User agent had to be set
 
 
