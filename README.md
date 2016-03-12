@@ -74,8 +74,8 @@ Stuck? We're experts at using DocRaptor so please [email us](mailto:support@docr
 The majority of the code in this repo is generated using swagger-codegen on [docraptor.yaml](docraptor.yaml). You can modify this file and regenerate the client using `script/generate_language csharp`.
 
 The generated client needed a few fixes
-- `Base64Encoded` needed to be called on `ApiClient`
-- User agent had to be set
+- https://github.com/swagger-api/swagger-codegen/issues/2368
+- https://github.com/swagger-api/swagger-codegen/issues/2367
 
 
 ## Release Process
