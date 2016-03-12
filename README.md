@@ -80,19 +80,22 @@ The generated client needed a few fixes
 
 ## Release Process
 
-1. `script/test`
-2. Increment version in code
+1. Pull latest master
+2. Merge feature branch(es) into master
+3. `script/test`
+4. Increment version in code:
   - `swagger-config.json`
   - `DocRaptor.nuspec`
-  - `src/properties/AssemblyInfo.cs`
+  - `src/main/csharp/DocRaptor/Properties/AssemblyInfo.cs`
   - `src/main/csharp/DocRaptor/Client/Configuration.cs` (2 places)
-3. Update [CHANGELOG.md](CHANGELOG.md)
-4. Tag version: `git tag 'v0.0.x' && git push --tags`
-5. Push to GitHub
-6. Build package using `script/build`
-7. `mono vendor/nuget.exe push bin/DocRaptor.x.x.x.nupkg`
-8. Use the git tag and make a new release with `bin/*.dll` attached, https://github.com/DocRaptor/docraptor-csharp/tags
-9. Update documentation on docraptor.com
+5. Update [CHANGELOG.md](CHANGELOG.md)
+6. Commit "Release version vX.Y.Z"
+7. Push to GitHub
+8. Tag version: `git tag 'vX.Y.Z' && git push --tags`
+9. Build package using `script/build`
+10. `mono vendor/nuget.exe push bin/DocRaptor.X.Y.Z.nupkg`
+11. Open https://github.com/DocRaptor/docraptor-csharp/tags and make a new release for the version. Use the git tag as the name, CHANGELOG entries as the description, and attach `bin/*.dll` to the release
+12. Refresh documentation on docraptor.com
 
 
 ## Version Policy
