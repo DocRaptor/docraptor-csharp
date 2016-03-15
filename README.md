@@ -2,6 +2,14 @@
 
 This is a DLL and NuGet package for using [DocRaptor API](https://docraptor.com/documentation) to convert [HTML to PDF and XLSX](https://docraptor.com).
 
+## Frameworks supported
+- .NET 4.0 or later
+- Windows Phone 7.1 (Mango)
+
+## Dependencies
+- [RestSharp](https://www.nuget.org/packages/RestSharp) - 105.1.0 or later
+- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 7.0.0 or later
+
 
 ## Installation
 
