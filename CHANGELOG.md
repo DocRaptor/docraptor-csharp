@@ -1,3 +1,6 @@
+### 0.3.1 [March 18, 2016]
+* Include DLL in package
+
 ### 0.3.0 [March 11, 2016]
 * **BREAKING CHANGE**: Update interface for Doc initialization, see https://github.com/DocRaptor/docraptor-csharp/commit/a0d93186835efd8367d74bc8cc3b09d593a6d21f#diff-95b6812eec86fb339a01b84602935296 for how to update calls.
 * Added support for prince_options[debug]
