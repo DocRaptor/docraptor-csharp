@@ -97,12 +97,12 @@ The generated client needed a few fixes
   - `src/main/csharp/DocRaptor/Properties/AssemblyInfo.cs`
   - `src/main/csharp/DocRaptor/Client/Configuration.cs` (2 places)
 5. Update [CHANGELOG.md](CHANGELOG.md)
-6. Commit "Release version vX.Y.Z"
+6. Commit "Release vX.Y.Z"
 7. Push to GitHub
 8. Tag version: `git tag 'vX.Y.Z' && git push --tags`
 9. Build package using `script/build`
 10. `script/nuget push bin/DocRaptor.X.Y.Z.nupkg`
-11. Open https://github.com/DocRaptor/docraptor-csharp/tags and make a new release for the version. Use the git tag as the name, CHANGELOG entries as the description, and attach `bin/*.dll` to the release
+11. Open https://github.com/DocRaptor/docraptor-csharp/tags and make a new release for the version. Use the git tag as the name, CHANGELOG entries as the description, and attach `bin/*.dll` and `bin/*.xml` to the release
 12. Refresh documentation on docraptor.com
 
 
