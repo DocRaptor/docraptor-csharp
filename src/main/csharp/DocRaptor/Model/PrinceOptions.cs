@@ -45,6 +45,7 @@ namespace DocRaptor.Model
         /// <param name="Baseurl">Set the baseurl for assets..</param>
         /// <param name="NoXinclude">Disable XML inclusion..</param>
         /// <param name="NoNetwork">Disable network access..</param>
+        /// <param name="NoParallelDownloads">Disable parallel downloads..</param>
         /// <param name="HttpUser">Set the user for HTTP authentication..</param>
         /// <param name="HttpPassword">Set the password for HTTP authentication..</param>
         /// <param name="HttpProxy">Set the HTTP proxy server..</param>
@@ -71,11 +72,12 @@ namespace DocRaptor.Model
         /// <param name="CssDpi">Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up..</param>
         /// <param name="Profile">In Prince 9.0 and up you can set the PDF profile..</param>
 
-        public PrinceOptions(string Baseurl = null, bool? NoXinclude = null, bool? NoNetwork = null, string HttpUser = null, string HttpPassword = null, string HttpProxy = null, int? HttpTimeout = null, bool? Insecure = null, string Media = null, bool? NoAuthorStyle = null, bool? NoDefaultStyle = null, bool? NoEmbedFonts = null, bool? NoSubsetFonts = null, bool? NoCompress = null, bool? Encrypt = null, int? KeyBits = null, string UserPassword = null, string OwnerPassword = null, bool? DisallowPrint = null, bool? DisallowCopy = null, bool? DisallowAnnotate = null, bool? DisallowModify = null, bool? Debug = null, InputEnum? Input = null, string Version = null, bool? Javascript = null, int? CssDpi = null, string Profile = null)
+        public PrinceOptions(string Baseurl = null, bool? NoXinclude = null, bool? NoNetwork = null, bool? NoParallelDownloads = null, string HttpUser = null, string HttpPassword = null, string HttpProxy = null, int? HttpTimeout = null, bool? Insecure = null, string Media = null, bool? NoAuthorStyle = null, bool? NoDefaultStyle = null, bool? NoEmbedFonts = null, bool? NoSubsetFonts = null, bool? NoCompress = null, bool? Encrypt = null, int? KeyBits = null, string UserPassword = null, string OwnerPassword = null, bool? DisallowPrint = null, bool? DisallowCopy = null, bool? DisallowAnnotate = null, bool? DisallowModify = null, bool? Debug = null, InputEnum? Input = null, string Version = null, bool? Javascript = null, int? CssDpi = null, string Profile = null)
         {
             this.Baseurl = Baseurl;
             this.NoXinclude = NoXinclude;
             this.NoNetwork = NoNetwork;
+            this.NoParallelDownloads = NoParallelDownloads;
             this.HttpUser = HttpUser;
             this.HttpPassword = HttpPassword;
             this.HttpProxy = HttpProxy;
@@ -141,6 +143,13 @@ namespace DocRaptor.Model
         /// <value>Disable network access.</value>
         [DataMember(Name="no_network", EmitDefaultValue=false)]
         public bool? NoNetwork { get; set; }
+
+        /// <summary>
+        /// Disable parallel downloads.
+        /// </summary>
+        /// <value>Disable parallel downloads.</value>
+        [DataMember(Name="no_parallel_downloads", EmitDefaultValue=false)]
+        public bool? NoParallelDownloads { get; set; }
 
         /// <summary>
         /// Set the user for HTTP authentication.
@@ -321,6 +330,7 @@ namespace DocRaptor.Model
             sb.Append("  Baseurl: ").Append(Baseurl).Append("\n");
             sb.Append("  NoXinclude: ").Append(NoXinclude).Append("\n");
             sb.Append("  NoNetwork: ").Append(NoNetwork).Append("\n");
+            sb.Append("  NoParallelDownloads: ").Append(NoParallelDownloads).Append("\n");
             sb.Append("  HttpUser: ").Append(HttpUser).Append("\n");
             sb.Append("  HttpPassword: ").Append(HttpPassword).Append("\n");
             sb.Append("  HttpProxy: ").Append(HttpProxy).Append("\n");
@@ -397,6 +407,11 @@ namespace DocRaptor.Model
                     this.NoNetwork == other.NoNetwork ||
                     this.NoNetwork != null &&
                     this.NoNetwork.Equals(other.NoNetwork)
+                ) &&
+                (
+                    this.NoParallelDownloads == other.NoParallelDownloads ||
+                    this.NoParallelDownloads != null &&
+                    this.NoParallelDownloads.Equals(other.NoParallelDownloads)
                 ) &&
                 (
                     this.HttpUser == other.HttpUser ||
@@ -545,6 +560,9 @@ namespace DocRaptor.Model
 
                 if (this.NoNetwork != null)
                     hash = hash * 59 + this.NoNetwork.GetHashCode();
+
+                if (this.NoParallelDownloads != null)
+                    hash = hash * 59 + this.NoParallelDownloads.GetHashCode();
 
                 if (this.HttpUser != null)
                     hash = hash * 59 + this.HttpUser.GetHashCode();
