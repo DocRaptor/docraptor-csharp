@@ -45,7 +45,7 @@ namespace DocRaptor.Model
         /// <param name="Baseurl">Set the baseurl for assets..</param>
         /// <param name="NoXinclude">Disable XML inclusion..</param>
         /// <param name="NoNetwork">Disable network access..</param>
-        /// <param name="NoParallelDownloads">Disable parallel downloads..</param>
+        /// <param name="NoParallelDownloads">Disables parallel fetching of assets during PDF creation. Useful if your asset host has strict rate limiting..</param>
         /// <param name="HttpUser">Set the user for HTTP authentication..</param>
         /// <param name="HttpPassword">Set the password for HTTP authentication..</param>
         /// <param name="HttpProxy">Set the HTTP proxy server..</param>
@@ -145,9 +145,9 @@ namespace DocRaptor.Model
         public bool? NoNetwork { get; set; }
 
         /// <summary>
-        /// Disable parallel downloads.
+        /// Disables parallel fetching of assets during PDF creation. Useful if your asset host has strict rate limiting.
         /// </summary>
-        /// <value>Disable parallel downloads.</value>
+        /// <value>Disables parallel fetching of assets during PDF creation. Useful if your asset host has strict rate limiting.</value>
         [DataMember(Name="no_parallel_downloads", EmitDefaultValue=false)]
         public bool? NoParallelDownloads { get; set; }
 
