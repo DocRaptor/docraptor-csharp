@@ -1,3 +1,3 @@
 #!/bin/bash
 set -e
-mono $(dirname "$0")/../vendor/nuget.exe $@
+mono "$(dirname "$0")/../vendor/nuget.exe" "$@"

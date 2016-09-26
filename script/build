@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-cd "`dirname \"$0\"`/.."
+cd "$(dirname "$0")/.."
 
-if [[ `ls bin/DocRaptor*.nupkg` ]] && [ "$1" == "lazy" ]; then
+if [[ $(ls bin/DocRaptor*.nupkg) ]] && [ "$1" == "lazy" ]; then
   exit
 fi
 
@@ -15,7 +15,7 @@ mkdir -p bin
 
 references=vendor/Newtonsoft.Json.8.0.2/lib/net45/Newtonsoft.Json.dll,vendor/RestSharp.105.2.3/lib/net45/RestSharp.dll,System.Runtime.Serialization.dll
 mcs -sdk:45 \
-  -r:$references \
+  "-r:$references" \
   -target:library \
   -out:bin/DocRaptor.dll \
   -recurse:'src/*.cs' \
@@ -24,5 +24,5 @@ mcs -sdk:45 \
 
 script/nuget pack -OutputDirectory bin/
 
-link=`echo $references | sed 's/,/ /g' | sed -E 's/ System\..*\.dll//'`
+link=$(echo $references | sed 's/,/ /g' | sed -E 's/ System\..*\.dll//')
 mono vendor/ILRepack.exe /internalize /out:bin/DocRaptorWithDependencies.dll bin/DocRaptor.dll $link

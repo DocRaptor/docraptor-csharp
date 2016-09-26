@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
-cd "`dirname \"$0\"`/.."
+cd "$(dirname "$0")/.."
 
-which mono || brew install mono
+which mono > /dev/null || brew install mono

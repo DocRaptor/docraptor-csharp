@@ -1,18 +1,18 @@
 #!/bin/bash
 set -e
-cd "`dirname \"$0\"`/.."
+cd "$(dirname "$0")/.."
 
 if [[ $1 != *".cs" ]]; then
   echo "Must be called with a .cs file."
   exit 1
 fi
 
-./script/build lazy
+script/build lazy
 
 all_dll=$PWD/bin/DocRaptorWithDependencies.dll
 export MONO_PATH=$PWD/bin
 
-base_name=`basename -s .cs $1`
-dir_name=`dirname $1`
-mcs -debug -reference:$all_dll $dir_name/$base_name.cs -out:$dir_name/$base_name.exe
-mono --debug $dir_name/$base_name.exe
+base_name=$(basename -s .cs "$1")
+dir_name=$(dirname "$1")
+mcs -debug "-reference:$all_dll" "$dir_name/$base_name.cs" "-out:$dir_name/$base_name.exe"
+mono --debug "$dir_name/$base_name.exe"
