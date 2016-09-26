@@ -1,3 +1,6 @@
+### 0.4.0 [September 26, 2016]
+* Added support for prince_options[no_parallel_downloads]
+
 ### 0.3.1 [March 18, 2016]
 * Include DLL in package
 
