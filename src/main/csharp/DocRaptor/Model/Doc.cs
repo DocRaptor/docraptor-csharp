@@ -56,6 +56,7 @@ namespace DocRaptor.Model
         /// Initializes a new instance of the <see cref="Doc" /> class.
         /// Initializes a new instance of the <see cref="Doc" />class.
         /// </summary>
+        /// <param name="Pipeline">Specify a specific verison of the DocRaptor Pipeline to use..</param>
         /// <param name="Name">A name for identifying your document. (required).</param>
         /// <param name="DocumentType">The type of document being created. (required).</param>
         /// <param name="DocumentContent">The HTML data to be transformed into a document. You must supply content using document_content or document_url. (required).</param>
@@ -70,7 +71,7 @@ namespace DocRaptor.Model
         /// <param name="CallbackUrl">A URL that will receive a POST request after successfully completing an asynchronous document. The POST data will include download_url and download_id similar to status api responses. WARNING: this only works on asynchronous documents..</param>
         /// <param name="PrinceOptions">PrinceOptions.</param>
 
-        public Doc(string Name = null, DocumentTypeEnum? DocumentType = null, string DocumentContent = null, string DocumentUrl = null, bool? Test = null, StrictEnum? Strict = null, bool? IgnoreResourceErrors = null, string Tag = null, bool? Help = null, bool? Javascript = null, string Referrer = null, string CallbackUrl = null, PrinceOptions PrinceOptions = null)
+        public Doc(string Pipeline = null, string Name = null, DocumentTypeEnum? DocumentType = null, string DocumentContent = null, string DocumentUrl = null, bool? Test = null, StrictEnum? Strict = null, bool? IgnoreResourceErrors = null, string Tag = null, bool? Help = null, bool? Javascript = null, string Referrer = null, string CallbackUrl = null, PrinceOptions PrinceOptions = null)
         {
             // to ensure "Name" is required (not null)
             if (Name == null)
@@ -99,6 +100,7 @@ namespace DocRaptor.Model
             {
                 this.DocumentContent = DocumentContent;
             }
+            this.Pipeline = Pipeline;
             this.DocumentUrl = DocumentUrl;
             // use default value if no "Test" provided
             if (Test == null)
@@ -152,6 +154,13 @@ namespace DocRaptor.Model
 
         }
 
+
+        /// <summary>
+        /// Specify a specific verison of the DocRaptor Pipeline to use.
+        /// </summary>
+        /// <value>Specify a specific verison of the DocRaptor Pipeline to use.</value>
+        [DataMember(Name="pipeline", EmitDefaultValue=false)]
+        public string Pipeline { get; set; }
 
         /// <summary>
         /// A name for identifying your document.
@@ -237,6 +246,7 @@ namespace DocRaptor.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Doc {\n");
+            sb.Append("  Pipeline: ").Append(Pipeline).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  DocumentType: ").Append(DocumentType).Append("\n");
             sb.Append("  DocumentContent: ").Append(DocumentContent).Append("\n");
@@ -287,6 +297,11 @@ namespace DocRaptor.Model
                 return false;
 
             return
+                (
+                    this.Pipeline == other.Pipeline ||
+                    this.Pipeline != null &&
+                    this.Pipeline.Equals(other.Pipeline)
+                ) &&
                 (
                     this.Name == other.Name ||
                     this.Name != null &&
@@ -365,6 +380,9 @@ namespace DocRaptor.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+
+                if (this.Pipeline != null)
+                    hash = hash * 59 + this.Pipeline.GetHashCode();
 
                 if (this.Name != null)
                     hash = hash * 59 + this.Name.GetHashCode();
