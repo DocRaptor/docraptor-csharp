@@ -40,7 +40,7 @@ using System.IO;
 
 class Example {
   static void Main(string[] args) {
-    Configuration.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
+    Configuration.Default.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
     DocApi docraptor = new DocApi();
 
     Doc doc = new Doc(
@@ -61,7 +61,7 @@ class Example {
 }
 ```
 
-Docs created like this are limited to 60 seconds to render, check out the [async example](examples/Async.cs) which allows 10 minutes.
+Docs created like this are limited to 60 seconds to render, check out the [async example](examples/async.cs) which allows 10 minutes.
 
 We have guides for doing some of the common things:
 
