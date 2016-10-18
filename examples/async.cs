@@ -27,7 +27,6 @@ class AsyncTest {
         Test: true,                                                    // test documents are free but watermarked
         DocumentContent: "<html><body>Hello World</body></html>",      // supply content directly
         // DocumentUrl: "http://docraptor.com/examples/invoice.html",  // or use a url
-        Name: "docraptor-csharp.pdf",                                  // help you find a document later
         DocumentType: Doc.DocumentTypeEnum.Pdf                         // pdf or xls or xlsx
         // Javascript: true,                                           // enable JavaScript processing
         // PrinceOptions: new PrinceOptions(

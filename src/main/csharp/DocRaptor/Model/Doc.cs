@@ -57,7 +57,7 @@ namespace DocRaptor.Model
         /// Initializes a new instance of the <see cref="Doc" />class.
         /// </summary>
         /// <param name="Pipeline">Specify a specific verison of the DocRaptor Pipeline to use..</param>
-        /// <param name="Name">A name for identifying your document. (required).</param>
+        /// <param name="Name">A name for identifying your document..</param>
         /// <param name="Type">The kind of document being created. (required).</param>
         /// <param name="DocumentContent">The HTML data to be transformed into a document. You must supply content using document_content or document_url. (required).</param>
         /// <param name="DocumentUrl">The URL to fetch the HTML data to be transformed into a document. You must supply content using document_content or document_url..</param>
@@ -73,15 +73,6 @@ namespace DocRaptor.Model
 
         public Doc(string Pipeline = null, string Name = null, TypeEnum? Type = null, string DocumentContent = null, string DocumentUrl = null, bool? Test = null, StrictEnum? Strict = null, bool? IgnoreResourceErrors = null, string Tag = null, bool? Help = null, bool? Javascript = null, string Referrer = null, string CallbackUrl = null, PrinceOptions PrinceOptions = null)
         {
-            // to ensure "Name" is required (not null)
-            if (Name == null)
-            {
-                throw new InvalidDataException("Name is a required property for Doc and cannot be null");
-            }
-            else
-            {
-                this.Name = Name;
-            }
             // to ensure "Type" is required (not null)
             if (Type == null)
             {
@@ -101,6 +92,7 @@ namespace DocRaptor.Model
                 this.DocumentContent = DocumentContent;
             }
             this.Pipeline = Pipeline;
+            this.Name = Name;
             this.DocumentUrl = DocumentUrl;
             // use default value if no "Test" provided
             if (Test == null)
