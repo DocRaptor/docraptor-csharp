@@ -141,7 +141,7 @@ definitions:
     type: object
     required:
       - name
-      - document_type
+      - type
       - document_content
     properties:
       pipeline:
@@ -150,9 +150,9 @@ definitions:
       name:
         type: string
         description: A name for identifying your document.
-      document_type:
+      type:
         type: string
-        description: The type of document being created.
+        description: The kind of document being created.
         enum:
           - pdf
           - xls
