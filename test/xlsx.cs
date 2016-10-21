@@ -15,7 +15,7 @@ class XlsxTest {
       Name: "csharp-xlsx.xlsx",
       Test: true,
       DocumentContent: "<html><body><table><tr><td>Hello from C#</td></tr></table></body></html>",
-      DocumentType: Doc.DocumentTypeEnum.Xlsx
+      Type: Doc.TypeEnum.Xlsx
     );
 
     docraptor.CreateDoc(doc);
