@@ -19,7 +19,7 @@ namespace DocRaptor.Model
     {
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum DocumentTypeEnum {
+        public enum TypeEnum {
 
             [EnumMember(Value = "pdf")]
             Pdf,
@@ -39,11 +39,11 @@ namespace DocRaptor.Model
         }
 
         /// <summary>
-        /// The type of document being created.
+        /// The kind of document being created.
         /// </summary>
-        /// <value>The type of document being created.</value>
-        [DataMember(Name="document_type", EmitDefaultValue=false)]
-        public DocumentTypeEnum? DocumentType { get; set; }
+        /// <value>The kind of document being created.</value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public TypeEnum? Type { get; set; }
 
         /// <summary>
         /// Force strict HTML validation.
@@ -56,8 +56,9 @@ namespace DocRaptor.Model
         /// Initializes a new instance of the <see cref="Doc" /> class.
         /// Initializes a new instance of the <see cref="Doc" />class.
         /// </summary>
-        /// <param name="Name">A name for identifying your document. (required).</param>
-        /// <param name="DocumentType">The type of document being created. (required).</param>
+        /// <param name="Pipeline">Specify a specific verison of the DocRaptor Pipeline to use..</param>
+        /// <param name="Name">A name for identifying your document..</param>
+        /// <param name="Type">The kind of document being created. (required).</param>
         /// <param name="DocumentContent">The HTML data to be transformed into a document. You must supply content using document_content or document_url. (required).</param>
         /// <param name="DocumentUrl">The URL to fetch the HTML data to be transformed into a document. You must supply content using document_content or document_url..</param>
         /// <param name="Test">Enable test mode for this document. Test documents are not charged for but include a watermark. (default to true).</param>
@@ -70,25 +71,16 @@ namespace DocRaptor.Model
         /// <param name="CallbackUrl">A URL that will receive a POST request after successfully completing an asynchronous document. The POST data will include download_url and download_id similar to status api responses. WARNING: this only works on asynchronous documents..</param>
         /// <param name="PrinceOptions">PrinceOptions.</param>
 
-        public Doc(string Name = null, DocumentTypeEnum? DocumentType = null, string DocumentContent = null, string DocumentUrl = null, bool? Test = null, StrictEnum? Strict = null, bool? IgnoreResourceErrors = null, string Tag = null, bool? Help = null, bool? Javascript = null, string Referrer = null, string CallbackUrl = null, PrinceOptions PrinceOptions = null)
+        public Doc(string Pipeline = null, string Name = null, TypeEnum? Type = null, string DocumentContent = null, string DocumentUrl = null, bool? Test = null, StrictEnum? Strict = null, bool? IgnoreResourceErrors = null, string Tag = null, bool? Help = null, bool? Javascript = null, string Referrer = null, string CallbackUrl = null, PrinceOptions PrinceOptions = null)
         {
-            // to ensure "Name" is required (not null)
-            if (Name == null)
+            // to ensure "Type" is required (not null)
+            if (Type == null)
             {
-                throw new InvalidDataException("Name is a required property for Doc and cannot be null");
+                throw new InvalidDataException("Type is a required property for Doc and cannot be null");
             }
             else
             {
-                this.Name = Name;
-            }
-            // to ensure "DocumentType" is required (not null)
-            if (DocumentType == null)
-            {
-                throw new InvalidDataException("DocumentType is a required property for Doc and cannot be null");
-            }
-            else
-            {
-                this.DocumentType = DocumentType;
+                this.Type = Type;
             }
             // to ensure "DocumentContent" is required (not null)
             if (DocumentContent == null)
@@ -99,6 +91,8 @@ namespace DocRaptor.Model
             {
                 this.DocumentContent = DocumentContent;
             }
+            this.Pipeline = Pipeline;
+            this.Name = Name;
             this.DocumentUrl = DocumentUrl;
             // use default value if no "Test" provided
             if (Test == null)
@@ -152,6 +146,13 @@ namespace DocRaptor.Model
 
         }
 
+
+        /// <summary>
+        /// Specify a specific verison of the DocRaptor Pipeline to use.
+        /// </summary>
+        /// <value>Specify a specific verison of the DocRaptor Pipeline to use.</value>
+        [DataMember(Name="pipeline", EmitDefaultValue=false)]
+        public string Pipeline { get; set; }
 
         /// <summary>
         /// A name for identifying your document.
@@ -237,8 +238,9 @@ namespace DocRaptor.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Doc {\n");
+            sb.Append("  Pipeline: ").Append(Pipeline).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  DocumentType: ").Append(DocumentType).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  DocumentContent: ").Append(DocumentContent).Append("\n");
             sb.Append("  DocumentUrl: ").Append(DocumentUrl).Append("\n");
             sb.Append("  Test: ").Append(Test).Append("\n");
@@ -288,14 +290,19 @@ namespace DocRaptor.Model
 
             return
                 (
+                    this.Pipeline == other.Pipeline ||
+                    this.Pipeline != null &&
+                    this.Pipeline.Equals(other.Pipeline)
+                ) &&
+                (
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.Equals(other.Name)
                 ) &&
                 (
-                    this.DocumentType == other.DocumentType ||
-                    this.DocumentType != null &&
-                    this.DocumentType.Equals(other.DocumentType)
+                    this.Type == other.Type ||
+                    this.Type != null &&
+                    this.Type.Equals(other.Type)
                 ) &&
                 (
                     this.DocumentContent == other.DocumentContent ||
@@ -366,11 +373,14 @@ namespace DocRaptor.Model
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
 
+                if (this.Pipeline != null)
+                    hash = hash * 59 + this.Pipeline.GetHashCode();
+
                 if (this.Name != null)
                     hash = hash * 59 + this.Name.GetHashCode();
 
-                if (this.DocumentType != null)
-                    hash = hash * 59 + this.DocumentType.GetHashCode();
+                if (this.Type != null)
+                    hash = hash * 59 + this.Type.GetHashCode();
 
                 if (this.DocumentContent != null)
                     hash = hash * 59 + this.DocumentContent.GetHashCode();

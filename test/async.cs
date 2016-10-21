@@ -14,7 +14,7 @@ class AsyncTest {
       Name: "csharp-async.pdf",
       Test: true,
       DocumentContent: "<html><body>Hello from C#</body></html>",
-      DocumentType: Doc.DocumentTypeEnum.Pdf
+      Type: Doc.TypeEnum.Pdf
     );
 
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
