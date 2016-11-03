@@ -102,8 +102,9 @@ The generated client needed a few fixes
 8. Tag version: `git tag 'vX.Y.Z' && git push --tags`
 9. Build package using `script/build`
 10. `script/nuget push bin/DocRaptor.X.Y.Z.nupkg`
-11. Open https://github.com/DocRaptor/docraptor-csharp/tags and make a new release for the version. Use the git tag as the name, CHANGELOG entries as the description, and attach `bin/*.dll` and `bin/*.xml` to the release
-12. Refresh documentation on docraptor.com
+11. Verify package release at https://www.nuget.org/packages
+12. Open https://github.com/DocRaptor/docraptor-csharp/tags and make a new release for the version. Use the git tag as the name, CHANGELOG entries as the description, and attach `bin/*.dll` and `bin/*.xml` to the release
+13. Refresh documentation on docraptor.com
 
 
 ## Version Policy
