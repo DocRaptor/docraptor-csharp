@@ -1,3 +1,6 @@
+### 1.1.1 [June 7, 2017]
+* Update RestSharp Dependency to 105.2.3
+
 ### 1.1.0 [November 3, 2016]
 * Added support for the pipeline API parameter
 

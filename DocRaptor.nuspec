@@ -3,9 +3,9 @@
   <metadata>
     <id>DocRaptor</id>
     <title>DocRaptor</title>
-    <version>1.1.0</version>
-    <authors>Elijah Miller</authors>
-    <owners>Elijah Miller</owners>
+    <version>1.1.1</version>
+    <authors>Expected Behavior</authors>
+    <owners>Expected Behavior</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>https://github.com/docraptor/docraptor-csharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
