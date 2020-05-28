@@ -3,6 +3,8 @@ using DocRaptor.Model;
 using DocRaptor.Api;
 using System;
 using System.Threading;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 class AsyncTest {
   static void Main(string[] args) {

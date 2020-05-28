@@ -9,7 +9,7 @@ fi
 
 script/build lazy
 
-all_dll=$PWD/bin/DocRaptorWithDependencies.dll
+all_dll=$PWD/bin/DocRaptorWithDependencies.dll,System.ComponentModel.DataAnnotations.dll,System.Runtime.Serialization.dll
 export MONO_PATH=$PWD/bin
 
 base_name=$(basename -s .cs "$1")
