@@ -10,26 +10,10 @@ fi
 which mono > /dev/null || (echo "mono must be installed"; exit 1)
 which mcs > /dev/null  || (echo "mcs must be installed"; exit 1)
 
-# script/nuget install vendor/packages.config -o vendor
-# script/nuget install src/DocRaptor/packages.config -o vendor
-# mkdir -p bin
-
-# references=vendor/Newtonsoft.Json.8.0.2/lib/net45/Newtonsoft.Json.dll,vendor/RestSharp.105.2.3/lib/net45/RestSharp.dll,System.Runtime.Serialization.dll
-# mcs -sdk:45 \
-#   "-r:$references" \
-#   -target:library \
-#   -out:bin/DocRaptor.dll \
-#   -recurse:'src/*.cs' \
-#   -doc:bin/DocRaptor.xml \
-#   -platform:anycpu
-
-
 ./build.sh
 
 script/nuget pack -OutputDirectory bin/
 
-# link=bin/Newtonsoft.Json.dll bin/JsonSubTypes.dll bin/RestSharp.dll System.ComponentModel.DataAnnotations.dll System.Runtime.Serialization.dll
 link="bin/Newtonsoft.Json.dll bin/JsonSubTypes.dll bin/RestSharp.dll"
 
-# link=$(echo $references | sed 's/,/ /g' | sed -E 's/ System\..*\.dll//')
 mono vendor/ILRepack.exe /internalize /out:bin/DocRaptorWithDependencies.dll bin/DocRaptor.dll $link
