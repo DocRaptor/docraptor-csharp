@@ -75,7 +75,13 @@ namespace DocRaptor.Model
             /// Enum None for value: none
             /// </summary>
             [EnumMember(Value = "none")]
-            None = 1
+            None = 1,
+
+            /// <summary>
+            /// Enum Html for value: html
+            /// </summary>
+            [EnumMember(Value = "html")]
+            Html = 2
         }
 
         /// <summary>
@@ -92,13 +98,13 @@ namespace DocRaptor.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Doc" /> class.
         /// </summary>
-        /// <param name="pipeline">Specify a specific verison of the DocRaptor Pipeline to use..</param>
         /// <param name="name">A name for identifying your document. (required).</param>
         /// <param name="documentType">The type of document being created. (required).</param>
         /// <param name="documentContent">The HTML data to be transformed into a document. You must supply content using document_content or document_url.  (required).</param>
         /// <param name="documentUrl">The URL to fetch the HTML data to be transformed into a document. You must supply content using document_content or document_url. .</param>
         /// <param name="test">Enable test mode for this document. Test documents are not charged for but include a watermark. (default to true).</param>
-        /// <param name="strict">Force strict HTML validation. (default to StrictEnum.None).</param>
+        /// <param name="pipeline">Specify a specific verison of the DocRaptor Pipeline to use..</param>
+        /// <param name="strict">Force strict HTML validation..</param>
         /// <param name="ignoreResourceErrors">Failed loading of images/javascripts/stylesheets/etc. will not cause the rendering to stop. (default to true).</param>
         /// <param name="ignoreConsoleMessages">Prevent console.log from stopping document rendering during JavaScript execution. (default to false).</param>
         /// <param name="tag">A field for storing a small amount of metadata with this document..</param>
@@ -109,7 +115,7 @@ namespace DocRaptor.Model
         /// <param name="hostedDownloadLimit">The number of times a hosted document can be downloaded.  If no limit is specified, the document will be available for an unlimited number of downloads..</param>
         /// <param name="hostedExpiresAt">The date and time at which a hosted document will be removed and no longer available. Must be a properly formatted ISO 8601 datetime, like 1981-01-23T08:02:30-05:00..</param>
         /// <param name="princeOptions">princeOptions.</param>
-        public Doc(string pipeline = default(string), string name = default(string), DocumentTypeEnum documentType = default(DocumentTypeEnum), string documentContent = default(string), string documentUrl = default(string), bool? test = true, StrictEnum? strict = StrictEnum.None, bool? ignoreResourceErrors = true, bool? ignoreConsoleMessages = false, string tag = default(string), bool? help = false, bool? javascript = false, string referrer = default(string), string callbackUrl = default(string), int? hostedDownloadLimit = default(int?), string hostedExpiresAt = default(string), PrinceOptions princeOptions = default(PrinceOptions))
+        public Doc(string name = default(string), DocumentTypeEnum documentType = default(DocumentTypeEnum), string documentContent = default(string), string documentUrl = default(string), bool? test = true, string pipeline = default(string), StrictEnum? strict = default(StrictEnum?), bool? ignoreResourceErrors = true, bool? ignoreConsoleMessages = false, string tag = default(string), bool? help = false, bool? javascript = false, string referrer = default(string), string callbackUrl = default(string), int? hostedDownloadLimit = default(int?), string hostedExpiresAt = default(string), PrinceOptions princeOptions = default(PrinceOptions))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -138,7 +144,6 @@ namespace DocRaptor.Model
             {
                 this.DocumentContent = documentContent;
             }
-            this.Pipeline = pipeline;
             this.DocumentUrl = documentUrl;
             // use default value if no "test" provided
             if (test == null)
@@ -149,15 +154,8 @@ namespace DocRaptor.Model
             {
                 this.Test = test;
             }
-            // use default value if no "strict" provided
-            if (strict == null)
-            {
-                this.Strict = StrictEnum.None;
-            }
-            else
-            {
-                this.Strict = strict;
-            }
+            this.Pipeline = pipeline;
+            this.Strict = strict;
             // use default value if no "ignoreResourceErrors" provided
             if (ignoreResourceErrors == null)
             {
@@ -203,13 +201,6 @@ namespace DocRaptor.Model
         }
 
         /// <summary>
-        /// Specify a specific verison of the DocRaptor Pipeline to use.
-        /// </summary>
-        /// <value>Specify a specific verison of the DocRaptor Pipeline to use.</value>
-        [DataMember(Name="pipeline", EmitDefaultValue=false)]
-        public string Pipeline { get; set; }
-
-        /// <summary>
         /// A name for identifying your document.
         /// </summary>
         /// <value>A name for identifying your document.</value>
@@ -237,6 +228,13 @@ namespace DocRaptor.Model
         /// <value>Enable test mode for this document. Test documents are not charged for but include a watermark.</value>
         [DataMember(Name="test", EmitDefaultValue=false)]
         public bool? Test { get; set; }
+
+        /// <summary>
+        /// Specify a specific verison of the DocRaptor Pipeline to use.
+        /// </summary>
+        /// <value>Specify a specific verison of the DocRaptor Pipeline to use.</value>
+        [DataMember(Name="pipeline", EmitDefaultValue=false)]
+        public string Pipeline { get; set; }
 
 
         /// <summary>
@@ -316,12 +314,12 @@ namespace DocRaptor.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Doc {\n");
-            sb.Append("  Pipeline: ").Append(Pipeline).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  DocumentType: ").Append(DocumentType).Append("\n");
             sb.Append("  DocumentContent: ").Append(DocumentContent).Append("\n");
             sb.Append("  DocumentUrl: ").Append(DocumentUrl).Append("\n");
             sb.Append("  Test: ").Append(Test).Append("\n");
+            sb.Append("  Pipeline: ").Append(Pipeline).Append("\n");
             sb.Append("  Strict: ").Append(Strict).Append("\n");
             sb.Append("  IgnoreResourceErrors: ").Append(IgnoreResourceErrors).Append("\n");
             sb.Append("  IgnoreConsoleMessages: ").Append(IgnoreConsoleMessages).Append("\n");
@@ -368,11 +366,6 @@ namespace DocRaptor.Model
 
             return
                 (
-                    this.Pipeline == input.Pipeline ||
-                    (this.Pipeline != null &&
-                    this.Pipeline.Equals(input.Pipeline))
-                ) &&
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -396,6 +389,11 @@ namespace DocRaptor.Model
                     this.Test == input.Test ||
                     (this.Test != null &&
                     this.Test.Equals(input.Test))
+                ) &&
+                (
+                    this.Pipeline == input.Pipeline ||
+                    (this.Pipeline != null &&
+                    this.Pipeline.Equals(input.Pipeline))
                 ) &&
                 (
                     this.Strict == input.Strict ||
@@ -463,8 +461,6 @@ namespace DocRaptor.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Pipeline != null)
-                    hashCode = hashCode * 59 + this.Pipeline.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.DocumentType != null)
@@ -475,6 +471,8 @@ namespace DocRaptor.Model
                     hashCode = hashCode * 59 + this.DocumentUrl.GetHashCode();
                 if (this.Test != null)
                     hashCode = hashCode * 59 + this.Test.GetHashCode();
+                if (this.Pipeline != null)
+                    hashCode = hashCode * 59 + this.Pipeline.GetHashCode();
                 if (this.Strict != null)
                     hashCode = hashCode * 59 + this.Strict.GetHashCode();
                 if (this.IgnoreResourceErrors != null)
