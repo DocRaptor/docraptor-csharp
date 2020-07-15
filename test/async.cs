@@ -13,15 +13,15 @@ class AsyncTest {
     DocApi docraptor = new DocApi();
 
     Doc doc = new Doc(
-      Name: "csharp-async.pdf",
-      Test: true,
-      DocumentContent: "<html><body>Hello from C#</body></html>",
-      DocumentType: Doc.DocumentTypeEnum.Pdf
+      name: "csharp-async.pdf",
+      test: true,
+      documentContent: "<html><body>Hello from C#</body></html>",
+      documentType: Doc.DocumentTypeEnum.Pdf
     );
 
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
-    AsyncDocStatus status_response;
+    DocStatus status_response;
     while(true) {
       status_response = docraptor.GetAsyncDocStatus(response.StatusId);
       if (status_response.Status == "completed") {

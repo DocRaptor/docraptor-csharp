@@ -12,10 +12,10 @@ class XlsxTest {
     DocApi docraptor = new DocApi();
 
     Doc doc = new Doc(
-      Name: "csharp-xlsx.xlsx",
-      Test: true,
-      DocumentContent: "<html><body><table><tr><td>Hello from C#</td></tr></table></body></html>",
-      DocumentType: Doc.DocumentTypeEnum.Xlsx
+      name: "csharp-xlsx.xlsx",
+      test: true,
+      documentContent: "<html><body><table><tr><td>Hello from C#</td></tr></table></body></html>",
+      documentType: Doc.DocumentTypeEnum.Xlsx
     );
 
     docraptor.CreateDoc(doc);
