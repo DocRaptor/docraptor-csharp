@@ -158,8 +158,8 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
-        /// <returns>DocStatus</returns>
-        DocStatus GetAsyncDocStatus (string id);
+        /// <returns>AsyncDocStatus</returns>
+        AsyncDocStatus GetAsyncDocStatus (string id);
 
         /// <summary>
         ///
@@ -169,8 +169,8 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
-        /// <returns>ApiResponse of DocStatus</returns>
-        ApiResponse<DocStatus> GetAsyncDocStatusWithHttpInfo (string id);
+        /// <returns>ApiResponse of AsyncDocStatus</returns>
+        ApiResponse<AsyncDocStatus> GetAsyncDocStatusWithHttpInfo (string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -307,8 +307,8 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
-        /// <returns>Task of DocStatus</returns>
-        System.Threading.Tasks.Task<DocStatus> GetAsyncDocStatusAsync (string id);
+        /// <returns>Task of AsyncDocStatus</returns>
+        System.Threading.Tasks.Task<AsyncDocStatus> GetAsyncDocStatusAsync (string id);
 
         /// <summary>
         ///
@@ -318,8 +318,8 @@ namespace DocRaptor.Api
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
-        /// <returns>Task of ApiResponse (DocStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DocStatus>> GetAsyncDocStatusAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (AsyncDocStatus)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AsyncDocStatus>> GetAsyncDocStatusAsyncWithHttpInfo (string id);
         #endregion Asynchronous Operations
     }
 
@@ -1397,10 +1397,10 @@ namespace DocRaptor.Api
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
-        /// <returns>DocStatus</returns>
-        public DocStatus GetAsyncDocStatus (string id)
+        /// <returns>AsyncDocStatus</returns>
+        public AsyncDocStatus GetAsyncDocStatus (string id)
         {
-             ApiResponse<DocStatus> localVarResponse = GetAsyncDocStatusWithHttpInfo(id);
+             ApiResponse<AsyncDocStatus> localVarResponse = GetAsyncDocStatusWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -1409,8 +1409,8 @@ namespace DocRaptor.Api
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
-        /// <returns>ApiResponse of DocStatus</returns>
-        public ApiResponse< DocStatus > GetAsyncDocStatusWithHttpInfo (string id)
+        /// <returns>ApiResponse of AsyncDocStatus</returns>
+        public ApiResponse< AsyncDocStatus > GetAsyncDocStatusWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1463,9 +1463,9 @@ namespace DocRaptor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DocStatus>(localVarStatusCode,
+            return new ApiResponse<AsyncDocStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DocStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DocStatus)));
+                (AsyncDocStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AsyncDocStatus)));
         }
 
         /// <summary>
@@ -1473,10 +1473,10 @@ namespace DocRaptor.Api
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
-        /// <returns>Task of DocStatus</returns>
-        public async System.Threading.Tasks.Task<DocStatus> GetAsyncDocStatusAsync (string id)
+        /// <returns>Task of AsyncDocStatus</returns>
+        public async System.Threading.Tasks.Task<AsyncDocStatus> GetAsyncDocStatusAsync (string id)
         {
-             ApiResponse<DocStatus> localVarResponse = await GetAsyncDocStatusAsyncWithHttpInfo(id);
+             ApiResponse<AsyncDocStatus> localVarResponse = await GetAsyncDocStatusAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -1486,8 +1486,8 @@ namespace DocRaptor.Api
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The status_id returned when creating an asynchronous document.</param>
-        /// <returns>Task of ApiResponse (DocStatus)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DocStatus>> GetAsyncDocStatusAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (AsyncDocStatus)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AsyncDocStatus>> GetAsyncDocStatusAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1540,9 +1540,9 @@ namespace DocRaptor.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DocStatus>(localVarStatusCode,
+            return new ApiResponse<AsyncDocStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DocStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DocStatus)));
+                (AsyncDocStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AsyncDocStatus)));
         }
 
     }

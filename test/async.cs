@@ -21,7 +21,7 @@ class AsyncTest {
 
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
-    DocStatus status_response;
+    AsyncDocStatus status_response;
     while(true) {
       status_response = docraptor.GetAsyncDocStatus(response.StatusId);
       if (status_response.Status == "completed") {

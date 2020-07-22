@@ -19,7 +19,7 @@ class InvalidAsyncTest {
 
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
-    DocStatus status_response;
+    AsyncDocStatus status_response;
     for(int i=0; i<30; i++) {
       status_response = docraptor.GetAsyncDocStatus(response.StatusId);
       if (status_response.Status == "failed") {
