@@ -1,3 +1,9 @@
+### 2.0.0 [July 31, 2020]
+* add support for hosted documents
+* upgrade to latest swagger 2.4.14
+* **BREAKING CHANGE**: renamed AsyncDocStatus to DocStatus
+* **BREAKING CHANGE**: constructor argument casing
+
 ### 1.1.1 [June 7, 2017]
 * Update RestSharp Dependency to 105.2.3
 
