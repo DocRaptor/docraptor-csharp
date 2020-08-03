@@ -24,21 +24,21 @@ class AsyncTest {
       DocApi docraptor = new DocApi();
 
       Doc doc = new Doc(
-        Test: true,                                                    // test documents are free but watermarked
-        DocumentContent: "<html><body>Hello World</body></html>",      // supply content directly
-        // DocumentUrl: "http://docraptor.com/examples/invoice.html",  // or use a url
-        Name: "docraptor-csharp.pdf",                                  // help you find a document later
-        DocumentType: Doc.DocumentTypeEnum.Pdf                         // pdf or xls or xlsx
-        // Javascript: true,                                           // enable JavaScript processing
-        // PrinceOptions: new PrinceOptions(
-        //   Media: "screen",                                          // use screen styles instead of print styles
-        //   Baseurl: "http://hello.com"                               // pretend URL when using document_content
+        test: true,                                                    // test documents are free but watermarked
+        documentContent: "<html><body>Hello World</body></html>",      // supply content directly
+        // documentUrl: "http://docraptor.com/examples/invoice.html",  // or use a url
+        name: "docraptor-csharp.pdf",                                  // help you find a document later
+        documentType: Doc.DocumentTypeEnum.Pdf                         // pdf or xls or xlsx
+        // javascript: true,                                           // enable JavaScript processing
+        // princeOptions: new PrinceOptions(
+        //   media: "screen",                                          // use screen styles instead of print styles
+        //   baseurl: "http://hello.com"                               // pretend URL when using document_content
         // )
       );
 
       AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
-      AsyncDocStatus status_response;
+      DocStatus status_response;
       Boolean done = false;
       while(!done) {
         status_response = docraptor.GetAsyncDocStatus(response.StatusId);

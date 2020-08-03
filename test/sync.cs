@@ -12,10 +12,10 @@ class SyncTest {
     DocApi docraptor = new DocApi();
 
     Doc doc = new Doc(
-      Name: "csharp-sync.pdf",
-      Test: true,
-      DocumentContent: "<html><body>Hello from C#</body></html>",
-      DocumentType: Doc.DocumentTypeEnum.Pdf
+      name: "csharp-sync.pdf",
+      test: true,
+      documentContent: "<html><body>Hello from C#</body></html>",
+      documentType: Doc.DocumentTypeEnum.Pdf
     );
 
     docraptor.CreateDoc(doc);

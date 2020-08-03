@@ -1,0 +1,33 @@
+using DocRaptor.Client;
+using DocRaptor.Model;
+using DocRaptor.Api;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading;
+
+class HostedSyncTest {
+  static void Main(string[] args) {
+    string api_key = File.ReadAllText(@".docraptor_key").Trim();
+    Configuration.Default.Username = api_key;
+    // Configuration.Default.Debug = true; // Not supported in Csharp
+    DocApi docraptor = new DocApi();
+
+    Doc doc = new Doc(
+      name: "csharp-hosted-sync.pdf",
+      test: true,
+      documentContent: "<html><body>Hello from C#</body></html>",
+      documentType: Doc.DocumentTypeEnum.Pdf
+    );
+
+    DocStatus status_response = docraptor.CreateHostedDoc(doc);
+    byte[] data = docraptor.GetAsyncDoc(status_response.DownloadId);
+    File.WriteAllBytes("/tmp/the-file-name.pdf", data);
+
+    string line = File.ReadLines("/tmp/the-file-name.pdf").First();
+    if(!line.Contains("%PDF-1.5")) {
+      Console.WriteLine("unexpected file header: " + line);
+      Environment.Exit(1);
+    }
+  }
+}

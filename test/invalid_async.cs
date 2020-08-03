@@ -11,15 +11,15 @@ class InvalidAsyncTest {
     DocApi docraptor = new DocApi();
 
     Doc doc = new Doc(
-      Name: new String('s', 201), // limit is 200 characters
-      Test: true,
-      DocumentContent: "<html><body>Hello from C#</body></html>",
-      DocumentType: Doc.DocumentTypeEnum.Pdf
+      name: new String('s', 201), // limit is 200 characters
+      test: true,
+      documentContent: "<html><body>Hello from C#</body></html>",
+      documentType: Doc.DocumentTypeEnum.Pdf
     );
 
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
-    AsyncDocStatus status_response;
+    DocStatus status_response;
     for(int i=0; i<30; i++) {
       status_response = docraptor.GetAsyncDocStatus(response.StatusId);
       if (status_response.Status == "failed") {

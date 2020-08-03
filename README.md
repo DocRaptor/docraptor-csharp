@@ -9,6 +9,7 @@ This is a DLL and NuGet package for using [DocRaptor API](https://docraptor.com/
 ## Dependencies
 - [RestSharp](https://www.nuget.org/packages/RestSharp) - 105.2.3 or later
 - [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 7.0.0 or later
+- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 1.2.0 or later
 
 
 ## Installation
@@ -44,15 +45,15 @@ class Example {
     DocApi docraptor = new DocApi();
 
     Doc doc = new Doc(
-      Test: true,                                                    // test documents are free but watermarked
-      DocumentContent: "<html><body>Hello World</body></html>",      // supply content directly
-      // DocumentUrl: "http://docraptor.com/examples/invoice.html",  // or use a url
-      Name: "docraptor-csharp.pdf",                                  // help you find a document later
-      DocumentType: Doc.DocumentTypeEnum.Pdf                         // pdf or xls or xlsx
-      // Javascript: true,                                           // enable JavaScript processing
-      // PrinceOptions: new PrinceOptions(
-      //   Media: "screen",                                          // use screen styles instead of print styles
-      //   Baseurl: "http://hello.com"                               // pretend URL when using document_content
+      test: true,                                                    // test documents are free but watermarked
+      documentContent: "<html><body>Hello World</body></html>",      // supply content directly
+      // documentUrl: "http://docraptor.com/examples/invoice.html",  // or use a url
+      name: "docraptor-csharp.pdf",                                  // help you find a document later
+      documentType: Doc.DocumentTypeEnum.Pdf                         // pdf or xls or xlsx
+      // Javascript: true,                                           // enable javaScript processing
+      // princeOptions: new PrinceOptions(
+      //   media: "screen",                                          // use screen styles instead of print styles
+      //   baseurl: "http://hello.com"                               // pretend URL when using document_content
       // )
     );
 
@@ -81,9 +82,7 @@ Stuck? We're experts at using DocRaptor so please [email us](mailto:support@docr
 
 The majority of the code in this repo is generated using swagger-codegen on [docraptor.yaml](docraptor.yaml). You can modify this file and regenerate the client using `script/generate_language csharp`.
 
-The generated client needed a few fixes
-- https://github.com/swagger-api/swagger-codegen/issues/2368
-- https://github.com/swagger-api/swagger-codegen/issues/2367
+Don't let swagger downgrade RestSharp to 105.1.0; it will try.
 
 
 ## Release Process
