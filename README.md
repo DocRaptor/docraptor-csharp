@@ -41,8 +41,8 @@ using System.IO;
 
 class Example {
   static void Main(string[] args) {
-    Configuration.Default.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
     DocApi docraptor = new DocApi();
+    docraptor.Configuration.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
 
     Doc doc = new Doc(
       test: true,                                                    // test documents are free but watermarked

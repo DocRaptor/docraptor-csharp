@@ -8,9 +8,9 @@ using System.ComponentModel.DataAnnotations;
 
 class AsyncTest {
   static void Main(string[] args) {
-    Configuration.Default.Username = "YOUR_API_KEY_HERE";
-    // Configuration.Default.Debug = true; // Not supported in Csharp
     DocApi docraptor = new DocApi();
+    docraptor.Configuration.Username = "YOUR_API_KEY_HERE";
+    // docraptor.Configuration.Debug = true; // Not supported in Csharp
 
     Doc doc = new Doc(
       name: "csharp-async.pdf",

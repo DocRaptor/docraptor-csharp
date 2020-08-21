@@ -9,9 +9,9 @@ using System.Threading;
 class SyncTest {
   static void Main(string[] args) {
     string api_key = File.ReadAllText(@".docraptor_key").Trim();
-    Configuration.Default.Username = api_key;
-    // Configuration.Default.Debug = true; // Not supported in Csharp
     DocApi docraptor = new DocApi();
+    docraptor.Configuration.Username = api_key;
+    // docraptor.Configuration.Debug = true; // Not supported in Csharp
 
     Doc doc = new Doc(
       name: "csharp-hosted-sync.pdf",

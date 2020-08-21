@@ -20,8 +20,8 @@ using System.Threading;
 class AsyncTest {
   static void Main(string[] args) {
     try {
-      Configuration.Default.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
       DocApi docraptor = new DocApi();
+      docraptor.Configuration.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
 
       Doc doc = new Doc(
         test: true,                                                    // test documents are free but watermarked

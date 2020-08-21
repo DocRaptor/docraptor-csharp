@@ -28,8 +28,8 @@ using System.Threading;
 class SyncTest {
   static void Main(string[] args) {
     try {
-      Configuration.Default.Username = "YOUR_API_KEY_HERE"; // you will need a real api key to test hosted documents
       DocApi docraptor = new DocApi();
+      docraptor.Configuration.Username = "YOUR_API_KEY_HERE"; // you will need a real api key to test hosted documents
 
       Doc doc = new Doc(
         test: true,                                                    // test documents are free but watermarked
