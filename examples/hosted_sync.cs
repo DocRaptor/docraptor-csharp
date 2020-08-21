@@ -44,8 +44,8 @@ class SyncTest {
         // )
       );
 
-      DocStatus status_response = docraptor.CreateHostedDoc(doc);
-      byte[] data = docraptor.GetAsyncDoc(status_response.DownloadId);
+      DocStatus statusResponse = docraptor.CreateHostedDoc(doc);
+      byte[] data = docraptor.GetAsyncDoc(statusResponse.DownloadId);
       File.WriteAllBytes("/tmp/docraptor-csharp.pdf", data);
       Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
     } catch (DocRaptor.Client.ApiException error) {

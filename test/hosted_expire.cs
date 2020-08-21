@@ -20,8 +20,8 @@ class SyncTest {
       documentType: Doc.DocumentTypeEnum.Pdf
     );
 
-    DocStatus status_response = docraptor.CreateHostedDoc(doc);
-    byte[] data = docraptor.GetAsyncDoc(status_response.DownloadId);
+    DocStatus statusResponse = docraptor.CreateHostedDoc(doc);
+    byte[] data = docraptor.GetAsyncDoc(statusResponse.DownloadId);
     File.WriteAllBytes("/tmp/the-file-name.pdf", data);
 
     string line = File.ReadLines("/tmp/the-file-name.pdf").First();
@@ -30,10 +30,10 @@ class SyncTest {
       Environment.Exit(1);
     }
 
-    docraptor.Expire(status_response.DownloadId);
+    docraptor.Expire(statusResponse.DownloadId);
 
     try {
-      docraptor.GetAsyncDoc(status_response.DownloadId);
+      docraptor.GetAsyncDoc(statusResponse.DownloadId);
       Console.WriteLine("Document should not exist");
       Environment.Exit(1);
     } catch (DocRaptor.Client.ApiException) {

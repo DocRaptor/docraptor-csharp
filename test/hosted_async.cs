@@ -25,19 +25,19 @@ class HostedAsyncTest {
 
     AsyncDoc response = docraptor.CreateHostedAsyncDoc(doc);
 
-    DocStatus status_response;
+    DocStatus statusResponse;
     while(true) {
-      status_response = docraptor.GetAsyncDocStatus(response.StatusId);
-      if (status_response.Status == "completed") {
+      statusResponse = docraptor.GetAsyncDocStatus(response.StatusId);
+      if (statusResponse.Status == "completed") {
         break;
-      } else if(status_response.Status == "failed") {
+      } else if(statusResponse.Status == "failed") {
         Console.WriteLine("Failed creating hosted async document");
         Environment.Exit(1);
       }
       Thread.Sleep(1000);
     }
 
-    byte[] data = docraptor.GetAsyncDoc(status_response.DownloadId);
+    byte[] data = docraptor.GetAsyncDoc(statusResponse.DownloadId);
     File.WriteAllBytes("/tmp/the-file-name.pdf", data);
 
     string line = File.ReadLines("/tmp/the-file-name.pdf").First();

@@ -37,8 +37,8 @@ class SyncTest {
         // )
       );
 
-      byte[] create_response = docraptor.CreateDoc(doc);
-      File.WriteAllBytes("/tmp/docraptor-csharp.pdf", create_response);
+      byte[] createResponse = docraptor.CreateDoc(doc);
+      File.WriteAllBytes("/tmp/docraptor-csharp.pdf", createResponse);
       Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
     } catch (DocRaptor.Client.ApiException error) {
       Console.WriteLine(error);

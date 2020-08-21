@@ -47,22 +47,22 @@ class AsyncTest {
 
       AsyncDoc response = docraptor.CreateHostedAsyncDoc(doc);
 
-      DocStatus status_response;
+      DocStatus statusResponse;
       Boolean done = false;
       while(!done) {
-        status_response = docraptor.GetAsyncDocStatus(response.StatusId);
-        Console.WriteLine("doc status: " + status_response.Status);
-        switch(status_response.Status) {
+        statusResponse = docraptor.GetAsyncDocStatus(response.StatusId);
+        Console.WriteLine("doc status: " + statusResponse.Status);
+        switch(statusResponse.Status) {
           case "completed":
             done = true;
-            byte[] doc_response = docraptor.GetAsyncDoc(status_response.DownloadId);
-            File.WriteAllBytes("/tmp/docraptor-csharp.pdf", doc_response);
+            byte[] docResponse = docraptor.GetAsyncDoc(statusResponse.DownloadId);
+            File.WriteAllBytes("/tmp/docraptor-csharp.pdf", docResponse);
             Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
             break;
           case "failed":
             done = true;
             Console.WriteLine("FAILED");
-            Console.WriteLine(status_response);
+            Console.WriteLine(statusResponse);
             break;
           default:
             Thread.Sleep(1000);

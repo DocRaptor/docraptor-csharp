@@ -57,7 +57,7 @@ class Example {
       // )
     );
 
-    byte[] create_response = docraptor.CreateDoc(doc);
+    byte[] createResponse = docraptor.CreateDoc(doc);
   }
 }
 ```
