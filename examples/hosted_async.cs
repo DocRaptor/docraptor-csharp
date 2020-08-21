@@ -55,9 +55,7 @@ class AsyncTest {
         switch(statusResponse.Status) {
           case "completed":
             done = true;
-            byte[] docResponse = docraptor.GetAsyncDoc(statusResponse.DownloadId);
-            File.WriteAllBytes("/tmp/docraptor-csharp.pdf", docResponse);
-            Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
+            Console.WriteLine("Hosted Async Download URL: " + statusResponse.DownloadUrl);
             break;
           case "failed":
             done = true;

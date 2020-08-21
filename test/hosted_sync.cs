@@ -3,6 +3,7 @@ using DocRaptor.Model;
 using DocRaptor.Api;
 using System;
 using System.IO;
+using System.Net;
 using System.Linq;
 using System.Threading;
 
@@ -21,8 +22,9 @@ class HostedSyncTest {
     );
 
     DocStatus statusResponse = docraptor.CreateHostedDoc(doc);
-    byte[] data = docraptor.GetAsyncDoc(statusResponse.DownloadId);
-    File.WriteAllBytes("/tmp/the-file-name.pdf", data);
+    WebClient webClient = new WebClient();
+    webClient.DownloadFile(statusResponse.DownloadUrl, @"/tmp/the-file-name.pdf");
+
 
     string line = File.ReadLines("/tmp/the-file-name.pdf").First();
     if(!line.Contains("%PDF-1.5")) {
