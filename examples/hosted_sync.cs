@@ -29,7 +29,7 @@ class SyncTest {
   static void Main(string[] args) {
     try {
       DocApi docraptor = new DocApi();
-      docraptor.Configuration.Username = "YOUR_API_KEY_HERE"; // you will need a real api key to test hosted documents
+      docraptor.Configuration.Username = "YOUR_API_KEY_HERE";
 
       Doc doc = new Doc(
         test: true,                                                    // test documents are free but watermarked

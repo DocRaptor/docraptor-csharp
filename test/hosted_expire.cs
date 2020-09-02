@@ -9,9 +9,8 @@ using System.Threading;
 
 class SyncTest {
   static void Main(string[] args) {
-    string api_key = File.ReadAllText(@".docraptor_key").Trim();
     DocApi docraptor = new DocApi();
-    docraptor.Configuration.Username = api_key;
+    docraptor.Configuration.Username = "YOUR_API_KEY_HERE";
     // docraptor.Configuration.Debug = true; // Not supported in Csharp
 
     Doc doc = new Doc(
