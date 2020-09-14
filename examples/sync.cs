@@ -21,8 +21,8 @@ using System.Threading;
 class SyncTest {
   static void Main(string[] args) {
     try {
-      Configuration.Default.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
       DocApi docraptor = new DocApi();
+      docraptor.Configuration.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
 
       Doc doc = new Doc(
         test: true,                                                    // test documents are free but watermarked
@@ -37,8 +37,8 @@ class SyncTest {
         // )
       );
 
-      byte[] create_response = docraptor.CreateDoc(doc);
-      File.WriteAllBytes("/tmp/docraptor-csharp.pdf", create_response);
+      byte[] createResponse = docraptor.CreateDoc(doc);
+      File.WriteAllBytes("/tmp/docraptor-csharp.pdf", createResponse);
       Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
     } catch (DocRaptor.Client.ApiException error) {
       Console.WriteLine(error);

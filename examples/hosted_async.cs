@@ -29,8 +29,8 @@ using System.Threading;
 class AsyncTest {
   static void Main(string[] args) {
     try {
-      Configuration.Default.Username = "YOUR_API_KEY_HERE"; // you will need a real api key to test hosted documents
       DocApi docraptor = new DocApi();
+      docraptor.Configuration.Username = "YOUR_API_KEY_HERE";
 
       Doc doc = new Doc(
         test: true,                                                    // test documents are free but watermarked
@@ -47,22 +47,20 @@ class AsyncTest {
 
       AsyncDoc response = docraptor.CreateHostedAsyncDoc(doc);
 
-      DocStatus status_response;
+      DocStatus statusResponse;
       Boolean done = false;
       while(!done) {
-        status_response = docraptor.GetAsyncDocStatus(response.StatusId);
-        Console.WriteLine("doc status: " + status_response.Status);
-        switch(status_response.Status) {
+        statusResponse = docraptor.GetAsyncDocStatus(response.StatusId);
+        Console.WriteLine("doc status: " + statusResponse.Status);
+        switch(statusResponse.Status) {
           case "completed":
             done = true;
-            byte[] doc_response = docraptor.GetAsyncDoc(status_response.DownloadId);
-            File.WriteAllBytes("/tmp/docraptor-csharp.pdf", doc_response);
-            Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
+            Console.WriteLine("Hosted Async Download URL: " + statusResponse.DownloadUrl);
             break;
           case "failed":
             done = true;
             Console.WriteLine("FAILED");
-            Console.WriteLine(status_response);
+            Console.WriteLine(statusResponse);
             break;
           default:
             Thread.Sleep(1000);

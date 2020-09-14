@@ -28,8 +28,8 @@ using System.Threading;
 class SyncTest {
   static void Main(string[] args) {
     try {
-      Configuration.Default.Username = "YOUR_API_KEY_HERE"; // you will need a real api key to test hosted documents
       DocApi docraptor = new DocApi();
+      docraptor.Configuration.Username = "YOUR_API_KEY_HERE";
 
       Doc doc = new Doc(
         test: true,                                                    // test documents are free but watermarked
@@ -44,10 +44,8 @@ class SyncTest {
         // )
       );
 
-      DocStatus status_response = docraptor.CreateHostedDoc(doc);
-      byte[] data = docraptor.GetAsyncDoc(status_response.DownloadId);
-      File.WriteAllBytes("/tmp/docraptor-csharp.pdf", data);
-      Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
+      DocStatus statusResponse = docraptor.CreateHostedDoc(doc);
+      Console.WriteLine("Hosted Async Download URL: " + statusResponse.DownloadUrl);
     } catch (DocRaptor.Client.ApiException error) {
       Console.WriteLine(error);
     }

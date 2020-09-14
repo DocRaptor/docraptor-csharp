@@ -3,15 +3,15 @@ using DocRaptor.Model;
 using DocRaptor.Api;
 using System;
 using System.IO;
+using System.Net;
 using System.Linq;
 using System.Threading;
 
 class HostedSyncTest {
   static void Main(string[] args) {
-    string api_key = File.ReadAllText(@".docraptor_key").Trim();
-    Configuration.Default.Username = api_key;
-    // Configuration.Default.Debug = true; // Not supported in Csharp
     DocApi docraptor = new DocApi();
+    docraptor.Configuration.Username = "YOUR_API_KEY_HERE";
+    // docraptor.Configuration.Debug = true; // Not supported in Csharp
 
     Doc doc = new Doc(
       name: "csharp-hosted-sync.pdf",
@@ -20,9 +20,10 @@ class HostedSyncTest {
       documentType: Doc.DocumentTypeEnum.Pdf
     );
 
-    DocStatus status_response = docraptor.CreateHostedDoc(doc);
-    byte[] data = docraptor.GetAsyncDoc(status_response.DownloadId);
-    File.WriteAllBytes("/tmp/the-file-name.pdf", data);
+    DocStatus statusResponse = docraptor.CreateHostedDoc(doc);
+    WebClient webClient = new WebClient();
+    webClient.DownloadFile(statusResponse.DownloadUrl, @"/tmp/the-file-name.pdf");
+
 
     string line = File.ReadLines("/tmp/the-file-name.pdf").First();
     if(!line.Contains("%PDF-1.5")) {

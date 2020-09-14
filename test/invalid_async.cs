@@ -6,9 +6,9 @@ using System.Threading;
 
 class InvalidAsyncTest {
   static void Main(string[] args) {
-    Configuration.Default.Username = "YOUR_API_KEY_HERE";
-    // Configuration.Default.Debug = true; // Not supported in Csharp
     DocApi docraptor = new DocApi();
+    docraptor.Configuration.Username = "YOUR_API_KEY_HERE";
+    // docraptor.Configuration.Debug = true; // Not supported in Csharp
 
     Doc doc = new Doc(
       name: new String('s', 201), // limit is 200 characters
@@ -19,10 +19,10 @@ class InvalidAsyncTest {
 
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
-    DocStatus status_response;
+    DocStatus statusResponse;
     for(int i=0; i<30; i++) {
-      status_response = docraptor.GetAsyncDocStatus(response.StatusId);
-      if (status_response.Status == "failed") {
+      statusResponse = docraptor.GetAsyncDocStatus(response.StatusId);
+      if (statusResponse.Status == "failed") {
         Environment.Exit(0);
       }
       Thread.Sleep(1000);
