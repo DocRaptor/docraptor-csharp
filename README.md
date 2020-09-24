@@ -29,9 +29,7 @@ Install-Package DocRaptor
 **Download DLLs**: get `DocRaptor.dll` from [GitHub](https://github.com/DocRaptor/docraptor-csharp/releases)
 
 
-## Usage
-
-Below is a barebones example, more robust examples with [file output and error handling](examples/sync.cs), [asynchronous generation](examples/async.cs), [hosted documents](examples/hosted_sync.cs), or [asynchronous hosted documents](examples/hosted_async.cs) are also available.
+## Basic Usage
 
 ```csharp
 using DocRaptor.Client;
@@ -61,15 +59,16 @@ class Example {
   }
 }
 ```
-Documents created synchronously like above are limited to 60 seconds of generation time, the [asynchronous method](examples/async.cs) allows up to 10 minutes.
 
-Our [styling documentation](https://docraptor.com/documentation/style) and [knowledge base](https://help.docraptor.com) contain tips and guides on creating headers, footers, page numbers, table of contents, and much more.
+## Next Steps
+
+- Optionally store and get a URL for your converted document with [document hosting](https://docraptor.com/document-hosting)
+- View more [code examples](examples) with error handling, asynchronous creation, file saving, and document hosting.
+- Perfect your document styling with our [knowledge base](https://help.docraptor.com), [style and formatting reference](https://docraptor.com/documentation/style), and [API reference](https://docraptor.com/documentation/api). Easily add headers and footers, page breaks, page numbers, table of contents, and much more!
 
 ## More Help
 
-DocRaptor has a lot of more [styling](https://docraptor.com/documentation/style) and [implementation options](https://docraptor.com/documentation/api).
-
-Stuck? We're experts at using DocRaptor so please [email us](mailto:support@docraptor.com) if you run into trouble.
+Stuck? We're experts at turning HTML into PDFs so please [email us](mailto:support@docraptor.com) if you run into trouble.
 
 
 ## Development
