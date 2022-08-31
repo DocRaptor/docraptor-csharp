@@ -1,47 +1,37 @@
-// This example demonstrates creating a PDF using common options and saving it
-// to a place on the filesystem.
-//
-// It is created synchronously, which means DocRaptor will render it for up to
-// 60 seconds. It is slightly simpler than making documents using the async
-// interface but making many documents in parallel or very large documents with
-// lots of assets will require the async api.
-//
-// DocRaptor supports many options for output customization, the full list is
-// https://docraptor.com/documentation/api#api_general
-//
-// You can run this example with: ./script/run_csharp_file examples/sync.cs
-
 using DocRaptor.Client;
 using DocRaptor.Model;
 using DocRaptor.Api;
 using System;
 using System.IO;
-using System.Threading;
 
-class SyncTest {
-  static void Main(string[] args) {
-    try {
-      DocApi docraptor = new DocApi();
-      docraptor.Configuration.Username = "YOUR_API_KEY_HERE"; // this key works for test documents
+class Example
+{
+    static void Main(string[] args)
+    {
+        DocApi docraptor = new DocApi();
+        // this key works in test mode!
+        docraptor.Configuration.Username = "YOUR_API_KEY_HERE";
 
-      Doc doc = new Doc(
-        test: true,                                                    // test documents are free but watermarked
-        documentContent: "<html><body>Hello World</body></html>",      // supply content directly
-        // documentUrl: "http://docraptor.com/examples/invoice.html",  // or use a url
-        name: "docraptor-csharp.pdf",                                  // help you find a document later
-        documentType: Doc.DocumentTypeEnum.Pdf                         // pdf or xls or xlsx
-        // javascript: true,                                           // enable JavaScript processing
-        // princeOptions: new PrinceOptions(
-        //   media: "screen",                                          // use screen styles instead of print styles
-        //   baseurl: "http://hello.com"                               // pretend URL when using document_content
-        // )
-      );
+        try
+        {
+            Doc doc = new Doc(
+                name: "docraptor-hello",
+                test: true, // test documents are free but watermarked
+                documentType: Doc.DocumentTypeEnum.Pdf,
+                documentContent: "<html><body>Hello World!</body></html>" 
+                // documentUrl: "http://docraptor.com/examples/invoice.html", 
+                // javascript: false, 
+                // princeOptions: new PrinceOptions(
+                //     media: "print", // @media 'screen' or 'print' CSS
+                //     baseurl: "https://yoursite.com" // the base URL for any relative URLs
+                // )
+            );
 
-      byte[] createResponse = docraptor.CreateDoc(doc);
-      File.WriteAllBytes("/tmp/docraptor-csharp.pdf", createResponse);
-      Console.WriteLine("Wrote PDF to /tmp/docraptor-csharp.pdf");
-    } catch (DocRaptor.Client.ApiException error) {
-      Console.WriteLine(error);
+            byte[] pdf = docraptor.CreateDoc(doc);
+            File.WriteAllBytes("docraptor-hello.pdf", pdf);
+            Console.WriteLine("Successfully created docraptor-hello.pdf!");
+        } catch (DocRaptor.Client.ApiException error) {
+            Console.Write(error.ErrorContent);
+        }
     }
-  }
 }
