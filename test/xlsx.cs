@@ -18,6 +18,10 @@ class XlsxTest {
       documentType: Doc.DocumentTypeEnum.Xlsx
     );
 
-    docraptor.CreateDoc(doc);
+    byte[] document = docraptor.CreateDoc(doc);
+    string output_file = Environment.GetEnvironmentVariable("TEST_OUTPUT_DIR") +
+      "/" + Environment.GetEnvironmentVariable("TEST_NAME") + "_csharp_" +
+      Environment.GetEnvironmentVariable("RUNTIME_ENV") + ".xlsx";
+    File.WriteAllBytes(output_file, document);
   }
 }

@@ -22,10 +22,13 @@ class SyncTest {
 
     DocStatus statusResponse = docraptor.CreateHostedDoc(doc);
 
+    string output_file = Environment.GetEnvironmentVariable("TEST_OUTPUT_DIR") +
+      "/" + Environment.GetEnvironmentVariable("TEST_NAME") + "_csharp_" +
+      Environment.GetEnvironmentVariable("RUNTIME_ENV") + ".pdf";
     WebClient webClient = new WebClient();
-    webClient.DownloadFile(statusResponse.DownloadUrl, @"/tmp/the-file-name.pdf");
+    webClient.DownloadFile(statusResponse.DownloadUrl, output_file);
 
-    string line = File.ReadLines("/tmp/the-file-name.pdf").First();
+    string line = File.ReadLines(output_file).First();
     if(!line.Contains("%PDF-1.5")) {
       Console.WriteLine("unexpected file header: " + line);
       Environment.Exit(1);
@@ -34,7 +37,7 @@ class SyncTest {
     docraptor.Expire(statusResponse.DownloadId);
 
     try {
-      webClient.DownloadFile(statusResponse.DownloadUrl, @"/tmp/the-file-name.pdf");
+      webClient.DownloadFile(statusResponse.DownloadUrl, output_file + ".post_expire");
       Console.WriteLine("Document should not exist");
       Environment.Exit(1);
     } catch (System.Net.WebException) {

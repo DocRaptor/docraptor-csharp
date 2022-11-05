@@ -2,15 +2,17 @@ using DocRaptor.Client;
 using DocRaptor.Model;
 using DocRaptor.Api;
 using System;
+using System.IO;
+using System.Linq;
 using System.Threading;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 
-class AsyncTest {
-  static void Main(string[] args) {
+class AsyncTest
+{
+  static void Main(string[] args)
+  {
     DocApi docraptor = new DocApi();
+    // this key works in test mode!
     docraptor.Configuration.Username = "YOUR_API_KEY_HERE";
-    // docraptor.Configuration.Debug = true; // Not supported in Csharp
 
     Doc doc = new Doc(
       name: "csharp-async.pdf",
@@ -22,14 +24,33 @@ class AsyncTest {
     AsyncDoc response = docraptor.CreateAsyncDoc(doc);
 
     DocStatus statusResponse;
-    while(true) {
+    Boolean done = false;
+    while(!done) {
       statusResponse = docraptor.GetAsyncDocStatus(response.StatusId);
-      if (statusResponse.Status == "completed") {
-        break;
-      }
-      Thread.Sleep(1000);
-    }
+      switch(statusResponse.Status) {
+        case "completed":
+          done = true;
+          byte[] docResponse = docraptor.GetAsyncDoc(statusResponse.DownloadId);
+          string output_file = Environment.GetEnvironmentVariable("TEST_OUTPUT_DIR") +
+            "/" + Environment.GetEnvironmentVariable("TEST_NAME") + "_csharp_" +
+            Environment.GetEnvironmentVariable("RUNTIME_ENV") + ".pdf";
+          File.WriteAllBytes(output_file, docResponse);
 
-    docraptor.GetAsyncDoc(statusResponse.DownloadId);
+          string line = File.ReadLines(output_file).First();
+          if(!line.Contains("%PDF-1.5")) {
+            Console.WriteLine("unexpected file header: " + line);
+            Environment.Exit(1);
+          }
+
+          break;
+        case "failed":
+          Console.WriteLine("Failed creating hosted async document");
+          Environment.Exit(1);
+          break;
+        default:
+          Thread.Sleep(1000);
+          break;
+      }
+    }
   }
 }
