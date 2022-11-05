@@ -54,12 +54,12 @@ namespace DocRaptor.Client
         public ApiClient()
         {
             Configuration = DocRaptor.Client.Configuration.Default;
-            RestClient = new RestClient("https://docraptor.com");
+            RestClient = new RestClient("https://api.docraptor.com");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://docraptor.com).
+        /// with default base path (https://api.docraptor.com).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config)
@@ -74,7 +74,7 @@ namespace DocRaptor.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://docraptor.com")
+        public ApiClient(String basePath = "https://api.docraptor.com")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

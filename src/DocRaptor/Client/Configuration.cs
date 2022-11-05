@@ -115,7 +115,7 @@ namespace DocRaptor.Client
         public Configuration()
         {
             UserAgent = "OpenAPI-Generator/2.0.0/csharp";
-            BasePath = "https://docraptor.com";
+            BasePath = "https://api.docraptor.com";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -131,7 +131,7 @@ namespace DocRaptor.Client
             IDictionary<string, string> defaultHeader,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "https://docraptor.com") : this()
+            string basePath = "https://api.docraptor.com") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
