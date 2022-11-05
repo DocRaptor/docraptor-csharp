@@ -6,13 +6,17 @@ if [[ $(ls bin/DocRaptor*.nupkg) ]] && [ "$1" == "lazy" ]; then
   exit
 fi
 
+if uname | grep Darwin; then
+  exec script/docker /app/script/build
+fi
+
 # check dependencies
 which mono > /dev/null || (echo "mono must be installed"; exit 1)
 which mcs > /dev/null  || (echo "mcs must be installed"; exit 1)
 
 ./build.sh
 
-script/nuget pack -OutputDirectory bin/
+nuget pack -OutputDirectory bin/
 
 link="bin/Newtonsoft.Json.dll bin/JsonSubTypes.dll bin/RestSharp.dll"
 

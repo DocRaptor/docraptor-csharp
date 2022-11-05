@@ -1,0 +1,13 @@
+# Versions without patch numbers will test the latest patch version. We include
+# specific patch versions to provide consistency. We include version numbers
+# without the patch version in order to automatically test the latest patch
+# version of each minor version.
+mono:5.20.1.34
+mono:5.20.1
+mono:5.20
+mono:5
+mono:6.12.0
+mono:6.12
+mono:6
+mono:latest
+mono:6.12.0.182
