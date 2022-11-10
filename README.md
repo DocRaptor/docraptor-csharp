@@ -7,9 +7,9 @@ This is a DLL and NuGet package for using [DocRaptor API](https://docraptor.com/
 - Windows Phone 7.1 (Mango)
 
 ## Dependencies
-- [RestSharp](https://www.nuget.org/packages/RestSharp) - 105.2.3 or later
-- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 7.0.0 or later
-- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 1.2.0 or later
+- [RestSharp](https://www.nuget.org/packages/RestSharp) - 105.1.0 or later
+- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 12.0.3 or later
+- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 1.6.0 or later
 
 
 ## Installation
