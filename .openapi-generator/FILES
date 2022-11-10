@@ -1,5 +1,7 @@
+.gitignore
 .travis.yml
 DocRaptor.sln
+README.md
 build.bat
 build.sh
 docs/AsyncDoc.md
@@ -7,7 +9,6 @@ docs/Doc.md
 docs/DocApi.md
 docs/DocStatus.md
 docs/PrinceOptions.md
-git_push.sh
 mono_nunit_test.sh
 src/DocRaptor.Test/Api/DocApiTests.cs
 src/DocRaptor.Test/DocRaptor.Test.csproj

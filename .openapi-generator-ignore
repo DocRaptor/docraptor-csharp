@@ -22,7 +22,17 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 
-README.md
-CHANGELOG.md
-.gitignore
-LICENSE
+
+# This seems to be a script related to developing openapi-generator and making
+# new test APIs.
+git_push.sh
+
+# Don't ignore this because we want to review the generated content to see if we
+# should update our own readme similarly. The most common example is an update
+# to the supported runtime versions, but it could also be an update to the
+# recommended usage that we would want to use.
+!README.md
+
+# Don't ignore this because we want to know about new files that the generator
+# ignores.
+!.gitignore
