@@ -73,7 +73,7 @@ Stuck? We're experts at turning HTML into PDFs so please [email us](mailto:suppo
 
 ## Development
 
-The majority of the code in this repo is generated using swagger-codegen on [docraptor.yaml](docraptor.yaml). You can modify this file and regenerate the client using `script/generate_language csharp`.
+The majority of the code in this repo is generated using openapi-generator on [docraptor.yaml](docraptor.yaml). You can modify this file and regenerate the client using `script/generate_language`.
 
 Don't let swagger downgrade RestSharp to 105.1.0; it will try.
 
@@ -84,7 +84,7 @@ Don't let swagger downgrade RestSharp to 105.1.0; it will try.
 2. Merge feature branch(es) into master
 3. `script/test`
 4. Increment version in code:
-  - `swagger-config.json`
+  - `generator-config.json`
   - `DocRaptor.nuspec`
   - `src/main/csharp/DocRaptor/Properties/AssemblyInfo.cs`
   - `src/main/csharp/DocRaptor/Client/Configuration.cs` (2 places)
