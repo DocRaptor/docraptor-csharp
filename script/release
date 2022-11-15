@@ -1,0 +1,23 @@
+#!/bin/bash
+set -e
+[[ "$TRACE" == "true" ]] && set -x
+cd "$(dirname "$0")/.."
+
+if [[ $(ls bin/DocRaptor*.nupkg) ]] && [ "$1" == "lazy" ]; then
+  exit
+fi
+
+if [[ "$INSIDE_DOCKER" != "true" ]]; then
+  exec script/docker "/app/script/$(basename "$0")"
+fi
+
+read -p "NuGet API key: " nuget_api_key
+
+version="$(cat generator-config.json | grep packageVersion | cut -d: -f2 | cut -d'"' -f2)"
+read -p "Is version ${version} correct? [y/N]: " response
+if [[ "$response" != "y" ]]; then
+  echo "Error"
+  exit 1
+fi
+
+nuget push "bin/DocRaptor.${version}.nupkg" "$nuget_api_key" -Source https://api.nuget.org/v3/index.json

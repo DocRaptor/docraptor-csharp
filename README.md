@@ -94,7 +94,7 @@ Don't let swagger downgrade RestSharp to 105.1.0; it will try.
 8. Push to GitHub
 9. Tag version: `git tag 'vX.Y.Z' && git push --tags`
 10. Build package using `script/build`
-11. `script/nuget push bin/DocRaptor.X.Y.Z.nupkg <api_key> -Source https://api.nuget.org/v3/index.json`
+11. `script/release`
 12. Verify package release at https://www.nuget.org/packages
 13. Open https://github.com/DocRaptor/docraptor-csharp/tags and make a new release for the version. Use the git tag as the name, CHANGELOG entries as the description, and attach `bin/*.dll` and `bin/*.xml` to the release
 14. Refresh documentation on docraptor.com
