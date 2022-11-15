@@ -29,7 +29,7 @@ namespace DocRaptor.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "2.0.0";
+        public const string Version = "3.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -114,7 +114,7 @@ namespace DocRaptor.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "OpenAPI-Generator/2.0.0/csharp";
+            UserAgent = "OpenAPI-Generator/3.0.0/csharp";
             BasePath = "https://api.docraptor.com";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -187,7 +187,7 @@ namespace DocRaptor.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "OpenAPI-Generator/2.0.0/csharp"
+            string userAgent = "OpenAPI-Generator/3.0.0/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -421,7 +421,7 @@ namespace DocRaptor.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 2.0.0\n";
-            report += "    SDK Package Version: 2.0.0\n";
+            report += "    SDK Package Version: 3.0.0\n";
 
             return report;
         }
