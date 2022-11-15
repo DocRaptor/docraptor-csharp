@@ -12,7 +12,7 @@ The version of the OpenAPI document: 2.0.0
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BB66C9A2-4D6F-47C1-8C20-F4F138BF3DDF}</ProjectGuid>
+    <ProjectGuid>{CFD94733-F020-45EE-B121-AA0CA516F4FD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DocRaptor</RootNamespace>

@@ -2,5 +2,6 @@
   "packageName": "DocRaptor",
   "packageVersion": "2.0.0",
   "targetFramework": "v4.5",
+  "packageGuid": "{CFD94733-F020-45EE-B121-AA0CA516F4FD}",
   "modelPropertyNaming": "PascalCase"
 }
