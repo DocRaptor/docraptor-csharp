@@ -83,20 +83,21 @@ Don't let swagger downgrade RestSharp to 105.1.0; it will try.
 1. Pull latest master
 2. Merge feature branch(es) into master
 3. `script/test`
-4. Increment version in code:
+4. Increment version:
   - `generator-config.json`
   - `DocRaptor.nuspec`
-  - `src/main/csharp/DocRaptor/Properties/AssemblyInfo.cs`
-  - `src/main/csharp/DocRaptor/Client/Configuration.cs` (2 places)
-5. Update [CHANGELOG.md](CHANGELOG.md)
-6. Commit "Release vX.Y.Z"
-7. Push to GitHub
-8. Tag version: `git tag 'vX.Y.Z' && git push --tags`
-9. Build package using `script/build`
-10. `script/nuget push bin/DocRaptor.X.Y.Z.nupkg <api_key> -Source https://api.nuget.org/v3/index.json`
-11. Verify package release at https://www.nuget.org/packages
-12. Open https://github.com/DocRaptor/docraptor-csharp/tags and make a new release for the version. Use the git tag as the name, CHANGELOG entries as the description, and attach `bin/*.dll` and `bin/*.xml` to the release
-13. Refresh documentation on docraptor.com
+5. Run `script/generate_language` to update generated version numbers:
+  - `src/DocRaptor/Properties/AssemblyInfo.cs`
+  - `src/DocRaptor/Client/Configuration.cs` (4 places)
+6. Update [CHANGELOG.md](CHANGELOG.md)
+7. Commit "Release vX.Y.Z"
+8. Push to GitHub
+9. Tag version: `git tag 'vX.Y.Z' && git push --tags`
+10. Build package using `script/build`
+11. `script/nuget push bin/DocRaptor.X.Y.Z.nupkg <api_key> -Source https://api.nuget.org/v3/index.json`
+12. Verify package release at https://www.nuget.org/packages
+13. Open https://github.com/DocRaptor/docraptor-csharp/tags and make a new release for the version. Use the git tag as the name, CHANGELOG entries as the description, and attach `bin/*.dll` and `bin/*.xml` to the release
+14. Refresh documentation on docraptor.com
 
 
 ## Version Policy
