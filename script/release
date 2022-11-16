@@ -3,10 +3,6 @@ set -e
 [[ "$TRACE" == "true" ]] && set -x
 cd "$(dirname "$0")/.."
 
-if [[ $(ls bin/DocRaptor*.nupkg) ]] && [ "$1" == "lazy" ]; then
-  exit
-fi
-
 if [[ "$INSIDE_DOCKER" != "true" ]]; then
   exec script/docker "/app/script/$(basename "$0")"
 fi
