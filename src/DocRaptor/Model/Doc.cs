@@ -100,7 +100,7 @@ namespace DocRaptor.Model
         /// </summary>
         /// <param name="name">A name for identifying your document. (required).</param>
         /// <param name="documentType">The type of document being created. (required).</param>
-        /// <param name="documentContent">The HTML data to be transformed into a document. You must supply content using document_content or document_url.  (required).</param>
+        /// <param name="documentContent">The HTML data to be transformed into a document. You must supply content using document_content or document_url. .</param>
         /// <param name="documentUrl">The URL to fetch the HTML data to be transformed into a document. You must supply content using document_content or document_url. .</param>
         /// <param name="test">Enable test mode for this document. Test documents are not charged for but include a watermark. (default to true).</param>
         /// <param name="pipeline">Specify a specific verison of the DocRaptor Pipeline to use..</param>
@@ -137,16 +137,7 @@ namespace DocRaptor.Model
                 this.DocumentType = documentType;
             }
 
-            // to ensure "documentContent" is required (not null)
-            if (documentContent == null)
-            {
-                throw new InvalidDataException("documentContent is a required property for Doc and cannot be null");
-            }
-            else
-            {
-                this.DocumentContent = documentContent;
-            }
-
+            this.DocumentContent = documentContent;
             this.DocumentUrl = documentUrl;
             // use default value if no "test" provided
             if (test == null)
@@ -215,7 +206,7 @@ namespace DocRaptor.Model
         /// The HTML data to be transformed into a document. You must supply content using document_content or document_url.
         /// </summary>
         /// <value>The HTML data to be transformed into a document. You must supply content using document_content or document_url. </value>
-        [DataMember(Name="document_content", EmitDefaultValue=true)]
+        [DataMember(Name="document_content", EmitDefaultValue=false)]
         public string DocumentContent { get; set; }
 
         /// <summary>
