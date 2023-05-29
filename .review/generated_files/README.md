@@ -125,11 +125,13 @@ Class | Method | HTTP request | Description
  - [Model.PrinceOptions](docs/PrinceOptions.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
 
+Authentication schemes defined for the API:
+<a id="basicAuth"></a>
 ### basicAuth
-
 
 - **Type**: HTTP basic authentication
 
