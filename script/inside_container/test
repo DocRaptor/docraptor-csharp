@@ -4,6 +4,9 @@ cd "$(dirname "$0")/../.."
 
 # script/build
 
+apt update
+apt install poppler-utils -y
+
 # runs a test file with PASS/FAIL message
 run_test() {
   export TEST_NAME="$(basename "$1")"
