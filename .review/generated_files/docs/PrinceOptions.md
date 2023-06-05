@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **HttpProxy** | **string** | Set the HTTP proxy server. | [optional] 
 **HttpTimeout** | **int** | Set the HTTP request timeout. | [optional] 
 **Insecure** | **bool** | Disable SSL verification. | [optional] 
-**Media** | **string** | Specify the CSS media type. Defaults to \&quot;print\&quot; but you may want to use \&quot;screen\&quot; for web styles. | [optional] [default to "print"]
+**Media** | **string** | Specify the CSS media type. Defaults to \&quot;print\&quot; but you may want to use \&quot;screen\&quot; for web styles. | [optional] 
 **NoAuthorStyle** | **bool** | Ignore author stylesheets. | [optional] 
 **NoDefaultStyle** | **bool** | Ignore default stylesheets. | [optional] 
 **NoEmbedFonts** | **bool** | Disable font embedding in PDFs. | [optional] 
@@ -29,15 +29,12 @@ Name | Type | Description | Notes
 **DisallowAnnotate** | **bool** | Disallow annotation of this PDF. | [optional] 
 **DisallowModify** | **bool** | Disallow modification of this PDF. | [optional] 
 **Debug** | **bool** | Enable Prince debug mode. | [optional] 
-**Input** | **string** | Specify the input format. | [optional] [default to InputEnum.Html]
+**Input** | **string** | Specify the input format, defaults to html. | [optional] 
 **_Version** | **string** | Deprecated, use the appropriate &#x60;pipeline&#x60; version. Specify a specific verison of PrinceXML to use. | [optional] 
 **Javascript** | **bool** | Enable PrinceXML JavaScript. DocRaptor JavaScript parsing is also available elsewhere. | [optional] 
 **CssDpi** | **int** | Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up. | [optional] 
 **Profile** | **string** | In Prince 9.0 and up you can set the PDF profile. | [optional] 
 **PdfTitle** | **string** | Specify the PDF title, part of the document&#39;s metadata. | [optional] 
-**Iframes** | **bool** | Enable loading of iframes. | [optional] 
-**PageMargin** | **string** | Specify the page margin distance. | [optional] 
-**PdfForms** | **bool** | Make form fields editable by default. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

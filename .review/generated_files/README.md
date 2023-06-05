@@ -83,7 +83,7 @@ namespace Example
             Configuration.Default.Password = "YOUR_PASSWORD";
 
             var apiInstance = new DocApi(Configuration.Default);
-            var doc = new Doc(); // Doc | The document to be created.
+            var doc = new Doc(); // Doc | 
 
             try
             {

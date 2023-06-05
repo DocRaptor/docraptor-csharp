@@ -43,7 +43,7 @@ namespace Example
             Configuration.Default.Password = "YOUR_PASSWORD";
 
             var apiInstance = new DocApi(Configuration.Default);
-            var doc = new Doc(); // Doc | The document to be created.
+            var doc = new Doc(); // Doc | 
 
             try
             {
@@ -66,7 +66,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **doc** | [**Doc**](Doc.md)| The document to be created. | 
+ **doc** | [**Doc**](Doc.md)|  | 
 
 ### Return type
 
@@ -78,8 +78,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/xml, application/pdf, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+- **Content-Type**: application/json
+- **Accept**: */*
 
 
 ### HTTP response details
@@ -127,7 +127,7 @@ namespace Example
             Configuration.Default.Password = "YOUR_PASSWORD";
 
             var apiInstance = new DocApi(Configuration.Default);
-            var doc = new Doc(); // Doc | The document to be created.
+            var doc = new Doc(); // Doc | 
 
             try
             {
@@ -150,7 +150,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **doc** | [**Doc**](Doc.md)| The document to be created. | 
+ **doc** | [**Doc**](Doc.md)|  | 
 
 ### Return type
 
@@ -162,8 +162,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/xml, application/pdf, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+- **Content-Type**: application/json
+- **Accept**: */*
 
 
 ### HTTP response details
@@ -211,7 +211,7 @@ namespace Example
             Configuration.Default.Password = "YOUR_PASSWORD";
 
             var apiInstance = new DocApi(Configuration.Default);
-            var doc = new Doc(); // Doc | The document to be created.
+            var doc = new Doc(); // Doc | 
 
             try
             {
@@ -234,7 +234,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **doc** | [**Doc**](Doc.md)| The document to be created. | 
+ **doc** | [**Doc**](Doc.md)|  | 
 
 ### Return type
 
@@ -246,8 +246,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/xml, application/pdf, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+- **Content-Type**: application/json
+- **Accept**: */*
 
 
 ### HTTP response details
@@ -330,8 +330,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/xml, application/pdf, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+- **Content-Type**: application/json
+- **Accept**: */*
 
 
 ### HTTP response details
@@ -496,7 +496,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/xml, application/pdf, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+- **Accept**: */*
 
 
 ### HTTP response details
@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/xml, application/pdf, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+- **Accept**: */*
 
 
 ### HTTP response details

@@ -32,7 +32,7 @@ namespace DocRaptor.Api
         /// Creates a document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>AsyncDoc</returns>
         AsyncDoc CreateAsyncDoc (Doc doc);
 
@@ -43,7 +43,7 @@ namespace DocRaptor.Api
         /// Creates a document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>ApiResponse of AsyncDoc</returns>
         ApiResponse<AsyncDoc> CreateAsyncDocWithHttpInfo (Doc doc);
         /// <summary>
@@ -53,7 +53,7 @@ namespace DocRaptor.Api
         /// Creates a document synchronously.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>byte[]</returns>
         byte[] CreateDoc (Doc doc);
 
@@ -64,7 +64,7 @@ namespace DocRaptor.Api
         /// Creates a document synchronously.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>ApiResponse of byte[]</returns>
         ApiResponse<byte[]> CreateDocWithHttpInfo (Doc doc);
         /// <summary>
@@ -74,7 +74,7 @@ namespace DocRaptor.Api
         /// Creates a hosted document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>AsyncDoc</returns>
         AsyncDoc CreateHostedAsyncDoc (Doc doc);
 
@@ -85,7 +85,7 @@ namespace DocRaptor.Api
         /// Creates a hosted document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>ApiResponse of AsyncDoc</returns>
         ApiResponse<AsyncDoc> CreateHostedAsyncDocWithHttpInfo (Doc doc);
         /// <summary>
@@ -181,7 +181,7 @@ namespace DocRaptor.Api
         /// Creates a document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of AsyncDoc</returns>
         System.Threading.Tasks.Task<AsyncDoc> CreateAsyncDocAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken));
@@ -193,7 +193,7 @@ namespace DocRaptor.Api
         /// Creates a document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (AsyncDoc)</returns>
         System.Threading.Tasks.Task<ApiResponse<AsyncDoc>> CreateAsyncDocWithHttpInfoAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken));
@@ -204,7 +204,7 @@ namespace DocRaptor.Api
         /// Creates a document synchronously.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of byte[]</returns>
         System.Threading.Tasks.Task<byte[]> CreateDocAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken));
@@ -216,7 +216,7 @@ namespace DocRaptor.Api
         /// Creates a document synchronously.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (byte[])</returns>
         System.Threading.Tasks.Task<ApiResponse<byte[]>> CreateDocWithHttpInfoAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken));
@@ -227,7 +227,7 @@ namespace DocRaptor.Api
         /// Creates a hosted document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of AsyncDoc</returns>
         System.Threading.Tasks.Task<AsyncDoc> CreateHostedAsyncDocAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken));
@@ -239,7 +239,7 @@ namespace DocRaptor.Api
         /// Creates a hosted document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </remarks>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (AsyncDoc)</returns>
         System.Threading.Tasks.Task<ApiResponse<AsyncDoc>> CreateHostedAsyncDocWithHttpInfoAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken));
@@ -450,7 +450,7 @@ namespace DocRaptor.Api
         ///  Creates a document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>AsyncDoc</returns>
         public AsyncDoc CreateAsyncDoc (Doc doc)
         {
@@ -462,7 +462,7 @@ namespace DocRaptor.Api
         ///  Creates a document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>ApiResponse of AsyncDoc</returns>
         public ApiResponse<AsyncDoc> CreateAsyncDocWithHttpInfo (Doc doc)
         {
@@ -480,16 +480,13 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -533,7 +530,7 @@ namespace DocRaptor.Api
         ///  Creates a document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of AsyncDoc</returns>
         public async System.Threading.Tasks.Task<AsyncDoc> CreateAsyncDocAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken))
@@ -547,7 +544,7 @@ namespace DocRaptor.Api
         ///  Creates a document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (AsyncDoc)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<AsyncDoc>> CreateAsyncDocWithHttpInfoAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken))
@@ -566,16 +563,13 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -619,7 +613,7 @@ namespace DocRaptor.Api
         ///  Creates a document synchronously.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>byte[]</returns>
         public byte[] CreateDoc (Doc doc)
         {
@@ -631,7 +625,7 @@ namespace DocRaptor.Api
         ///  Creates a document synchronously.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>ApiResponse of byte[]</returns>
         public ApiResponse<byte[]> CreateDocWithHttpInfo (Doc doc)
         {
@@ -649,16 +643,13 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -702,7 +693,7 @@ namespace DocRaptor.Api
         ///  Creates a document synchronously.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of byte[]</returns>
         public async System.Threading.Tasks.Task<byte[]> CreateDocAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken))
@@ -716,7 +707,7 @@ namespace DocRaptor.Api
         ///  Creates a document synchronously.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (byte[])</returns>
         public async System.Threading.Tasks.Task<ApiResponse<byte[]>> CreateDocWithHttpInfoAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken))
@@ -735,16 +726,13 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -788,7 +776,7 @@ namespace DocRaptor.Api
         ///  Creates a hosted document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>AsyncDoc</returns>
         public AsyncDoc CreateHostedAsyncDoc (Doc doc)
         {
@@ -800,7 +788,7 @@ namespace DocRaptor.Api
         ///  Creates a hosted document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <returns>ApiResponse of AsyncDoc</returns>
         public ApiResponse<AsyncDoc> CreateHostedAsyncDocWithHttpInfo (Doc doc)
         {
@@ -818,16 +806,13 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -871,7 +856,7 @@ namespace DocRaptor.Api
         ///  Creates a hosted document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of AsyncDoc</returns>
         public async System.Threading.Tasks.Task<AsyncDoc> CreateHostedAsyncDocAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken))
@@ -885,7 +870,7 @@ namespace DocRaptor.Api
         ///  Creates a hosted document asynchronously. You must use a callback url or the returned status id and the status API to find out when it completes. Then use the download API to get the document.
         /// </summary>
         /// <exception cref="DocRaptor.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="doc">The document to be created.</param>
+        /// <param name="doc"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (AsyncDoc)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<AsyncDoc>> CreateHostedAsyncDocWithHttpInfoAsync (Doc doc, CancellationToken cancellationToken = default(CancellationToken))
@@ -904,16 +889,13 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -987,16 +969,13 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1073,16 +1052,13 @@ namespace DocRaptor.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1304,11 +1280,7 @@ namespace DocRaptor.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1383,11 +1355,7 @@ namespace DocRaptor.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1459,11 +1427,7 @@ namespace DocRaptor.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1538,11 +1502,7 @@ namespace DocRaptor.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "application/xml",
-                "application/pdf",
-                "application/vnd.ms-excel",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                "*/*"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
