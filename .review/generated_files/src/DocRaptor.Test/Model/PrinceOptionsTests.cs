@@ -305,6 +305,30 @@ namespace DocRaptor.Test
         {
             // TODO unit test for the property 'PdfTitle'
         }
+        /// <summary>
+        /// Test the property 'Iframes'
+        /// </summary>
+        [Test]
+        public void IframesTest()
+        {
+            // TODO unit test for the property 'Iframes'
+        }
+        /// <summary>
+        /// Test the property 'PageMargin'
+        /// </summary>
+        [Test]
+        public void PageMarginTest()
+        {
+            // TODO unit test for the property 'PageMargin'
+        }
+        /// <summary>
+        /// Test the property 'PdfForms'
+        /// </summary>
+        [Test]
+        public void PdfFormsTest()
+        {
+            // TODO unit test for the property 'PdfForms'
+        }
 
     }
 

@@ -120,8 +120,12 @@ namespace DocRaptor.Model
         /// <param name="cssDpi">Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up..</param>
         /// <param name="profile">In Prince 9.0 and up you can set the PDF profile..</param>
         /// <param name="pdfTitle">Specify the PDF title, part of the document&#39;s metadata..</param>
-        public PrinceOptions(string baseurl = default(string), bool noXinclude = default(bool), bool noNetwork = default(bool), bool noParallelDownloads = default(bool), string httpUser = default(string), string httpPassword = default(string), string httpProxy = default(string), int httpTimeout = default(int), bool insecure = default(bool), string media = default(string), bool noAuthorStyle = default(bool), bool noDefaultStyle = default(bool), bool noEmbedFonts = default(bool), bool noSubsetFonts = default(bool), bool noCompress = default(bool), bool encrypt = default(bool), KeyBitsEnum? keyBits = default(KeyBitsEnum?), string userPassword = default(string), string ownerPassword = default(string), bool disallowPrint = default(bool), bool disallowCopy = default(bool), bool disallowAnnotate = default(bool), bool disallowModify = default(bool), bool debug = default(bool), InputEnum? input = default(InputEnum?), string version = default(string), bool javascript = default(bool), int cssDpi = default(int), string profile = default(string), string pdfTitle = default(string))
+        /// <param name="iframes">Enable loading of iframes..</param>
+        /// <param name="pageMargin">Specify the page margin distance..</param>
+        /// <param name="pdfForms">Make form fields editable by default..</param>
+        public PrinceOptions(string baseurl = default(string), bool noXinclude = default(bool), bool noNetwork = default(bool), bool noParallelDownloads = default(bool), string httpUser = default(string), string httpPassword = default(string), string httpProxy = default(string), int httpTimeout = default(int), bool insecure = default(bool), string media = default(string), bool noAuthorStyle = default(bool), bool noDefaultStyle = default(bool), bool noEmbedFonts = default(bool), bool noSubsetFonts = default(bool), bool noCompress = default(bool), bool encrypt = default(bool), KeyBitsEnum? keyBits = default(KeyBitsEnum?), string userPassword = default(string), string ownerPassword = default(string), bool disallowPrint = default(bool), bool disallowCopy = default(bool), bool disallowAnnotate = default(bool), bool disallowModify = default(bool), bool debug = default(bool), InputEnum? input = default(InputEnum?), string version = default(string), bool javascript = default(bool), int cssDpi = default(int), string profile = default(string), string pdfTitle = default(string), bool? iframes = default(bool?), string pageMargin = default(string), bool pdfForms = default(bool))
         {
+            this.Iframes = iframes;
             this.Baseurl = baseurl;
             this.NoXinclude = noXinclude;
             this.NoNetwork = noNetwork;
@@ -152,6 +156,9 @@ namespace DocRaptor.Model
             this.CssDpi = cssDpi;
             this.Profile = profile;
             this.PdfTitle = pdfTitle;
+            this.Iframes = iframes;
+            this.PageMargin = pageMargin;
+            this.PdfForms = pdfForms;
         }
 
         /// <summary>
@@ -354,6 +361,27 @@ namespace DocRaptor.Model
         public string PdfTitle { get; set; }
 
         /// <summary>
+        /// Enable loading of iframes.
+        /// </summary>
+        /// <value>Enable loading of iframes.</value>
+        [DataMember(Name="iframes", EmitDefaultValue=true)]
+        public bool? Iframes { get; set; }
+
+        /// <summary>
+        /// Specify the page margin distance.
+        /// </summary>
+        /// <value>Specify the page margin distance.</value>
+        [DataMember(Name="page_margin", EmitDefaultValue=false)]
+        public string PageMargin { get; set; }
+
+        /// <summary>
+        /// Make form fields editable by default.
+        /// </summary>
+        /// <value>Make form fields editable by default.</value>
+        [DataMember(Name="pdf_forms", EmitDefaultValue=false)]
+        public bool PdfForms { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -391,6 +419,9 @@ namespace DocRaptor.Model
             sb.Append("  CssDpi: ").Append(CssDpi).Append("\n");
             sb.Append("  Profile: ").Append(Profile).Append("\n");
             sb.Append("  PdfTitle: ").Append(PdfTitle).Append("\n");
+            sb.Append("  Iframes: ").Append(Iframes).Append("\n");
+            sb.Append("  PageMargin: ").Append(PageMargin).Append("\n");
+            sb.Append("  PdfForms: ").Append(PdfForms).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -574,6 +605,21 @@ namespace DocRaptor.Model
                     this.PdfTitle == input.PdfTitle ||
                     (this.PdfTitle != null &&
                     this.PdfTitle.Equals(input.PdfTitle))
+                ) &&
+                (
+                    this.Iframes == input.Iframes ||
+                    (this.Iframes != null &&
+                    this.Iframes.Equals(input.Iframes))
+                ) &&
+                (
+                    this.PageMargin == input.PageMargin ||
+                    (this.PageMargin != null &&
+                    this.PageMargin.Equals(input.PageMargin))
+                ) &&
+                (
+                    this.PdfForms == input.PdfForms ||
+                    (this.PdfForms != null &&
+                    this.PdfForms.Equals(input.PdfForms))
                 );
         }
 
@@ -646,6 +692,12 @@ namespace DocRaptor.Model
                     hashCode = hashCode * 59 + this.Profile.GetHashCode();
                 if (this.PdfTitle != null)
                     hashCode = hashCode * 59 + this.PdfTitle.GetHashCode();
+                if (this.Iframes != null)
+                    hashCode = hashCode * 59 + this.Iframes.GetHashCode();
+                if (this.PageMargin != null)
+                    hashCode = hashCode * 59 + this.PageMargin.GetHashCode();
+                if (this.PdfForms != null)
+                    hashCode = hashCode * 59 + this.PdfForms.GetHashCode();
                 return hashCode;
             }
         }
