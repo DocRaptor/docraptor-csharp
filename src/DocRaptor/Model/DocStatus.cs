@@ -9,18 +9,11 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = DocRaptor.Client.OpenAPIDateConverter;
 
 namespace DocRaptor.Model
 {
@@ -39,7 +32,7 @@ namespace DocRaptor.Model
         /// <param name="message">Additional information..</param>
         /// <param name="numberOfPages">Number of PDF pages in document..</param>
         /// <param name="validationErrors">Error information..</param>
-        public DocStatus(string status = default(string), string downloadUrl = default(string), string downloadId = default(string), string message = default(string), int numberOfPages = default(int), string validationErrors = default(string))
+        public DocStatus(string status = default(string), string downloadUrl = default(string), string downloadId = default(string), string message = default(string), int? numberOfPages = default(int?), string validationErrors = default(string))
         {
             this.Status = status;
             this.DownloadUrl = downloadUrl;
@@ -82,7 +75,7 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>Number of PDF pages in document.</value>
         [DataMember(Name="number_of_pages", EmitDefaultValue=false)]
-        public int NumberOfPages { get; set; }
+        public int? NumberOfPages { get; set; }
 
         /// <summary>
         /// Error information.
@@ -115,7 +108,7 @@ namespace DocRaptor.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>

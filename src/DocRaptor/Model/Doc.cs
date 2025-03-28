@@ -9,18 +9,13 @@
  */
 
 using System;
-using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = DocRaptor.Client.OpenAPIDateConverter;
 
 namespace DocRaptor.Model
 {
@@ -54,14 +49,13 @@ namespace DocRaptor.Model
             /// </summary>
             [EnumMember(Value = "xlsx")]
             Xlsx = 3
-
         }
 
         /// <summary>
         /// The type of document being created.
         /// </summary>
         /// <value>The type of document being created.</value>
-        [DataMember(Name="document_type", EmitDefaultValue=true)]
+        [DataMember(Name="document_type", EmitDefaultValue=false)]
         public DocumentTypeEnum DocumentType { get; set; }
         /// <summary>
         /// Force strict HTML validation.
@@ -70,6 +64,7 @@ namespace DocRaptor.Model
         [JsonConverter(typeof(StringEnumConverter))]
         public enum StrictEnum
         {
+
             /// <summary>
             /// Enum None for value: none
             /// </summary>
@@ -81,7 +76,6 @@ namespace DocRaptor.Model
             /// </summary>
             [EnumMember(Value = "html")]
             Html = 2
-
         }
 
         /// <summary>
@@ -100,7 +94,7 @@ namespace DocRaptor.Model
         /// </summary>
         /// <param name="name">A name for identifying your document. (required).</param>
         /// <param name="documentType">The type of document being created. (required).</param>
-        /// <param name="documentContent">The HTML data to be transformed into a document. You must supply content using document_content or document_url. .</param>
+        /// <param name="documentContent">The HTML data to be transformed into a document. You must supply content using document_content or document_url.  (required).</param>
         /// <param name="documentUrl">The URL to fetch the HTML data to be transformed into a document. You must supply content using document_content or document_url. .</param>
         /// <param name="test">Enable test mode for this document. Test documents are not charged for but include a watermark. (default to true).</param>
         /// <param name="pipeline">Specify a specific verison of the DocRaptor Pipeline to use..</param>
@@ -115,7 +109,7 @@ namespace DocRaptor.Model
         /// <param name="hostedDownloadLimit">The number of times a hosted document can be downloaded.  If no limit is specified, the document will be available for an unlimited number of downloads..</param>
         /// <param name="hostedExpiresAt">The date and time at which a hosted document will be removed and no longer available. Must be a properly formatted ISO 8601 datetime, like 1981-01-23T08:02:30-05:00..</param>
         /// <param name="princeOptions">princeOptions.</param>
-        public Doc(string name = default(string), DocumentTypeEnum documentType = default(DocumentTypeEnum), string documentContent = default(string), string documentUrl = default(string), bool test = true, string pipeline = default(string), StrictEnum? strict = default(StrictEnum?), bool ignoreResourceErrors = true, bool ignoreConsoleMessages = false, string tag = default(string), bool help = false, bool javascript = false, string referrer = default(string), string callbackUrl = default(string), int hostedDownloadLimit = default(int), string hostedExpiresAt = default(string), PrinceOptions princeOptions = default(PrinceOptions))
+        public Doc(string name = default(string), DocumentTypeEnum documentType = default(DocumentTypeEnum), string documentContent = default(string), string documentUrl = default(string), bool? test = true, string pipeline = default(string), StrictEnum? strict = default(StrictEnum?), bool? ignoreResourceErrors = true, bool? ignoreConsoleMessages = false, string tag = default(string), bool? help = false, bool? javascript = false, string referrer = default(string), string callbackUrl = default(string), int? hostedDownloadLimit = default(int?), string hostedExpiresAt = default(string), PrinceOptions princeOptions = default(PrinceOptions))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -126,7 +120,6 @@ namespace DocRaptor.Model
             {
                 this.Name = name;
             }
-
             // to ensure "documentType" is required (not null)
             if (documentType == null)
             {
@@ -136,8 +129,15 @@ namespace DocRaptor.Model
             {
                 this.DocumentType = documentType;
             }
-
-            this.DocumentContent = documentContent;
+            // to ensure "documentContent" is required (not null)
+            if (documentContent == null)
+            {
+                throw new InvalidDataException("documentContent is a required property for Doc and cannot be null");
+            }
+            else
+            {
+                this.DocumentContent = documentContent;
+            }
             this.DocumentUrl = documentUrl;
             // use default value if no "test" provided
             if (test == null)
@@ -198,7 +198,7 @@ namespace DocRaptor.Model
         /// A name for identifying your document.
         /// </summary>
         /// <value>A name for identifying your document.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
 
@@ -221,7 +221,7 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>Enable test mode for this document. Test documents are not charged for but include a watermark.</value>
         [DataMember(Name="test", EmitDefaultValue=false)]
-        public bool Test { get; set; }
+        public bool? Test { get; set; }
 
         /// <summary>
         /// Specify a specific verison of the DocRaptor Pipeline to use.
@@ -236,14 +236,14 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>Failed loading of images/javascripts/stylesheets/etc. will not cause the rendering to stop.</value>
         [DataMember(Name="ignore_resource_errors", EmitDefaultValue=false)]
-        public bool IgnoreResourceErrors { get; set; }
+        public bool? IgnoreResourceErrors { get; set; }
 
         /// <summary>
         /// Prevent console.log from stopping document rendering during JavaScript execution.
         /// </summary>
         /// <value>Prevent console.log from stopping document rendering during JavaScript execution.</value>
         [DataMember(Name="ignore_console_messages", EmitDefaultValue=false)]
-        public bool IgnoreConsoleMessages { get; set; }
+        public bool? IgnoreConsoleMessages { get; set; }
 
         /// <summary>
         /// A field for storing a small amount of metadata with this document.
@@ -257,14 +257,14 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>Request support help with this request if it succeeds.</value>
         [DataMember(Name="help", EmitDefaultValue=false)]
-        public bool Help { get; set; }
+        public bool? Help { get; set; }
 
         /// <summary>
         /// Enable DocRaptor JavaScript parsing. PrinceXML JavaScript parsing is also available elsewhere.
         /// </summary>
         /// <value>Enable DocRaptor JavaScript parsing. PrinceXML JavaScript parsing is also available elsewhere.</value>
         [DataMember(Name="javascript", EmitDefaultValue=false)]
-        public bool Javascript { get; set; }
+        public bool? Javascript { get; set; }
 
         /// <summary>
         /// Set HTTP referrer when generating this document.
@@ -285,7 +285,7 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>The number of times a hosted document can be downloaded.  If no limit is specified, the document will be available for an unlimited number of downloads.</value>
         [DataMember(Name="hosted_download_limit", EmitDefaultValue=false)]
-        public int HostedDownloadLimit { get; set; }
+        public int? HostedDownloadLimit { get; set; }
 
         /// <summary>
         /// The date and time at which a hosted document will be removed and no longer available. Must be a properly formatted ISO 8601 datetime, like 1981-01-23T08:02:30-05:00.
@@ -335,7 +335,7 @@ namespace DocRaptor.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>

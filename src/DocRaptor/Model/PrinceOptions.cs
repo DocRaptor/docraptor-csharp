@@ -9,18 +9,12 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = DocRaptor.Client.OpenAPIDateConverter;
 
 namespace DocRaptor.Model
 {
@@ -31,36 +25,13 @@ namespace DocRaptor.Model
     public partial class PrinceOptions :  IEquatable<PrinceOptions>, IValidatableObject
     {
         /// <summary>
-        /// Set encryption key size.
+        /// Specify the input format.
         /// </summary>
-        /// <value>Set encryption key size.</value>
-        public enum KeyBitsEnum
-        {
-            /// <summary>
-            /// Enum NUMBER_40 for value: 40
-            /// </summary>
-            NUMBER_40 = 40,
-
-            /// <summary>
-            /// Enum NUMBER_128 for value: 128
-            /// </summary>
-            NUMBER_128 = 128
-
-        }
-
-        /// <summary>
-        /// Set encryption key size.
-        /// </summary>
-        /// <value>Set encryption key size.</value>
-        [DataMember(Name="key_bits", EmitDefaultValue=false)]
-        public KeyBitsEnum? KeyBits { get; set; }
-        /// <summary>
-        /// Specify the input format, defaults to html.
-        /// </summary>
-        /// <value>Specify the input format, defaults to html.</value>
+        /// <value>Specify the input format.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum InputEnum
         {
+
             /// <summary>
             /// Enum Html for value: html
             /// </summary>
@@ -78,13 +49,12 @@ namespace DocRaptor.Model
             /// </summary>
             [EnumMember(Value = "auto")]
             Auto = 3
-
         }
 
         /// <summary>
-        /// Specify the input format, defaults to html.
+        /// Specify the input format.
         /// </summary>
-        /// <value>Specify the input format, defaults to html.</value>
+        /// <value>Specify the input format.</value>
         [DataMember(Name="input", EmitDefaultValue=false)]
         public InputEnum? Input { get; set; }
         /// <summary>
@@ -99,7 +69,7 @@ namespace DocRaptor.Model
         /// <param name="httpProxy">Set the HTTP proxy server..</param>
         /// <param name="httpTimeout">Set the HTTP request timeout..</param>
         /// <param name="insecure">Disable SSL verification..</param>
-        /// <param name="media">Specify the CSS media type. Defaults to \&quot;print\&quot; but you may want to use \&quot;screen\&quot; for web styles..</param>
+        /// <param name="media">Specify the CSS media type. Defaults to \&quot;print\&quot; but you may want to use \&quot;screen\&quot; for web styles. (default to &quot;print&quot;).</param>
         /// <param name="noAuthorStyle">Ignore author stylesheets..</param>
         /// <param name="noDefaultStyle">Ignore default stylesheets..</param>
         /// <param name="noEmbedFonts">Disable font embedding in PDFs..</param>
@@ -114,18 +84,14 @@ namespace DocRaptor.Model
         /// <param name="disallowAnnotate">Disallow annotation of this PDF..</param>
         /// <param name="disallowModify">Disallow modification of this PDF..</param>
         /// <param name="debug">Enable Prince debug mode..</param>
-        /// <param name="input">Specify the input format, defaults to html..</param>
+        /// <param name="input">Specify the input format. (default to InputEnum.Html).</param>
         /// <param name="version">Deprecated, use the appropriate &#x60;pipeline&#x60; version. Specify a specific verison of PrinceXML to use..</param>
         /// <param name="javascript">Enable PrinceXML JavaScript. DocRaptor JavaScript parsing is also available elsewhere..</param>
         /// <param name="cssDpi">Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up..</param>
         /// <param name="profile">In Prince 9.0 and up you can set the PDF profile..</param>
         /// <param name="pdfTitle">Specify the PDF title, part of the document&#39;s metadata..</param>
-        /// <param name="iframes">Enable loading of iframes..</param>
-        /// <param name="pageMargin">Specify the page margin distance..</param>
-        /// <param name="pdfForms">Make form fields editable by default..</param>
-        public PrinceOptions(string baseurl = default(string), bool noXinclude = default(bool), bool noNetwork = default(bool), bool noParallelDownloads = default(bool), string httpUser = default(string), string httpPassword = default(string), string httpProxy = default(string), int httpTimeout = default(int), bool insecure = default(bool), string media = default(string), bool noAuthorStyle = default(bool), bool noDefaultStyle = default(bool), bool noEmbedFonts = default(bool), bool noSubsetFonts = default(bool), bool noCompress = default(bool), bool encrypt = default(bool), KeyBitsEnum? keyBits = default(KeyBitsEnum?), string userPassword = default(string), string ownerPassword = default(string), bool disallowPrint = default(bool), bool disallowCopy = default(bool), bool disallowAnnotate = default(bool), bool disallowModify = default(bool), bool debug = default(bool), InputEnum? input = default(InputEnum?), string version = default(string), bool javascript = default(bool), int cssDpi = default(int), string profile = default(string), string pdfTitle = default(string), bool? iframes = default(bool?), string pageMargin = default(string), bool pdfForms = default(bool))
+        public PrinceOptions(string baseurl = default(string), bool? noXinclude = default(bool?), bool? noNetwork = default(bool?), bool? noParallelDownloads = default(bool?), string httpUser = default(string), string httpPassword = default(string), string httpProxy = default(string), int? httpTimeout = default(int?), bool? insecure = default(bool?), string media = "print", bool? noAuthorStyle = default(bool?), bool? noDefaultStyle = default(bool?), bool? noEmbedFonts = default(bool?), bool? noSubsetFonts = default(bool?), bool? noCompress = default(bool?), bool? encrypt = default(bool?), int? keyBits = default(int?), string userPassword = default(string), string ownerPassword = default(string), bool? disallowPrint = default(bool?), bool? disallowCopy = default(bool?), bool? disallowAnnotate = default(bool?), bool? disallowModify = default(bool?), bool? debug = default(bool?), InputEnum? input = InputEnum.Html, string version = default(string), bool? javascript = default(bool?), int? cssDpi = default(int?), string profile = default(string), string pdfTitle = default(string))
         {
-            this.Iframes = iframes;
             this.Baseurl = baseurl;
             this.NoXinclude = noXinclude;
             this.NoNetwork = noNetwork;
@@ -135,7 +101,15 @@ namespace DocRaptor.Model
             this.HttpProxy = httpProxy;
             this.HttpTimeout = httpTimeout;
             this.Insecure = insecure;
-            this.Media = media;
+            // use default value if no "media" provided
+            if (media == null)
+            {
+                this.Media = "print";
+            }
+            else
+            {
+                this.Media = media;
+            }
             this.NoAuthorStyle = noAuthorStyle;
             this.NoDefaultStyle = noDefaultStyle;
             this.NoEmbedFonts = noEmbedFonts;
@@ -150,15 +124,20 @@ namespace DocRaptor.Model
             this.DisallowAnnotate = disallowAnnotate;
             this.DisallowModify = disallowModify;
             this.Debug = debug;
-            this.Input = input;
-            this._Version = version;
+            // use default value if no "input" provided
+            if (input == null)
+            {
+                this.Input = InputEnum.Html;
+            }
+            else
+            {
+                this.Input = input;
+            }
+            this.Version = version;
             this.Javascript = javascript;
             this.CssDpi = cssDpi;
             this.Profile = profile;
             this.PdfTitle = pdfTitle;
-            this.Iframes = iframes;
-            this.PageMargin = pageMargin;
-            this.PdfForms = pdfForms;
         }
 
         /// <summary>
@@ -173,21 +152,21 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>Disable XML inclusion.</value>
         [DataMember(Name="no_xinclude", EmitDefaultValue=false)]
-        public bool NoXinclude { get; set; }
+        public bool? NoXinclude { get; set; }
 
         /// <summary>
         /// Disable network access.
         /// </summary>
         /// <value>Disable network access.</value>
         [DataMember(Name="no_network", EmitDefaultValue=false)]
-        public bool NoNetwork { get; set; }
+        public bool? NoNetwork { get; set; }
 
         /// <summary>
         /// Disables parallel fetching of assets during PDF creation. Useful if your asset host has strict rate limiting.
         /// </summary>
         /// <value>Disables parallel fetching of assets during PDF creation. Useful if your asset host has strict rate limiting.</value>
         [DataMember(Name="no_parallel_downloads", EmitDefaultValue=false)]
-        public bool NoParallelDownloads { get; set; }
+        public bool? NoParallelDownloads { get; set; }
 
         /// <summary>
         /// Set the user for HTTP authentication.
@@ -215,14 +194,14 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>Set the HTTP request timeout.</value>
         [DataMember(Name="http_timeout", EmitDefaultValue=false)]
-        public int HttpTimeout { get; set; }
+        public int? HttpTimeout { get; set; }
 
         /// <summary>
         /// Disable SSL verification.
         /// </summary>
         /// <value>Disable SSL verification.</value>
         [DataMember(Name="insecure", EmitDefaultValue=false)]
-        public bool Insecure { get; set; }
+        public bool? Insecure { get; set; }
 
         /// <summary>
         /// Specify the CSS media type. Defaults to \&quot;print\&quot; but you may want to use \&quot;screen\&quot; for web styles.
@@ -236,43 +215,49 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>Ignore author stylesheets.</value>
         [DataMember(Name="no_author_style", EmitDefaultValue=false)]
-        public bool NoAuthorStyle { get; set; }
+        public bool? NoAuthorStyle { get; set; }
 
         /// <summary>
         /// Ignore default stylesheets.
         /// </summary>
         /// <value>Ignore default stylesheets.</value>
         [DataMember(Name="no_default_style", EmitDefaultValue=false)]
-        public bool NoDefaultStyle { get; set; }
+        public bool? NoDefaultStyle { get; set; }
 
         /// <summary>
         /// Disable font embedding in PDFs.
         /// </summary>
         /// <value>Disable font embedding in PDFs.</value>
         [DataMember(Name="no_embed_fonts", EmitDefaultValue=false)]
-        public bool NoEmbedFonts { get; set; }
+        public bool? NoEmbedFonts { get; set; }
 
         /// <summary>
         /// Disable font subsetting in PDFs.
         /// </summary>
         /// <value>Disable font subsetting in PDFs.</value>
         [DataMember(Name="no_subset_fonts", EmitDefaultValue=false)]
-        public bool NoSubsetFonts { get; set; }
+        public bool? NoSubsetFonts { get; set; }
 
         /// <summary>
         /// Disable PDF compression.
         /// </summary>
         /// <value>Disable PDF compression.</value>
         [DataMember(Name="no_compress", EmitDefaultValue=false)]
-        public bool NoCompress { get; set; }
+        public bool? NoCompress { get; set; }
 
         /// <summary>
         /// Encrypt PDF output.
         /// </summary>
         /// <value>Encrypt PDF output.</value>
         [DataMember(Name="encrypt", EmitDefaultValue=false)]
-        public bool Encrypt { get; set; }
+        public bool? Encrypt { get; set; }
 
+        /// <summary>
+        /// Set encryption key size.
+        /// </summary>
+        /// <value>Set encryption key size.</value>
+        [DataMember(Name="key_bits", EmitDefaultValue=false)]
+        public int? KeyBits { get; set; }
 
         /// <summary>
         /// Set the PDF user password.
@@ -293,35 +278,35 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>Disallow printing of this PDF.</value>
         [DataMember(Name="disallow_print", EmitDefaultValue=false)]
-        public bool DisallowPrint { get; set; }
+        public bool? DisallowPrint { get; set; }
 
         /// <summary>
         /// Disallow copying of this PDF.
         /// </summary>
         /// <value>Disallow copying of this PDF.</value>
         [DataMember(Name="disallow_copy", EmitDefaultValue=false)]
-        public bool DisallowCopy { get; set; }
+        public bool? DisallowCopy { get; set; }
 
         /// <summary>
         /// Disallow annotation of this PDF.
         /// </summary>
         /// <value>Disallow annotation of this PDF.</value>
         [DataMember(Name="disallow_annotate", EmitDefaultValue=false)]
-        public bool DisallowAnnotate { get; set; }
+        public bool? DisallowAnnotate { get; set; }
 
         /// <summary>
         /// Disallow modification of this PDF.
         /// </summary>
         /// <value>Disallow modification of this PDF.</value>
         [DataMember(Name="disallow_modify", EmitDefaultValue=false)]
-        public bool DisallowModify { get; set; }
+        public bool? DisallowModify { get; set; }
 
         /// <summary>
         /// Enable Prince debug mode.
         /// </summary>
         /// <value>Enable Prince debug mode.</value>
         [DataMember(Name="debug", EmitDefaultValue=false)]
-        public bool Debug { get; set; }
+        public bool? Debug { get; set; }
 
 
         /// <summary>
@@ -329,22 +314,21 @@ namespace DocRaptor.Model
         /// </summary>
         /// <value>Deprecated, use the appropriate &#x60;pipeline&#x60; version. Specify a specific verison of PrinceXML to use.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        [Obsolete]
-        public string _Version { get; set; }
+        public string Version { get; set; }
 
         /// <summary>
         /// Enable PrinceXML JavaScript. DocRaptor JavaScript parsing is also available elsewhere.
         /// </summary>
         /// <value>Enable PrinceXML JavaScript. DocRaptor JavaScript parsing is also available elsewhere.</value>
         [DataMember(Name="javascript", EmitDefaultValue=false)]
-        public bool Javascript { get; set; }
+        public bool? Javascript { get; set; }
 
         /// <summary>
         /// Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up.
         /// </summary>
         /// <value>Set the DPI when rendering CSS. Defaults to 96 but can be set with Prince 9.0 and up.</value>
         [DataMember(Name="css_dpi", EmitDefaultValue=false)]
-        public int CssDpi { get; set; }
+        public int? CssDpi { get; set; }
 
         /// <summary>
         /// In Prince 9.0 and up you can set the PDF profile.
@@ -359,27 +343,6 @@ namespace DocRaptor.Model
         /// <value>Specify the PDF title, part of the document&#39;s metadata.</value>
         [DataMember(Name="pdf_title", EmitDefaultValue=false)]
         public string PdfTitle { get; set; }
-
-        /// <summary>
-        /// Enable loading of iframes.
-        /// </summary>
-        /// <value>Enable loading of iframes.</value>
-        [DataMember(Name="iframes", EmitDefaultValue=true)]
-        public bool? Iframes { get; set; }
-
-        /// <summary>
-        /// Specify the page margin distance.
-        /// </summary>
-        /// <value>Specify the page margin distance.</value>
-        [DataMember(Name="page_margin", EmitDefaultValue=false)]
-        public string PageMargin { get; set; }
-
-        /// <summary>
-        /// Make form fields editable by default.
-        /// </summary>
-        /// <value>Make form fields editable by default.</value>
-        [DataMember(Name="pdf_forms", EmitDefaultValue=false)]
-        public bool PdfForms { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -414,14 +377,11 @@ namespace DocRaptor.Model
             sb.Append("  DisallowModify: ").Append(DisallowModify).Append("\n");
             sb.Append("  Debug: ").Append(Debug).Append("\n");
             sb.Append("  Input: ").Append(Input).Append("\n");
-            sb.Append("  _Version: ").Append(_Version).Append("\n");
+            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("  Javascript: ").Append(Javascript).Append("\n");
             sb.Append("  CssDpi: ").Append(CssDpi).Append("\n");
             sb.Append("  Profile: ").Append(Profile).Append("\n");
             sb.Append("  PdfTitle: ").Append(PdfTitle).Append("\n");
-            sb.Append("  Iframes: ").Append(Iframes).Append("\n");
-            sb.Append("  PageMargin: ").Append(PageMargin).Append("\n");
-            sb.Append("  PdfForms: ").Append(PdfForms).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -432,7 +392,7 @@ namespace DocRaptor.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -582,9 +542,9 @@ namespace DocRaptor.Model
                     this.Input.Equals(input.Input))
                 ) &&
                 (
-                    this._Version == input._Version ||
-                    (this._Version != null &&
-                    this._Version.Equals(input._Version))
+                    this.Version == input.Version ||
+                    (this.Version != null &&
+                    this.Version.Equals(input.Version))
                 ) &&
                 (
                     this.Javascript == input.Javascript ||
@@ -605,21 +565,6 @@ namespace DocRaptor.Model
                     this.PdfTitle == input.PdfTitle ||
                     (this.PdfTitle != null &&
                     this.PdfTitle.Equals(input.PdfTitle))
-                ) &&
-                (
-                    this.Iframes == input.Iframes ||
-                    (this.Iframes != null &&
-                    this.Iframes.Equals(input.Iframes))
-                ) &&
-                (
-                    this.PageMargin == input.PageMargin ||
-                    (this.PageMargin != null &&
-                    this.PageMargin.Equals(input.PageMargin))
-                ) &&
-                (
-                    this.PdfForms == input.PdfForms ||
-                    (this.PdfForms != null &&
-                    this.PdfForms.Equals(input.PdfForms))
                 );
         }
 
@@ -682,8 +627,8 @@ namespace DocRaptor.Model
                     hashCode = hashCode * 59 + this.Debug.GetHashCode();
                 if (this.Input != null)
                     hashCode = hashCode * 59 + this.Input.GetHashCode();
-                if (this._Version != null)
-                    hashCode = hashCode * 59 + this._Version.GetHashCode();
+                if (this.Version != null)
+                    hashCode = hashCode * 59 + this.Version.GetHashCode();
                 if (this.Javascript != null)
                     hashCode = hashCode * 59 + this.Javascript.GetHashCode();
                 if (this.CssDpi != null)
@@ -692,12 +637,6 @@ namespace DocRaptor.Model
                     hashCode = hashCode * 59 + this.Profile.GetHashCode();
                 if (this.PdfTitle != null)
                     hashCode = hashCode * 59 + this.PdfTitle.GetHashCode();
-                if (this.Iframes != null)
-                    hashCode = hashCode * 59 + this.Iframes.GetHashCode();
-                if (this.PageMargin != null)
-                    hashCode = hashCode * 59 + this.PageMargin.GetHashCode();
-                if (this.PdfForms != null)
-                    hashCode = hashCode * 59 + this.PdfForms.GetHashCode();
                 return hashCode;
             }
         }
