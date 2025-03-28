@@ -11,13 +11,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Text.RegularExpressions;
 using System.IO;
-using System.Threading;
-using System.Web;
 using System.Linq;
-using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using RestSharp;
@@ -29,7 +25,7 @@ namespace DocRaptor.Client
     /// </summary>
     public partial class ApiClient
     {
-        public JsonSerializerSettings serializerSettings = new JsonSerializerSettings
+        private JsonSerializerSettings serializerSettings = new JsonSerializerSettings
         {
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
         };
@@ -38,35 +34,43 @@ namespace DocRaptor.Client
         /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
-        partial void InterceptRequest(IRestRequest request);
+        partial void InterceptRequest(RestRequest request);
 
         /// <summary>
         /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
         /// <param name="response">The RestSharp response object</param>
-        partial void InterceptResponse(IRestRequest request, IRestResponse response);
+        partial void InterceptResponse(RestRequest request, RestResponse response);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
         /// with default configuration.
         /// </summary>
-        public ApiClient()
+        public ApiClient() : this(DocRaptor.Client.Configuration.Default)
         {
-            Configuration = DocRaptor.Client.Configuration.Default;
-            RestClient = new RestClient("https://api.docraptor.com");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://api.docraptor.com).
+        /// with default base path (https://docraptor.com).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config)
         {
             Configuration = config ?? DocRaptor.Client.Configuration.Default;
 
-            RestClient = new RestClient(Configuration.BasePath);
+            if (string.IsNullOrEmpty(Configuration.BasePath))
+            {
+                DocRaptor.Client.Configuration.Default.BasePath = "https://docraptor.com";
+            }
+
+            RestClient = new RestClient(new RestClientOptions
+            {
+                BaseUrl = new Uri(Configuration.BasePath),
+                Timeout = TimeSpan.FromMilliseconds(Configuration.Timeout),
+                UserAgent = Configuration.UserAgent
+            });
         }
 
         /// <summary>
@@ -74,7 +78,7 @@ namespace DocRaptor.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://api.docraptor.com")
+        public ApiClient(String basePath = "https://docraptor.com")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
@@ -135,7 +139,7 @@ namespace DocRaptor.Client
             // add file parameter, if any
             foreach(var param in fileParams)
             {
-                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentType);
+                request.AddFile(param.Value.Name, param.Value.GetFile, param.Value.FileName, param.Value.ContentType);
             }
 
             if (postBody != null) // http body (model or byte[]) parameter
@@ -169,12 +173,6 @@ namespace DocRaptor.Client
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
 
-            // set timeout
-
-            RestClient.Timeout = Configuration.Timeout;
-            // set user agent
-            RestClient.UserAgent = Configuration.UserAgent;
-
             InterceptRequest(request);
             var response = RestClient.Execute(request);
             InterceptResponse(request, response);
@@ -193,20 +191,18 @@ namespace DocRaptor.Client
         /// <param name="fileParams">File parameters.</param>
         /// <param name="pathParams">Path parameters.</param>
         /// <param name="contentType">Content type.</param>
-        /// <param name="cancellationToken">Cancellation Token.</param>
         /// <returns>The Task instance.</returns>
         public async System.Threading.Tasks.Task<Object> CallApiAsync(
             String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
             Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
-            String contentType, CancellationToken cancellationToken)
+            String contentType)
         {
             var request = PrepareRequest(
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
-            RestClient.UserAgent = Configuration.UserAgent;
             InterceptRequest(request);
-            var response = await RestClient.ExecuteTaskAsync(request, cancellationToken);
+            var response = await RestClient.ExecuteAsync(request);
             InterceptResponse(request, response);
             return (Object)response;
         }
@@ -256,8 +252,6 @@ namespace DocRaptor.Client
                 // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
                 // For example: 2009-06-15T13:45:30.0000000
                 return ((DateTimeOffset)obj).ToString (Configuration.DateTimeFormat);
-            else if (obj is bool)
-                return (bool)obj ? "true" : "false";
             else if (obj is IList)
             {
                 var flattenedString = new StringBuilder();
@@ -279,9 +273,9 @@ namespace DocRaptor.Client
         /// <param name="response">The HTTP response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(IRestResponse response, Type type)
+        public object Deserialize(RestResponse response, Type type)
         {
-            IList<Parameter> headers = response.Headers;
+            var headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
@@ -502,7 +496,6 @@ namespace DocRaptor.Client
         /// Convert params to key/value pairs.
         /// Use collectionFormat to properly format lists and collections.
         /// </summary>
-        /// <param name="collectionFormat">Collection format.</param>
         /// <param name="name">Key name.</param>
         /// <param name="value">Value object.</param>
         /// <returns>A list of KeyValuePairs</returns>

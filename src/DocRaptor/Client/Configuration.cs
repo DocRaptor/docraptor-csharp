@@ -9,12 +9,9 @@
  */
 
 using System;
-using System.Reflection;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace DocRaptor.Client
 {
@@ -29,7 +26,7 @@ namespace DocRaptor.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "4.0.0";
+        public const string Version = "2.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -114,8 +111,8 @@ namespace DocRaptor.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "OpenAPI-Generator/4.0.0/csharp";
-            BasePath = "https://api.docraptor.com";
+            UserAgent = "Swagger-Codegen/2.0.0/csharp";
+            BasePath = "https://docraptor.com";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -131,7 +128,7 @@ namespace DocRaptor.Client
             IDictionary<string, string> defaultHeader,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "https://api.docraptor.com") : this()
+            string basePath = "https://docraptor.com") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
@@ -187,7 +184,7 @@ namespace DocRaptor.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "OpenAPI-Generator/4.0.0/csharp"
+            string userAgent = "Swagger-Codegen/2.0.0/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -231,10 +228,6 @@ namespace DocRaptor.Client
             get { return _basePath; }
             set {
                 _basePath = value;
-                // pass-through to ApiClient if it's set.
-                if(_apiClient != null) {
-                    _apiClient.RestClient.BaseUrl = new Uri(_basePath);
-                }
             }
         }
 
@@ -246,11 +239,11 @@ namespace DocRaptor.Client
         /// <summary>
         /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
         /// </summary>
+        private int _timeout = 30000;
         public virtual int Timeout
         {
-
-            get { return ApiClient.RestClient.Timeout; }
-            set { ApiClient.RestClient.Timeout = value; }
+            get { return _timeout; }
+            set { _timeout = value; }
         }
 
         /// <summary>
@@ -305,6 +298,7 @@ namespace DocRaptor.Client
             {
                 if (string.IsNullOrEmpty(value))
                 {
+                    // Possible breaking change since swagger-codegen 2.2.1, enforce a valid temporary path on set.
                     _tempFolderPath = Path.GetTempPath();
                     return;
                 }
@@ -421,7 +415,7 @@ namespace DocRaptor.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 2.0.0\n";
-            report += "    SDK Package Version: 4.0.0\n";
+            report += "    SDK Package Version: 2.0.0\n";
 
             return report;
         }
